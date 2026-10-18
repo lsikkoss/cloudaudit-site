@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AWS Cost Audits for SaaS Teams | CloudAudit</title>
+<meta name="description" content="Fixed-price AWS cost audits for SaaS teams. Find 20-30% savings in 7 days with read-only access, guaranteed 2x return on the fee.">
+<meta property="og:title" content="AWS Cost Audits for SaaS Teams">
+<meta property="og:description" content="See where your AWS bill leaks in 7 days. 2x savings guarantee.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b1026">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<style>
+/* Layout: a calm consultancy page. Navy header and hero carry the Egbanname ink; the rainbow survives only as a thin rule, the logo and the guarantee seal. Everything else is quiet surfaces, one teal action color, and numbers set in mono. */
+:root {
+  --bg: #f4f6fa;
+  --surface: #ffffff;
+  --ink: #0b1026;
+  --soft: #4a5470;
+  --line: #dde2ec;
+  --navy: #0b1026;
+  --navy-2: #151d45;
+  --teal: #1dd1a1;
+  --cyan: #48dbfb;
+  --red: #e5484d;
+  --btn-ink: #04263a;
+  --tint: #eef2f8;
+  --rainbow: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1, #5f27cd);
+  --font: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "Cascadia Mono", Consolas, Menlo, monospace;
+  --r: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #080c1f; --surface: #111836; --ink: #eef1f8; --soft: #a7b0c8; --line: #252f57; --navy: #0d1330; --navy-2: #182152; --tint: #182048; --red: #ff7b7f; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #080c1f; --surface: #111836; --ink: #eef1f8; --soft: #a7b0c8; --line: #252f57; --navy: #0d1330; --navy-2: #182152; --tint: #182048; --red: #ff7b7f; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+h1, h2, h3 { margin: 0; line-height: 1.15; text-wrap: balance; }
+h3 { font-size: 1.08rem; }
+p { margin: 0; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* Dark zones keep white text in both themes */
+.topbar, .hero, .calc-out, .cta, footer { --soft: rgba(255, 255, 255, 0.78); color: #fff; }
+
+/* Top bar */
+.topbar { display: flex; align-items: center; gap: 12px 20px; flex-wrap: wrap; padding: calc(10px + env(safe-area-inset-top, 0px)) clamp(16px, 3vw, 32px) 10px;
+  position: sticky; top: 0; z-index: 50; background: var(--navy); border-bottom: 3px solid transparent; border-image: var(--rainbow) 1; }
+.logo { height: 54px; width: auto; max-width: 100%; display: block; }
+.topbar nav { display: flex; flex-wrap: wrap; gap: 2px; }
+.topbar nav a { text-decoration: none; font-weight: 600; font-size: .95rem; padding: 6px 10px; border-radius: 8px; color: var(--soft); }
+.topbar nav a:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
+.right { margin-left: auto; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.lang-switch { display: flex; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px; overflow: hidden; }
+.lang-switch button { padding: 5px 10px; border: 0; cursor: pointer; font: inherit; font-weight: 700; font-size: .8rem; background: transparent; color: var(--soft); }
+.lang-switch button[aria-pressed="true"] { background: #fff; color: var(--navy); }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; border: 1px solid transparent; cursor: pointer;
+  font: inherit; font-weight: 700; font-size: 1rem; padding: 12px 20px; border-radius: 10px; background: var(--teal); color: var(--btn-ink); transition: background-color .15s, transform .15s; }
+.btn:hover { background: #3be0b4; transform: translateY(-1px); }
+.btn.ghost { background: transparent; color: inherit; border-color: currentColor; }
+.btn.ghost:hover { background: rgba(127, 140, 170, 0.12); }
+.btn.sm { padding: 7px 14px; font-size: .9rem; }
+.btn.block { width: 100%; }
+
+/* Layout */
+main { max-width: 1120px; margin: 0 auto; padding: 28px clamp(16px, 3vw, 24px) 0; display: grid; gap: 28px; }
+.glass { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
+.section { padding: clamp(24px, 4vw, 44px); display: grid; gap: 24px; }
+.section-head { display: grid; gap: 8px; max-width: 64ch; }
+.section-head h2 { font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 750; letter-spacing: -0.01em; }
+.section-head p { color: var(--soft); font-size: 1.05rem; }
+.kicker { justify-self: start; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--soft); display: inline-flex; align-items: center; gap: 8px; }
+.kicker::before { content: ""; width: 18px; height: 3px; border-radius: 2px; background: var(--rainbow); }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(22px, 4vw, 48px); align-items: center; padding: clamp(28px, 5vw, 56px); border: 0;
+  background: radial-gradient(600px 300px at 0% 0%, rgba(72, 219, 251, 0.18), transparent 70%), radial-gradient(500px 300px at 100% 100%, rgba(95, 39, 205, 0.28), transparent 70%), var(--navy); }
+.hero > * { min-width: 0; }
+.hero h1 { font-size: clamp(2.1rem, 5vw, 3.3rem); font-weight: 800; letter-spacing: -0.02em; margin-block: 14px; }
+.hero h1 .grad { background: linear-gradient(90deg, var(--teal), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero .sub { font-size: 1.1rem; color: var(--soft); max-width: 52ch; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+.hero-note { margin-top: 16px; font-size: .95rem; color: var(--soft); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+.bill { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 12px; padding: 20px; font-size: .88rem; }
+.bill-head { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; color: var(--soft); padding-bottom: 10px; border-bottom: 1px dashed rgba(255, 255, 255, 0.2); }
+.bill-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding-block: 9px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); align-items: baseline; }
+.bill-row small { display: block; color: var(--soft); font-size: .78rem; }
+.bill-row.cut .amt { color: #ff8a8d; text-decoration: line-through; text-decoration-thickness: 2px; }
+.tag { display: inline-block; font-size: .68rem; font-weight: 700; padding: 1px 7px; border-radius: 20px; background: rgba(255, 107, 107, 0.18); color: #ff9b9d; margin-left: 4px; vertical-align: 1px; }
+.bill-total { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding-top: 10px; font-weight: 700; }
+.bill-total.save { margin-top: 10px; padding: 10px 12px; border-radius: 8px; background: rgba(29, 209, 161, 0.16); color: var(--teal); }
+.bill-foot { margin-top: 10px; font-size: .74rem; color: var(--soft); }
+
+/* Cards */
+.tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 14px; }
+.tool-card { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.tool-card p { color: var(--soft); font-size: .95rem; }
+.pill { justify-self: start; padding: 2px 9px; border-radius: 20px; font-size: .74rem; font-weight: 700; background: var(--tint); color: var(--soft); font-family: var(--mono); }
+#how .pill { background: var(--navy); color: #fff; }
+.hero .pill { background: rgba(29, 209, 161, 0.16); color: var(--teal); font-family: var(--font); }
+
+/* Calculator */
+.calc { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.calc > * { min-width: 0; }
+.calc-in { display: grid; gap: 20px; align-content: start; }
+.field { display: grid; gap: 8px; border: 0; margin: 0; padding: 0; min-width: 0; }
+.field label, .field legend { font-weight: 650; padding: 0; }
+.spend-out { font-family: var(--mono); font-size: 1.6rem; font-weight: 600; }
+input[type="range"] { width: 100%; accent-color: #12a37d; }
+.toggle { display: flex; gap: 8px; flex-wrap: wrap; }
+.toggle label { font-size: .92rem; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; padding: 7px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--line); }
+.toggle input { margin: 0; accent-color: #12a37d; }
+.toggle label:has(input:checked) { border-color: #12a37d; box-shadow: inset 0 0 0 1px #12a37d; }
+.calc-out { background: var(--navy); border-radius: 12px; padding: 24px; display: grid; gap: 16px; align-content: start; }
+.calc-out .kicker { color: var(--soft); }
+.big { font-family: var(--mono); font-size: clamp(2.1rem, 5.5vw, 3rem); font-weight: 600; line-height: 1; color: var(--teal); }
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: rgba(255, 255, 255, 0.12); border-radius: 8px; overflow: hidden; }
+.stat-box { background: var(--navy); padding: 12px; display: grid; gap: 2px; }
+.stat-box span { font-size: .78rem; color: var(--soft); }
+.stat-box b { font-family: var(--mono); font-size: 1.05rem; font-weight: 600; }
+.fine { font-size: .8rem; color: var(--soft); }
+
+/* Pricing */
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.plan { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: grid; grid-template-rows: auto auto auto 1fr auto; gap: 12px; }
+.plan.featured { border: 2px solid var(--navy); position: relative; }
+:root[data-theme="dark"] .plan.featured { border-color: var(--cyan); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .plan.featured { border-color: var(--cyan); } }
+.plan.featured .pill { background: var(--navy); color: #fff; font-family: var(--font); }
+.plan .fit { font-size: .85rem; color: var(--soft); }
+.price { font-family: var(--mono); font-size: 2.2rem; font-weight: 600; line-height: 1; }
+.price small { font-family: var(--font); font-size: .95rem; font-weight: 600; color: var(--soft); }
+.plan ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; align-content: start; font-size: .95rem; }
+.plan li { padding-left: 22px; position: relative; }
+.plan li::before { content: "✓"; position: absolute; left: 0; font-weight: 800; color: #12a37d; }
+.addon { display: flex; gap: 14px 28px; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 18px 22px; border-radius: 12px; background: var(--bg); border: 1px dashed var(--line); }
+.addon > div { flex: 1 1 280px; min-width: 0; display: grid; gap: 4px; }
+.addon p { color: var(--soft); font-size: .95rem; }
+
+/* Guarantee */
+.guarantee { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(20px, 4vw, 44px); align-items: center; }
+.seal { width: clamp(120px, 16vw, 150px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; display: grid; place-items: center; text-align: center; position: relative; font-weight: 700; text-transform: uppercase; font-size: .74rem; letter-spacing: .08em; color: var(--soft); }
+.seal::before { content: ""; position: absolute; inset: 0; border-radius: 50%; padding: 5px; background: conic-gradient(#ff6b6b, #feca57, #48dbfb, #1dd1a1, #5f27cd, #ff6b6b); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+.seal strong { display: block; font-family: var(--mono); font-size: 2.4rem; letter-spacing: 0; line-height: 1; color: var(--ink); }
+.guarantee h2 { font-size: clamp(1.3rem, 2.8vw, 1.8rem); font-weight: 750; }
+.guarantee p { color: var(--soft); margin-top: 10px; max-width: 62ch; }
+
+/* FAQ */
+.faq { display: grid; border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); padding: 16px 2px; }
+.faq summary { cursor: pointer; font-weight: 650; list-style: none; display: flex; justify-content: space-between; gap: 14px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--mono); color: var(--soft); }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { margin-top: 8px; color: var(--soft); max-width: 72ch; }
+
+/* CTA + footer */
+.cta { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; align-items: center; padding: clamp(24px, 4vw, 44px); border: 0;
+  background: radial-gradient(500px 260px at 100% 0%, rgba(29, 209, 161, 0.2), transparent 70%), var(--navy); }
+.cta > * { min-width: 0; }
+.cta h2 { font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 750; }
+.cta p { color: var(--soft); margin-top: 10px; }
+.cta-side { display: grid; gap: 10px; }
+.mail { font-family: var(--mono); font-size: .88rem; word-break: break-all; color: var(--soft); text-align: center; }
+footer { text-align: center; padding: 24px clamp(16px, 3vw, 28px) calc(24px + env(safe-area-inset-bottom, 0px)); background: var(--navy); margin-top: 40px; font-size: .9rem; display: grid; gap: 4px; border-top: 3px solid transparent; border-image: var(--rainbow) 1; }
+footer .small { color: var(--soft); font-size: .8rem; }
+
+@media (max-width: 880px) {
+  .hero, .calc, .cta { grid-template-columns: 1fr; }
+  .plans { grid-template-columns: 1fr; }
+  .topbar nav { display: none; }
+  .logo { height: 46px; }
+}
+@media (max-width: 520px) {
+  .guarantee { grid-template-columns: 1fr; justify-items: start; }
+  .right { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+
+
+
+<header class="topbar">
+  <a href="#top" aria-label="Home">
+    <svg class="logo" viewBox="0 0 520 170" role="img" aria-label="CloudAudit logo">
+      <defs>
+        <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#ff6b6b"/><stop offset="25%" stop-color="#feca57"/>
+          <stop offset="50%" stop-color="#48dbfb"/><stop offset="75%" stop-color="#1dd1a1"/>
+          <stop offset="100%" stop-color="#5f27cd"/>
+        </linearGradient>
+      </defs>
+      <circle cx="80" cy="85" r="60" fill="none" stroke="url(#lg)" stroke-width="10"/>
+      <path d="M46 76a22 22 0 0 1 30-22a26 26 0 0 1 48 10a18 18 0 0 1-4 36H52a18 18 0 0 1-6-24z" fill="url(#lg)"/>
+      <path d="M85 62v34m-12-12l12 13l12-13" fill="none" stroke="#0b1026" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="160" y="82" font-family="Segoe UI,Arial,sans-serif" font-size="46" font-weight="800" fill="url(#lg)" data-brand-upper>CLOUDAUDIT</text>
+      <text x="162" y="116" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="600" fill="#ffffff">AWS Cost Audits</text>
+      <text x="162" y="140" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#ffffee" data-i18n="logo_tag">Find the waste. Keep the savings.</text>
+    </svg>
+  </a>
+  <nav aria-label="Main">
+    <a href="#how" data-i18n="nav_how">How it works</a>
+    <a href="#calculator" data-i18n="nav_calc">Savings estimate</a>
+    <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+    <a href="#faq" data-i18n="nav_faq">FAQ</a>
+  </nav>
+  <div class="right">
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+      <button type="button" data-lang="es" aria-pressed="false">ES</button>
+    </div>
+    <a class="btn sm" data-book href="#contact" data-i18n="nav_book">Book a call</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="glass hero">
+    <div>
+      <span class="kicker" data-i18n="hero_kicker">AWS cost audits for SaaS teams</span>
+      <h1 data-i18n="hero_title" data-html>Cut your AWS bill by <span class="grad">20–30%</span>.</h1>
+      <p class="sub" data-i18n="hero_sub">In 7 days we show you exactly where your cloud spend is leaking, ranked by dollars saved, with step-by-step fixes your team can ship. Read-only access. No product changes.</p>
+      <div class="hero-ctas">
+        <a class="btn" data-book href="#contact" data-i18n="hero_cta">Book a free 15-min call</a>
+        <a class="btn ghost" href="#calculator" data-i18n="hero_cta2">Estimate your savings</a>
+      </div>
+      <p class="hero-note"><span class="pill p3" data-i18n="guarantee_pill">Guarantee</span><span data-i18n="hero_note">We find at least 2× our fee in annual savings, or you pay nothing.</span></p>
+    </div>
+    <figure class="bill" style="margin:0" aria-label="Example audit findings on a monthly AWS bill">
+      <div class="bill-head"><span data-i18n="bill_title">Example findings · 12-person SaaS</span><span class="num">us-east-1</span></div>
+      <div class="bill-row"><span>EC2 · production<small data-i18n="bill_r1">m5.2xlarge × 6, avg CPU 11%</small></span><span class="num">$2,214</span></div>
+      <div class="bill-row cut"><span>EC2 · staging &amp; dev <span class="tag" data-i18n="bill_t2">idle nights</span><small data-i18n="bill_r2">running 168 h/week</small></span><span class="amt num">$1,108</span></div>
+      <div class="bill-row cut"><span>EBS · unattached <span class="tag" data-i18n="bill_t3">orphaned</span><small data-i18n="bill_r3">14 volumes, 2.1 TB</small></span><span class="amt num">$214</span></div>
+      <div class="bill-row cut"><span>RDS · Multi-AZ on dev <span class="tag" data-i18n="bill_t4">not needed</span><small>db.r5.large</small></span><span class="amt num">$368</span></div>
+      <div class="bill-row cut"><span>NAT Gateway <span class="tag" data-i18n="bill_t5">routing</span><small data-i18n="bill_r5">S3 traffic without VPC endpoint</small></span><span class="amt num">$402</span></div>
+      <div class="bill-total"><span data-i18n="bill_total">Monthly total</span><span class="num">$5,180</span></div>
+      <div class="bill-total save"><span data-i18n="bill_save">Recoverable · $1,640/mo</span><span class="num" data-i18n="bill_year">$19,680/yr</span></div>
+      <p class="bill-foot" data-i18n="bill_foot">Illustrative example. Your findings depend on your account.</p>
+    </figure>
+  </section>
+
+  <section class="glass section" id="how">
+    <div class="section-head">
+      <span class="kicker" data-i18n="how_kicker">How it works</span>
+      <h2 data-i18n="how_title">Seven days from payment to a ranked savings report</h2>
+    </div>
+    <div class="tool-grid">
+      <div class="tool-card"><span class="pill p1" data-i18n="day0">Day 0</span><h3 data-i18n="s1_t">Kickoff</h3><p data-i18n="s1_d">A 10-minute form: monthly spend, main services, environments, and what's bugging you.</p></div>
+      <div class="tool-card"><span class="pill p2" data-i18n="day1">Day 1</span><h3 data-i18n="s2_t">Read-only access</h3><p data-i18n="s2_d">You create one read-only IAM role from our template. We never ask for root or admin credentials.</p></div>
+      <div class="tool-card"><span class="pill p4" data-i18n="day16">Days 1–6</span><h3 data-i18n="s3_t">Analysis</h3><p data-i18n="s3_d">We go through every service line, verify each finding, and price it in monthly and annual dollars.</p></div>
+      <div class="tool-card"><span class="pill p3" data-i18n="day7">Day 7</span><h3 data-i18n="s4_t">Walkthrough</h3><p data-i18n="s4_d">A 45-minute call on the top wins, then you remove our access. The report is yours to keep.</p></div>
+    </div>
+  </section>
+
+  <section class="glass section" id="checks">
+    <div class="section-head">
+      <span class="kicker" data-i18n="chk_kicker">What we check</span>
+      <h2 data-i18n="chk_title">The six places small teams lose the most money</h2>
+    </div>
+    <div class="tool-grid">
+      <div class="tool-card"><span class="pill p2">EC2 · Fargate · Lambda</span><h3 data-i18n="c1_t">Oversized compute</h3><p data-i18n="c1_d">Instances sized for launch day and never revisited. Graviton candidates.</p></div>
+      <div class="tool-card"><span class="pill p1" data-i18n="c2_p">Non-prod</span><h3 data-i18n="c2_t">Always-on environments</h3><p data-i18n="c2_d">Staging and dev running 168 hours a week when people use them 50.</p></div>
+      <div class="tool-card"><span class="pill p3">Savings Plans · RIs</span><h3 data-i18n="c3_t">Missing commitments</h3><p data-i18n="c3_d">Steady workloads paying on-demand rates, or commitments that no longer match usage.</p></div>
+      <div class="tool-card"><span class="pill p4">EBS · S3 · Snapshots</span><h3 data-i18n="c4_t">Storage that never tiers down</h3><p data-i18n="c4_d">Orphaned volumes, years of snapshots, and cold data in the most expensive class.</p></div>
+      <div class="tool-card"><span class="pill p5">NAT · Inter-AZ · Egress</span><h3 data-i18n="c5_t">Data transfer surprises</h3><p data-i18n="c5_d">Traffic routed the expensive way, often fixable with a VPC endpoint.</p></div>
+      <div class="tool-card"><span class="pill p6">RDS · ElastiCache</span><h3 data-i18n="c6_t">Oversized databases</h3><p data-i18n="c6_d">Multi-AZ on dev, oversized instances, and provisioned IOPS nobody uses.</p></div>
+    </div>
+  </section>
+
+  <section class="glass section" id="calculator">
+    <div class="section-head">
+      <span class="kicker" data-i18n="calc_kicker">Savings estimate</span>
+      <h2 data-i18n="calc_title">What could you get back this year?</h2>
+      <p data-i18n="calc_sub">A rough estimate from patterns we see in small SaaS accounts. The audit gives you the real number.</p>
+    </div>
+    <div class="calc">
+      <form class="calc-in" id="calc-form" aria-label="Savings estimate inputs">
+        <div class="field">
+          <label for="spend" data-i18n="q_spend">Monthly AWS spend</label>
+          <output class="spend-out" id="spend-out" for="spend">$5,000</output>
+          <input type="range" id="spend" min="1000" max="30000" step="500" value="5000">
+        </div>
+        <fieldset class="field">
+          <legend data-i18n="q_commit">Do you use Savings Plans or Reserved Instances?</legend>
+          <div class="toggle">
+            <label><input type="radio" name="commit" id="commit-no" value="no" checked> <span data-i18n="a_no">No</span></label>
+            <label><input type="radio" name="commit" id="commit-some" value="some"> <span data-i18n="a_some">Some</span></label>
+            <label><input type="radio" name="commit" id="commit-yes" value="yes"> <span data-i18n="a_reviewed">Yes, reviewed recently</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="field">
+          <legend data-i18n="q_nonprod">Do staging and dev run around the clock?</legend>
+          <div class="toggle">
+            <label><input type="radio" name="nonprod" id="np-yes" value="yes" checked> <span data-i18n="a_yes">Yes</span></label>
+            <label><input type="radio" name="nonprod" id="np-no" value="no"> <span data-i18n="a_sched">No, they're scheduled</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="field">
+          <legend data-i18n="q_review">Does someone review the bill every month?</legend>
+          <div class="toggle">
+            <label><input type="radio" name="review" id="rv-no" value="no" checked> <span data-i18n="a_no">No</span></label>
+            <label><input type="radio" name="review" id="rv-yes" value="yes"> <span data-i18n="a_yes">Yes</span></label>
+          </div>
+        </fieldset>
+      </form>
+      <div class="calc-out" aria-live="polite">
+        <span class="kicker" style="justify-self:start" data-i18n="est_label">Estimated annual savings</span>
+        <p class="big" id="save-range">$12k–$18k</p>
+        <div class="stats">
+          <div class="stat-box"><span data-i18n="st_waste">Likely waste</span><b id="pct">20–30%</b></div>
+          <div class="stat-box"><span data-i18n="st_plan">Suggested audit</span><b id="plan-name">Standard</b></div>
+          <div class="stat-box"><span data-i18n="st_fee">Audit fee</span><b id="fee">$1,497</b></div>
+          <div class="stat-box"><span data-i18n="st_roi">Return on fee</span><b id="roi">8×</b></div>
+        </div>
+        <a class="btn block" data-book href="#contact" data-i18n="calc_cta">Get the real number</a>
+        <p class="fine" data-i18n="calc_fine">Estimate only, based on typical patterns. Not a quote or a promise of specific results.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="glass section" id="pricing">
+    <div class="section-head">
+      <span class="kicker" data-i18n="pr_kicker">Pricing</span>
+      <h2 data-i18n="pr_title">Fixed prices, covered by the guarantee</h2>
+    </div>
+    <div class="plans">
+      <article class="plan">
+        <span class="fit" data-i18n="pl1_fit">For bills of $1k–$3k/mo</span>
+        <h3>Starter Scan</h3>
+        <p class="price">$497</p>
+        <ul><li data-i18n="pl1_a">Cost Explorer review</li><li data-i18n="pl1_b">Top 10 savings, priced</li><li data-i18n="pl1_c">One-page report</li><li data-i18n="pl1_d">20-minute call</li></ul>
+        <a class="btn ghost block" data-pay="starter" href="#contact" data-i18n="pl1_cta">Get the Starter Scan</a>
+      </article>
+      <article class="plan featured">
+        <span class="pill p2" data-i18n="pl_badge">Most teams pick this</span>
+        <span class="fit" data-i18n="pl2_fit">For bills of $3k–$15k/mo</span>
+        <h3>Standard Audit</h3>
+        <p class="price">$1,497</p>
+        <ul><li data-i18n="pl2_a">All six areas, every service line</li><li data-i18n="pl2_b">Ranked report with dollar estimates</li><li data-i18n="pl2_c">Risk and effort for each fix</li><li data-i18n="pl2_d">45-minute walkthrough</li><li data-i18n="pl2_e">Budget and anomaly alert setup guide</li></ul>
+        <a class="btn block" data-pay="standard" href="#contact" data-i18n="pl2_cta">Get the Standard Audit</a>
+      </article>
+      <article class="plan">
+        <span class="fit" data-i18n="pl3_fit">For bills over $15k/mo</span>
+        <h3>Custom Audit</h3>
+        <p class="price"><small data-i18n="from">From</small> $2,997</p>
+        <ul><li data-i18n="pl3_a">Multi-account and Organizations</li><li data-i18n="pl3_b">Commitment purchase plan</li><li data-i18n="pl3_c">Architecture-level savings</li><li data-i18n="pl3_d">Two review calls</li></ul>
+        <a class="btn ghost block" data-book href="#contact" data-i18n="pl3_cta">Book a scoping call</a>
+      </article>
+    </div>
+    <div class="addon">
+      <div>
+        <h3 data-i18n="add_t">After the audit: Implementation and Cost Guard</h3>
+        <p data-i18n="add_d">We apply the fixes you approve, priced per project. Cost Guard keeps the bill down with monthly anomaly checks and quarterly commitment reviews, from $397/mo.</p>
+      </div>
+      <a class="btn ghost sm" data-book href="#contact" data-i18n="add_cta">Ask about it</a>
+    </div>
+  </section>
+
+  <section class="glass section guarantee" id="guarantee">
+    <div class="seal" aria-hidden="true"><span><strong>2×</strong><span data-i18n="seal">or it's free</span></span></div>
+    <div>
+      <span class="kicker" data-i18n="g_kicker">The guarantee</span>
+      <h2 style="margin-top:10px" data-i18n="g_title">If we don't find at least twice our fee in annual savings, you get a full refund.</h2>
+      <p data-i18n="g_text">Savings count when we identify them with a dollar estimate in your report. You decide what to implement, and you keep the report either way.</p>
+    </div>
+  </section>
+
+  <section class="glass section" id="faq">
+    <div class="section-head">
+      <span class="kicker" data-i18n="faq_kicker">Questions</span>
+      <h2 data-i18n="faq_title">Before you book</h2>
+    </div>
+    <div class="faq">
+      <details><summary data-i18n="f1_q">What access do you need?</summary><p data-i18n="f1_a">One read-only IAM role in your account, created from a template we send. It can view costs and configuration but cannot change, create, or delete anything, and it cannot read your files or databases. You remove it when the audit ends.</p></details>
+      <details><summary data-i18n="f2_q">Will you change anything in my account?</summary><p data-i18n="f2_a">No. The audit is read-only. If you want help applying the fixes, that's a separate Implementation project with its own scoped access that you approve.</p></details>
+      <details><summary data-i18n="f3_q">How is my data handled?</summary><p data-i18n="f3_a">We sign an NDA on request, keep exported billing data only for the audit, and delete it within 30 days of delivery.</p></details>
+      <details><summary data-i18n="f4_q">We only spend $1,500 a month. Is it worth it?</summary><p data-i18n="f4_a">The Starter Scan is built for that size. Below about $1,000 a month, the savings usually don't justify a paid audit, and we'll tell you so on the call.</p></details>
+      <details><summary data-i18n="f5_q">Do you work with Azure or Google Cloud?</summary><p data-i18n="f5_a">We focus on AWS today. Ask on the call if you run a mix.</p></details>
+    </div>
+  </section>
+
+  <section class="glass cta" id="contact">
+    <div>
+      <h2 data-i18n="cta_title">Find out what your AWS bill is hiding</h2>
+      <p data-i18n="cta_text">A free 15-minute call. We look at your spend at a high level and tell you honestly whether an audit is worth it.</p>
+    </div>
+    <div class="cta-side">
+      <a class="btn block" data-book href="#contact" data-i18n="cta_btn">Book a free call</a>
+      <p class="mail"><span data-i18n="cta_mail">Or email</span> <span data-email>hello@yourdomain.com</span></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span><span data-brand>CloudAudit</span> — <span data-i18n="foot_line">AWS cost audits for SaaS teams</span> | <span data-email>hello@yourdomain.com</span></span>
+  <span class="small">© <span id="year">2026</span> · <a href="privacy.html">Privacy</a> · <span data-i18n="foot_legal">Independent consultancy, not affiliated with Amazon Web Services. AWS is a trademark of Amazon.com, Inc.</span></span>
+</footer>
+
+<script>
+/* ===== EDIT THESE BEFORE GOING LIVE ===== */
+const CONFIG = {
+  brand: "CloudAudit",                       // your business name
+  email: "hello@yourdomain.com",             // your business email
+  bookingUrl: "",                            // e.g. https://calendly.com/yourname/15min
+  stripe: {
+    starter: "",                             // Stripe Payment Link for the $497 Starter Scan
+    standard: ""                             // Stripe Payment Link for the $1,497 Standard Audit
+  }
+};
+/* ======================================== */
+
+const I18N = {
+  fr: {
+    logo_tag: "Trouvez le gaspillage. Gardez les économies.",
+    nav_how: "Fonctionnement", nav_calc: "Estimation", nav_pricing: "Tarifs", nav_faq: "FAQ", nav_book: "Réserver un appel",
+    hero_kicker: "Audits de coûts AWS pour équipes SaaS",
+    hero_title: 'Réduisez votre facture AWS de <span class="grad">20 à 30 %</span>.',
+    hero_sub: "En 7 jours, nous vous montrons exactement où votre budget cloud fuit, classé par dollars économisés, avec des correctifs étape par étape. Accès en lecture seule. Aucun changement à votre produit.",
+    hero_cta: "Réserver un appel gratuit de 15 min", hero_cta2: "Estimer vos économies",
+    guarantee_pill: "Garantie", hero_note: "Nous trouvons au moins 2× nos honoraires en économies annuelles, ou vous ne payez rien.",
+    bill_title: "Exemple · SaaS de 12 personnes", bill_r1: "m5.2xlarge × 6, CPU moyen 11 %", bill_t2: "inactif la nuit", bill_r2: "allumé 168 h/semaine",
+    bill_t3: "orphelins", bill_r3: "14 volumes, 2,1 To", bill_t4: "inutile", bill_t5: "routage", bill_r5: "trafic S3 sans point de terminaison VPC",
+    bill_total: "Total mensuel", bill_save: "Récupérable · 1 640 $/mois", bill_year: "19 680 $/an", bill_foot: "Exemple illustratif. Vos résultats dépendent de votre compte.",
+    how_kicker: "Fonctionnement", how_title: "Sept jours entre le paiement et un rapport d'économies classé",
+    day0: "Jour 0", day1: "Jour 1", day16: "Jours 1 à 6", day7: "Jour 7",
+    s1_t: "Lancement", s1_d: "Un formulaire de 10 minutes : dépenses mensuelles, services principaux, environnements et ce qui vous préoccupe.",
+    s2_t: "Accès en lecture seule", s2_d: "Vous créez un rôle IAM en lecture seule à partir de notre modèle. Jamais d'identifiants root ou admin.",
+    s3_t: "Analyse", s3_d: "Nous passons chaque ligne de service en revue, vérifions chaque constat et le chiffrons en dollars par mois et par an.",
+    s4_t: "Présentation", s4_d: "Un appel de 45 minutes sur les gains principaux, puis vous retirez notre accès. Le rapport vous appartient.",
+    chk_kicker: "Ce que nous vérifions", chk_title: "Les six endroits où les petites équipes perdent le plus d'argent",
+    c1_t: "Calcul surdimensionné", c1_d: "Des instances dimensionnées pour le lancement et jamais revues. Candidats à Graviton.",
+    c2_p: "Hors production", c2_t: "Environnements toujours allumés", c2_d: "Staging et dev tournent 168 heures par semaine alors qu'on les utilise 50.",
+    c3_t: "Engagements manquants", c3_d: "Des charges stables payées au tarif à la demande, ou des engagements qui ne correspondent plus à l'usage.",
+    c4_t: "Stockage jamais optimisé", c4_d: "Volumes orphelins, années de snapshots et données froides dans la classe la plus chère.",
+    c5_t: "Surprises de transfert de données", c5_d: "Du trafic acheminé de la façon la plus coûteuse, souvent corrigeable avec un point de terminaison VPC.",
+    c6_t: "Bases de données surdimensionnées", c6_d: "Multi-AZ en dev, instances trop grandes et IOPS provisionnés inutilisés.",
+    calc_kicker: "Estimation", calc_title: "Combien pourriez-vous récupérer cette année ?", calc_sub: "Une estimation basée sur ce que nous voyons dans les petits comptes SaaS. L'audit vous donne le vrai chiffre.",
+    q_spend: "Dépenses AWS mensuelles", q_commit: "Utilisez-vous des Savings Plans ou des instances réservées ?", q_nonprod: "Staging et dev tournent-ils en continu ?", q_review: "Quelqu'un vérifie-t-il la facture chaque mois ?",
+    a_no: "Non", a_some: "Certains", a_reviewed: "Oui, revus récemment", a_yes: "Oui", a_sched: "Non, ils sont programmés",
+    est_label: "Économies annuelles estimées", st_waste: "Gaspillage probable", st_plan: "Audit conseillé", st_fee: "Honoraires", st_roi: "Retour sur honoraires",
+    calc_cta: "Obtenir le vrai chiffre", calc_fine: "Estimation seulement, basée sur des tendances courantes. Ni un devis ni une promesse de résultats.",
+    pr_kicker: "Tarifs", pr_title: "Prix fixes, couverts par la garantie",
+    pl1_fit: "Factures de 1 k$ à 3 k$/mois", pl1_a: "Revue de Cost Explorer", pl1_b: "10 principales économies, chiffrées", pl1_c: "Rapport d'une page", pl1_d: "Appel de 20 minutes", pl1_cta: "Choisir le Starter Scan",
+    pl_badge: "Le choix le plus courant", pl2_fit: "Factures de 3 k$ à 15 k$/mois", pl2_a: "Les six domaines, chaque ligne de service", pl2_b: "Rapport classé avec estimations en dollars", pl2_c: "Risque et effort pour chaque correctif", pl2_d: "Présentation de 45 minutes", pl2_e: "Guide de mise en place des alertes de budget", pl2_cta: "Choisir le Standard Audit",
+    pl3_fit: "Factures de plus de 15 k$/mois", from: "Dès", pl3_a: "Multi-comptes et Organizations", pl3_b: "Plan d'achat d'engagements", pl3_c: "Économies au niveau de l'architecture", pl3_d: "Deux appels de revue", pl3_cta: "Réserver un appel de cadrage",
+    add_t: "Après l'audit : mise en œuvre et Cost Guard", add_d: "Nous appliquons les correctifs que vous approuvez, au forfait. Cost Guard maintient la facture basse avec un suivi mensuel des anomalies et une revue trimestrielle des engagements, dès 397 $/mois.", add_cta: "En savoir plus",
+    seal: "ou c'est gratuit", g_kicker: "La garantie", g_title: "Si nous ne trouvons pas au moins deux fois nos honoraires en économies annuelles, vous êtes remboursé intégralement.",
+    g_text: "Les économies comptent dès que nous les identifions avec une estimation en dollars dans votre rapport. Vous décidez quoi mettre en œuvre, et vous gardez le rapport dans tous les cas.",
+    faq_kicker: "Questions", faq_title: "Avant de réserver",
+    f1_q: "De quel accès avez-vous besoin ?", f1_a: "Un rôle IAM en lecture seule dans votre compte, créé à partir d'un modèle que nous envoyons. Il voit les coûts et la configuration mais ne peut rien modifier, créer ou supprimer, ni lire vos fichiers ou bases de données. Vous le supprimez à la fin de l'audit.",
+    f2_q: "Allez-vous modifier quelque chose dans mon compte ?", f2_a: "Non. L'audit est en lecture seule. Si vous voulez de l'aide pour appliquer les correctifs, c'est un projet de mise en œuvre séparé, avec un accès limité que vous approuvez.",
+    f3_q: "Comment mes données sont-elles traitées ?", f3_a: "Nous signons un accord de confidentialité sur demande, conservons les données de facturation uniquement pour l'audit et les supprimons dans les 30 jours suivant la livraison.",
+    f4_q: "Nous dépensons seulement 1 500 $ par mois. Est-ce que ça vaut la peine ?", f4_a: "Le Starter Scan est conçu pour cette taille. En dessous d'environ 1 000 $ par mois, les économies justifient rarement un audit payant, et nous vous le dirons pendant l'appel.",
+    f5_q: "Travaillez-vous avec Azure ou Google Cloud ?", f5_a: "Nous nous concentrons sur AWS pour l'instant. Parlez-en pendant l'appel si vous utilisez plusieurs clouds.",
+    cta_title: "Découvrez ce que cache votre facture AWS", cta_text: "Un appel gratuit de 15 minutes. Nous regardons vos dépenses dans les grandes lignes et vous disons honnêtement si un audit en vaut la peine.",
+    cta_btn: "Réserver un appel gratuit", cta_mail: "Ou écrivez à",
+    foot_line: "Audits de coûts AWS pour équipes SaaS", foot_legal: "Cabinet indépendant, non affilié à Amazon Web Services. AWS est une marque d'Amazon.com, Inc.",
+    under: "moins de 1×", fromfee: "dès "
+  },
+  es: {
+    logo_tag: "Encuentra el desperdicio. Quédate con el ahorro.",
+    nav_how: "Cómo funciona", nav_calc: "Estimación", nav_pricing: "Precios", nav_faq: "Preguntas", nav_book: "Reservar llamada",
+    hero_kicker: "Auditorías de costos de AWS para equipos SaaS",
+    hero_title: 'Reduce tu factura de AWS un <span class="grad">20–30 %</span>.',
+    hero_sub: "En 7 días te mostramos exactamente dónde se escapa tu gasto en la nube, ordenado por dólares ahorrados, con correcciones paso a paso. Acceso de solo lectura. Sin cambios en tu producto.",
+    hero_cta: "Reserva una llamada gratis de 15 min", hero_cta2: "Calcula tu ahorro",
+    guarantee_pill: "Garantía", hero_note: "Encontramos al menos 2× nuestra tarifa en ahorro anual, o no pagas nada.",
+    bill_title: "Ejemplo · SaaS de 12 personas", bill_r1: "m5.2xlarge × 6, CPU media 11 %", bill_t2: "inactivo de noche", bill_r2: "encendido 168 h/semana",
+    bill_t3: "huérfanos", bill_r3: "14 volúmenes, 2,1 TB", bill_t4: "innecesario", bill_t5: "enrutamiento", bill_r5: "tráfico S3 sin endpoint de VPC",
+    bill_total: "Total mensual", bill_save: "Recuperable · $1,640/mes", bill_year: "$19,680/año", bill_foot: "Ejemplo ilustrativo. Tus resultados dependen de tu cuenta.",
+    how_kicker: "Cómo funciona", how_title: "Siete días desde el pago hasta un informe de ahorro ordenado",
+    day0: "Día 0", day1: "Día 1", day16: "Días 1–6", day7: "Día 7",
+    s1_t: "Inicio", s1_d: "Un formulario de 10 minutos: gasto mensual, servicios principales, entornos y lo que te preocupa.",
+    s2_t: "Acceso de solo lectura", s2_d: "Creas un rol IAM de solo lectura con nuestra plantilla. Nunca pedimos credenciales root ni de administrador.",
+    s3_t: "Análisis", s3_d: "Revisamos cada línea de servicio, verificamos cada hallazgo y lo valoramos en dólares mensuales y anuales.",
+    s4_t: "Presentación", s4_d: "Una llamada de 45 minutos sobre los mayores ahorros; luego retiras nuestro acceso. El informe es tuyo.",
+    chk_kicker: "Qué revisamos", chk_title: "Los seis lugares donde los equipos pequeños pierden más dinero",
+    c1_t: "Cómputo sobredimensionado", c1_d: "Instancias dimensionadas para el lanzamiento y nunca revisadas. Candidatas a Graviton.",
+    c2_p: "No producción", c2_t: "Entornos siempre encendidos", c2_d: "Staging y dev funcionan 168 horas a la semana cuando se usan 50.",
+    c3_t: "Compromisos que faltan", c3_d: "Cargas estables pagando tarifa bajo demanda, o compromisos que ya no coinciden con el uso.",
+    c4_t: "Almacenamiento que nunca baja de nivel", c4_d: "Volúmenes huérfanos, años de snapshots y datos fríos en la clase más cara.",
+    c5_t: "Sorpresas en transferencia de datos", c5_d: "Tráfico enrutado por el camino más caro, a menudo corregible con un endpoint de VPC.",
+    c6_t: "Bases de datos sobredimensionadas", c6_d: "Multi-AZ en dev, instancias demasiado grandes e IOPS aprovisionados sin uso.",
+    calc_kicker: "Estimación", calc_title: "¿Cuánto podrías recuperar este año?", calc_sub: "Una estimación basada en lo que vemos en cuentas SaaS pequeñas. La auditoría te da la cifra real.",
+    q_spend: "Gasto mensual en AWS", q_commit: "¿Usas Savings Plans o instancias reservadas?", q_nonprod: "¿Staging y dev funcionan todo el día?", q_review: "¿Alguien revisa la factura cada mes?",
+    a_no: "No", a_some: "Algunos", a_reviewed: "Sí, revisados hace poco", a_yes: "Sí", a_sched: "No, están programados",
+    est_label: "Ahorro anual estimado", st_waste: "Desperdicio probable", st_plan: "Auditoría sugerida", st_fee: "Tarifa", st_roi: "Retorno sobre tarifa",
+    calc_cta: "Obtén la cifra real", calc_fine: "Solo una estimación basada en patrones típicos. No es una cotización ni una promesa de resultados.",
+    pr_kicker: "Precios", pr_title: "Precios fijos, cubiertos por la garantía",
+    pl1_fit: "Facturas de $1k–$3k/mes", pl1_a: "Revisión de Cost Explorer", pl1_b: "Los 10 mayores ahorros, valorados", pl1_c: "Informe de una página", pl1_d: "Llamada de 20 minutos", pl1_cta: "Elegir Starter Scan",
+    pl_badge: "La opción más elegida", pl2_fit: "Facturas de $3k–$15k/mes", pl2_a: "Las seis áreas, cada línea de servicio", pl2_b: "Informe ordenado con estimaciones en dólares", pl2_c: "Riesgo y esfuerzo de cada corrección", pl2_d: "Presentación de 45 minutos", pl2_e: "Guía para configurar alertas de presupuesto", pl2_cta: "Elegir Standard Audit",
+    pl3_fit: "Facturas de más de $15k/mes", from: "Desde", pl3_a: "Varias cuentas y Organizations", pl3_b: "Plan de compra de compromisos", pl3_c: "Ahorro a nivel de arquitectura", pl3_d: "Dos llamadas de revisión", pl3_cta: "Reservar llamada de alcance",
+    add_t: "Después de la auditoría: implementación y Cost Guard", add_d: "Aplicamos las correcciones que apruebes, con precio por proyecto. Cost Guard mantiene la factura baja con revisión mensual de anomalías y revisión trimestral de compromisos, desde $397/mes.", add_cta: "Pregunta por ello",
+    seal: "o es gratis", g_kicker: "La garantía", g_title: "Si no encontramos al menos el doble de nuestra tarifa en ahorro anual, te devolvemos todo.",
+    g_text: "El ahorro cuenta cuando lo identificamos con una estimación en dólares en tu informe. Tú decides qué implementar y te quedas con el informe en cualquier caso.",
+    faq_kicker: "Preguntas", faq_title: "Antes de reservar",
+    f1_q: "¿Qué acceso necesitan?", f1_a: "Un rol IAM de solo lectura en tu cuenta, creado con una plantilla que enviamos. Puede ver costos y configuración, pero no puede cambiar, crear ni borrar nada, ni leer tus archivos o bases de datos. Lo eliminas al terminar la auditoría.",
+    f2_q: "¿Van a cambiar algo en mi cuenta?", f2_a: "No. La auditoría es de solo lectura. Si quieres ayuda para aplicar las correcciones, es un proyecto de implementación aparte, con acceso limitado que tú apruebas.",
+    f3_q: "¿Cómo tratan mis datos?", f3_a: "Firmamos un acuerdo de confidencialidad si lo pides, guardamos los datos de facturación solo para la auditoría y los borramos dentro de los 30 días siguientes a la entrega.",
+    f4_q: "Solo gastamos $1,500 al mes. ¿Vale la pena?", f4_a: "El Starter Scan está pensado para ese tamaño. Por debajo de unos $1,000 al mes, el ahorro rara vez justifica una auditoría pagada, y te lo diremos en la llamada.",
+    f5_q: "¿Trabajan con Azure o Google Cloud?", f5_a: "Por ahora nos centramos en AWS. Coméntalo en la llamada si usas varias nubes.",
+    cta_title: "Descubre lo que esconde tu factura de AWS", cta_text: "Una llamada gratis de 15 minutos. Revisamos tu gasto a grandes rasgos y te decimos con honestidad si una auditoría vale la pena.",
+    cta_btn: "Reservar llamada gratis", cta_mail: "O escribe a",
+    foot_line: "Auditorías de costos de AWS para equipos SaaS", foot_legal: "Consultoría independiente, sin afiliación con Amazon Web Services. AWS es una marca de Amazon.com, Inc.",
+    under: "menos de 1×", fromfee: "desde "
+  }
+};
+
+/* Config wiring */
+document.querySelectorAll("[data-brand]").forEach(el => el.textContent = CONFIG.brand);
+document.querySelectorAll("[data-brand-upper]").forEach(el => el.textContent = CONFIG.brand.toUpperCase());
+document.querySelectorAll("[data-email]").forEach(el => el.textContent = CONFIG.email);
+document.getElementById("year").textContent = new Date().getFullYear();
+const ext = (a, url) => { a.href = url; a.target = "_blank"; a.rel = "noopener"; };
+if (CONFIG.bookingUrl) document.querySelectorAll("[data-book]").forEach(a => ext(a, CONFIG.bookingUrl));
+document.querySelectorAll("[data-pay]").forEach(a => {
+  const link = CONFIG.stripe[a.dataset.pay];
+  if (link) ext(a, link); else if (CONFIG.bookingUrl) ext(a, CONFIG.bookingUrl);
+});
+
+/* Language switch */
+const EN = {};
+document.querySelectorAll("[data-i18n]").forEach(el => { EN[el.dataset.i18n] = el.hasAttribute("data-html") ? el.innerHTML : el.textContent; });
+EN.under = "under 1×"; EN.fromfee = "from ";
+let lang = "en";
+function t(k) { return (lang !== "en" && I18N[lang][k]) || EN[k]; }
+function setLang(l) {
+  lang = I18N[l] ? l : "en";
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const v = t(el.dataset.i18n);
+    if (el.hasAttribute("data-html")) el.innerHTML = v; else el.textContent = v;
+  });
+  document.querySelectorAll(".lang-switch button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+  try { localStorage.setItem("site-lang", lang); } catch (e) {}
+  update();
+}
+document.querySelectorAll(".lang-switch button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+
+/* Savings estimate */
+const money = n => n >= 1000 ? "$" + Math.round(n / 1000) + "k" : "$" + Math.round(n);
+const usd = n => "$" + n.toLocaleString("en-US");
+function estimate(spend, commit, nonprod, review) {
+  let pct = 10;
+  if (commit === "no") pct += 9; else if (commit === "some") pct += 4;
+  if (nonprod === "yes") pct += 6;
+  if (review === "no") pct += 4;
+  pct = Math.min(pct, 35);
+  const lo = Math.max(pct - 5, 5), hi = pct + 5;
+  let plan = "Standard", fee = 1497;
+  if (spend < 3000) { plan = "Starter"; fee = 497; }
+  else if (spend > 15000) { plan = "Custom"; fee = 2997; }
+  const annLo = spend * 12 * lo / 100, annHi = spend * 12 * hi / 100;
+  return { lo, hi, plan, fee, annLo, annHi, roi: Math.floor(annLo / fee) };
+}
+function update() {
+  const spend = Number(document.getElementById("spend").value);
+  const pick = n => document.querySelector(`input[name="${n}"]:checked`).value;
+  const r = estimate(spend, pick("commit"), pick("nonprod"), pick("review"));
+  document.getElementById("spend-out").textContent = usd(spend);
+  document.getElementById("save-range").textContent = `${money(r.annLo)}–${money(r.annHi)}`;
+  document.getElementById("pct").textContent = `${r.lo}–${r.hi}%`;
+  document.getElementById("plan-name").textContent = r.plan;
+  document.getElementById("fee").textContent = (r.plan === "Custom" ? t("fromfee") : "") + usd(r.fee);
+  document.getElementById("roi").textContent = r.roi >= 1 ? r.roi + "×" : t("under");
+}
+document.getElementById("calc-form").addEventListener("input", update);
+document.getElementById("calc-form").addEventListener("submit", e => e.preventDefault());
+
+let saved = "en";
+try { saved = localStorage.getItem("site-lang") || "en"; } catch (e) {}
+setLang(saved);
+</script>
+
+</body>
+</html>
