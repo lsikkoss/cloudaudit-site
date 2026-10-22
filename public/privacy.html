@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy | CloudAudit</title>
+<title>Privacy Policy | Delight Choice Services</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
@@ -11,7 +11,12 @@
 @media (prefers-color-scheme: dark) { :root { --bg: #080c1f; --surface: #111836; --ink: #eef1f8; --soft: #a7b0c8; --line: #252f57; --navy: #0d1330; color-scheme: dark; } }
 body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif; line-height: 1.65; }
 header { background: var(--navy); color: #fff; padding: 16px clamp(16px, 4vw, 32px); border-bottom: 3px solid transparent; border-image: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1, #5f27cd) 1; }
+header { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 header a { color: #fff; font-weight: 700; text-decoration: none; }
+.lang { display: flex; border: 1px solid rgba(255,255,255,.3); border-radius: 8px; overflow: hidden; }
+.lang button { padding: 5px 10px; border: 0; cursor: pointer; font: inherit; font-weight: 700; font-size: .8rem; background: transparent; color: #fff; }
+.lang button[aria-pressed="true"] { background: #fff; color: var(--navy); }
+[hidden] { display: none !important; }
 main { max-width: 760px; margin: 32px auto; padding: 32px clamp(16px, 4vw, 40px); background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
 h1 { margin-top: 0; font-size: 2rem; } h2 { font-size: 1.15rem; margin-top: 28px; }
 p, li { color: var(--soft); }
@@ -19,20 +24,27 @@ a { color: inherit; }
 </style>
 </head>
 <body>
-<header><a href="index.html">← CloudAudit</a></header>
+<header>
+  <a href="index.html">← Delight Choice Services</a>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true">EN</button>
+    <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+  </div>
+</header>
 <main>
+<div data-lang-block="en">
 <h1>Privacy Policy</h1>
-<p>Last updated: October 18, 2026</p>
+<p>Last updated: October 22, 2026</p>
 
 <h2>Who we are</h2>
-<p>CloudAudit ("we") provides AWS cost audit services to businesses. Contact: hello@yourdomain.com.</p>
+<p>Delight Choice Services ("we") provides AWS cost audit services to businesses. Contact: <a href="mailto:lsikkoss@icloud.com">lsikkoss@icloud.com</a>.</p>
 
 <h2>What we collect on this website</h2>
 <ul>
 <li>Information you send us when you book a call or email us: your name, work email, company and the details you choose to share.</li>
 <li>Basic usage data collected by our analytics and advertising tools (pages viewed, approximate location, device and browser type, and how you reached the site), using cookies or similar technologies.</li>
 </ul>
-<p>The savings estimator runs entirely in your browser. We do not receive the numbers you enter.</p>
+<p>The savings estimator runs entirely in your browser. We do not receive the numbers you enter. Your language choice (English or French) is stored in your browser only.</p>
 
 <h2>How we use it</h2>
 <ul>
@@ -45,13 +57,61 @@ a { color: inherit; }
 <p>We use third-party providers for scheduling, payments (Stripe), email, website analytics and advertising (such as Google and LinkedIn). They process data on our behalf under their own privacy policies. Payment card details are handled by Stripe and never reach us.</p>
 
 <h2>Client AWS data</h2>
-<p>For paying clients, AWS billing and configuration data is accessed through a read-only role the client controls. It is used only for the audit and deleted within 30 days of delivery, as set out in our client agreement.</p>
+<p>For paying clients, AWS billing and configuration data is accessed through a read-only role the client controls. It is used only for the audit and deleted within 30 days of delivery, as set out in our client agreement. Where freelance specialists help with the analysis, we share only the data a job needs, and never one client's data with another.</p>
 
 <h2>Your choices</h2>
-<p>You can block or delete cookies in your browser settings. You can ask us to access, correct or delete the personal information we hold about you by emailing hello@yourdomain.com.</p>
+<p>You can block or delete cookies in your browser settings. You can ask us to access, correct or delete the personal information we hold about you by emailing <a href="mailto:lsikkoss@icloud.com">lsikkoss@icloud.com</a>.</p>
 
 <h2>Changes</h2>
 <p>We may update this policy. The date at the top shows the latest version.</p>
+</div>
+
+<div data-lang-block="fr" hidden>
+<h1>Politique de confidentialité</h1>
+<p>Dernière mise à jour : 22 octobre 2026</p>
+
+<h2>Qui nous sommes</h2>
+<p>Delight Choice Services (« nous ») fournit des audits de coûts AWS aux entreprises. Contact : <a href="mailto:lsikkoss@icloud.com">lsikkoss@icloud.com</a>.</p>
+
+<h2>Ce que nous collectons sur ce site</h2>
+<ul>
+<li>Les informations que vous nous envoyez lorsque vous réservez un appel ou nous écrivez : votre nom, votre courriel professionnel, votre entreprise et les détails que vous choisissez de partager.</li>
+<li>Des données d'usage de base collectées par nos outils d'analyse et de publicité (pages consultées, localisation approximative, type d'appareil et de navigateur, et provenance de votre visite), au moyen de témoins (cookies) ou de technologies similaires.</li>
+</ul>
+<p>L'outil d'estimation des économies fonctionne entièrement dans votre navigateur. Nous ne recevons pas les chiffres que vous saisissez. Votre choix de langue (anglais ou français) est conservé uniquement dans votre navigateur.</p>
+
+<h2>Comment nous l'utilisons</h2>
+<ul>
+<li>Pour vous répondre, planifier des appels et fournir les services que vous achetez.</li>
+<li>Pour comprendre les performances du site et mesurer et améliorer notre publicité.</li>
+</ul>
+<p>Nous ne vendons pas vos renseignements personnels.</p>
+
+<h2>Services que nous utilisons</h2>
+<p>Nous faisons appel à des fournisseurs tiers pour la planification, les paiements (Stripe), le courriel, l'analyse du site et la publicité (par exemple Google et LinkedIn). Ils traitent les données en notre nom selon leurs propres politiques de confidentialité. Les données de carte de paiement sont gérées par Stripe et ne nous parviennent jamais.</p>
+
+<h2>Données AWS des clients</h2>
+<p>Pour les clients payants, les données de facturation et de configuration AWS sont consultées au moyen d'un rôle en lecture seule que le client contrôle. Elles servent uniquement à l'audit et sont supprimées dans les 30 jours suivant la livraison, comme le prévoit notre contrat client. Lorsque des spécialistes indépendants participent à l'analyse, nous ne partageons que les données nécessaires à la mission, et jamais les données d'un client avec un autre.</p>
+
+<h2>Vos choix</h2>
+<p>Vous pouvez bloquer ou supprimer les témoins dans les paramètres de votre navigateur. Vous pouvez demander l'accès, la correction ou la suppression des renseignements personnels que nous détenons à votre sujet en écrivant à <a href="mailto:lsikkoss@icloud.com">lsikkoss@icloud.com</a>.</p>
+
+<h2>Modifications</h2>
+<p>Nous pouvons mettre à jour cette politique. La date en haut indique la dernière version.</p>
+</div>
 </main>
+<script>
+function setLang(l) {
+  if (l !== "fr") l = "en";
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-lang-block]").forEach(d => d.hidden = d.dataset.langBlock !== l);
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === l)));
+  try { localStorage.setItem("site-lang", l); } catch (e) {}
+}
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+let saved = (navigator.language || "en").toLowerCase().startsWith("fr") ? "fr" : "en";
+try { saved = localStorage.getItem("site-lang") || saved; } catch (e) {}
+setLang(saved);
+</script>
 </body>
 </html>

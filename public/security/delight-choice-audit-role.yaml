@@ -1,0 +1,128 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Read-only audit role for Delight Choice Services. Billing, usage and resource metadata only; no write access, no data access.
+
+Parameters:
+  AuditorAccountId:
+    Type: String
+    Description: The 12-digit AWS account ID Delight Choice Services sent you.
+    AllowedPattern: '^[0-9]{12}$'
+    ConstraintDescription: Must be exactly 12 digits.
+  ExternalId:
+    Type: String
+    Description: The unique External ID Delight Choice Services sent you.
+    AllowedPattern: '^[A-Za-z0-9_+=,.@:/-]{16,128}$'
+    ConstraintDescription: Use the External ID exactly as sent (16 to 128 characters).
+
+Resources:
+  AuditRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: DelightChoiceAuditReadOnly
+      Description: Read-only cost and resource-metadata access for an AWS cost audit
+      MaxSessionDuration: 3600
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: !Sub 'arn:aws:iam::${AuditorAccountId}:root'
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                sts:ExternalId: !Ref ExternalId
+      Policies:
+        - PolicyName: ReadOnlyCostAndResourceMetadata
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: CostAndBillingData
+                Effect: Allow
+                Action:
+                  - 'ce:Get*'
+                  - 'ce:List*'
+                  - 'ce:Describe*'
+                  - 'budgets:ViewBudget'
+                  - 'cur:DescribeReportDefinitions'
+                  - 'savingsplans:Describe*'
+                  - 'pricing:GetProducts'
+                  - 'pricing:DescribeServices'
+                  - 'pricing:GetAttributeValues'
+                Resource: '*'
+              - Sid: Recommendations
+                Effect: Allow
+                Action:
+                  - 'compute-optimizer:Get*'
+                  - 'compute-optimizer:Describe*'
+                  - 'cost-optimization-hub:Get*'
+                  - 'cost-optimization-hub:List*'
+                Resource: '*'
+              - Sid: ComputeAndNetworkInventory
+                Effect: Allow
+                Action:
+                  - 'ec2:DescribeInstances'
+                  - 'ec2:DescribeInstanceTypes'
+                  - 'ec2:DescribeInstanceStatus'
+                  - 'ec2:DescribeVolumes'
+                  - 'ec2:DescribeSnapshots'
+                  - 'ec2:DescribeImages'
+                  - 'ec2:DescribeAddresses'
+                  - 'ec2:DescribeNatGateways'
+                  - 'ec2:DescribeVpcEndpoints'
+                  - 'ec2:DescribeVpcs'
+                  - 'ec2:DescribeSubnets'
+                  - 'ec2:DescribeRouteTables'
+                  - 'ec2:DescribeReservedInstances'
+                  - 'ec2:DescribeRegions'
+                  - 'elasticloadbalancing:DescribeLoadBalancers'
+                  - 'elasticloadbalancing:DescribeListeners'
+                  - 'elasticloadbalancing:DescribeTargetGroups'
+                  - 'elasticloadbalancing:DescribeTargetHealth'
+                  - 'elasticloadbalancing:DescribeTags'
+                Resource: '*'
+              - Sid: DatabaseInventory
+                Effect: Allow
+                Action:
+                  - 'rds:DescribeDBInstances'
+                  - 'rds:DescribeDBClusters'
+                  - 'rds:DescribeDBSnapshots'
+                  - 'rds:DescribeDBClusterSnapshots'
+                  - 'rds:DescribeReservedDBInstances'
+                  - 'rds:ListTagsForResource'
+                Resource: '*'
+              - Sid: StorageInventory
+                Effect: Allow
+                Action:
+                  - 's3:ListAllMyBuckets'
+                  - 's3:GetBucketLocation'
+                  - 's3:GetLifecycleConfiguration'
+                  - 's3:GetBucketTagging'
+                Resource: '*'
+              - Sid: UsageMetrics
+                Effect: Allow
+                Action:
+                  - 'cloudwatch:GetMetricData'
+                  - 'cloudwatch:GetMetricStatistics'
+                  - 'cloudwatch:ListMetrics'
+                Resource: '*'
+              - Sid: ExplicitDenyDataAndSecrets
+                Effect: Deny
+                Action:
+                  - 's3:GetObject'
+                  - 's3:GetObjectVersion'
+                  - 'secretsmanager:GetSecretValue'
+                  - 'ssm:GetParameter'
+                  - 'ssm:GetParameters'
+                  - 'ssm:GetParametersByPath'
+                  - 'kms:Decrypt'
+                  - 'dynamodb:GetItem'
+                  - 'dynamodb:BatchGetItem'
+                  - 'dynamodb:Query'
+                  - 'dynamodb:Scan'
+                  - 'ec2:GetPasswordData'
+                  - 'sqs:ReceiveMessage'
+                Resource: '*'
+
+Outputs:
+  RoleArn:
+    Description: Send this value to Delight Choice Services.
+    Value: !GetAtt AuditRole.Arn

@@ -1,6 +1,10 @@
 # Website: go-live guide
 
-The site is one file: `site/index.html`. No build step, no framework.
+The site is a few static files in `public/`. No build step, no framework.
+
+## 0. Security files
+
+`public/security/` holds the CloudFormation template and IAM policies that the trust page links to. If you change the permissions, change all three files together and re-test the role in your own AWS account before sending it to a client.
 
 ## 1. Edit the CONFIG block
 
@@ -8,8 +12,8 @@ Open `public/index.html`, scroll to the bottom, and fill in:
 
 ```js
 const CONFIG = {
-  brand: "CloudAudit",                 // your business name
-  email: "hello@yourdomain.com",       // your business email
+  brand: "Delight Choice Services",   // your business name
+  email: "lsikkoss@icloud.com",        // swap for your business email when you have one
   bookingUrl: "https://calendly.com/yourname/15min",
   stripe: {
     starter:  "https://buy.stripe.com/xxxx",   // $497 Starter Scan
@@ -20,7 +24,7 @@ const CONFIG = {
 
 Empty links fall back to the booking link, then to the contact section, so the site works at every stage.
 
-When you pick a name, also replace "CloudAudit" in the logo SVG, the `data-brand` spans and the `<title>` so the name shows before JavaScript loads (search engines read that).
+If you ever rename the business, also change the logo SVG text, the `data-brand` spans and the `<title>` in both `index.html` and `trust.html` so the name shows before JavaScript loads (search engines read that). Until `bookingUrl` and the Stripe links are set, every "Book" and "Get" button opens an email to the address above.
 
 ## 2. Payments (Stripe Payment Links)
 
@@ -79,6 +83,6 @@ pages:
 - [ ] Analytics and ad tags firing
 - [ ] Add a simple Privacy Policy page (required for LinkedIn and Google ads); a free generator is fine to start
 
-## Languages (EN / FR / ES)
+## Languages (EN / FR)
 
-English text lives in the HTML. French and Spanish live in the `I18N` object in the script, keyed by each element's `data-i18n` name. To change a sentence, edit it in the HTML (English) and in both `fr` and `es`. The visitor's choice is remembered in their browser.
+English text lives in the HTML. French lives in the `I18N` object in the script, keyed by each element's `data-i18n` name. To change a sentence, edit it in the HTML (English) and in `fr`. The same applies to `trust.html`. The visitor's choice is remembered in their browser and shared across pages; first-time visitors with a French browser see French.

@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trust and Security | Delight Choice Services</title>
+<meta name="description" content="How Delight Choice Services keeps your AWS account safe during a cost audit: read-only access, readable permissions, a full-refund guarantee and delivery within 10 business days.">
+<meta name="theme-color" content="#0b1026">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+/* Layout: a calm consultancy page. Navy header and hero carry the Egbanname ink; the rainbow survives only as a thin rule, the logo and the guarantee seal. Everything else is quiet surfaces, one teal action color, and numbers set in mono. */
+:root {
+  --bg: #f4f6fa;
+  --surface: #ffffff;
+  --ink: #0b1026;
+  --soft: #4a5470;
+  --line: #dde2ec;
+  --navy: #0b1026;
+  --navy-2: #151d45;
+  --teal: #1dd1a1;
+  --cyan: #48dbfb;
+  --red: #e5484d;
+  --btn-ink: #04263a;
+  --tint: #eef2f8;
+  --rainbow: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1, #5f27cd);
+  --font: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "Cascadia Mono", Consolas, Menlo, monospace;
+  --r: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #080c1f; --surface: #111836; --ink: #eef1f8; --soft: #a7b0c8; --line: #252f57; --navy: #0d1330; --navy-2: #182152; --tint: #182048; --red: #ff7b7f; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #080c1f; --surface: #111836; --ink: #eef1f8; --soft: #a7b0c8; --line: #252f57; --navy: #0d1330; --navy-2: #182152; --tint: #182048; --red: #ff7b7f; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+h1, h2, h3 { margin: 0; line-height: 1.15; text-wrap: balance; }
+h3 { font-size: 1.08rem; }
+p { margin: 0; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* Dark zones keep white text in both themes */
+.topbar, .hero, .calc-out, .cta, footer { --soft: rgba(255, 255, 255, 0.78); color: #fff; }
+
+/* Top bar */
+.topbar { display: flex; align-items: center; gap: 12px 20px; flex-wrap: wrap; padding: calc(10px + env(safe-area-inset-top, 0px)) clamp(16px, 3vw, 32px) 10px;
+  position: sticky; top: 0; z-index: 50; background: var(--navy); border-bottom: 3px solid transparent; border-image: var(--rainbow) 1; }
+.logo { height: 62px; width: auto; max-width: 100%; display: block; }
+.topbar nav { display: flex; flex-wrap: wrap; gap: 2px; }
+.topbar nav a { text-decoration: none; font-weight: 600; font-size: .95rem; padding: 6px 10px; border-radius: 8px; color: var(--soft); }
+.topbar nav a:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
+.right { margin-left: auto; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.lang-switch { display: flex; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px; overflow: hidden; }
+.lang-switch button { padding: 5px 10px; border: 0; cursor: pointer; font: inherit; font-weight: 700; font-size: .8rem; background: transparent; color: var(--soft); }
+.lang-switch button[aria-pressed="true"] { background: #fff; color: var(--navy); }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; border: 1px solid transparent; cursor: pointer;
+  font: inherit; font-weight: 700; font-size: 1rem; padding: 12px 20px; border-radius: 10px; background: var(--teal); color: var(--btn-ink); transition: background-color .15s, transform .15s; }
+.btn:hover { background: #3be0b4; transform: translateY(-1px); }
+.btn.ghost { background: transparent; color: inherit; border-color: currentColor; }
+.btn.ghost:hover { background: rgba(127, 140, 170, 0.12); }
+.btn.sm { padding: 7px 14px; font-size: .9rem; }
+.btn.block { width: 100%; }
+
+/* Layout */
+main { max-width: 1120px; margin: 0 auto; padding: 28px clamp(16px, 3vw, 24px) 0; display: grid; gap: 28px; }
+.glass { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
+.section { padding: clamp(24px, 4vw, 44px); display: grid; gap: 24px; }
+.section-head { display: grid; gap: 8px; max-width: 64ch; }
+.section-head h2 { font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 750; letter-spacing: -0.01em; }
+.section-head p { color: var(--soft); font-size: 1.05rem; }
+.kicker { justify-self: start; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--soft); display: inline-flex; align-items: center; gap: 8px; }
+.kicker::before { content: ""; width: 18px; height: 3px; border-radius: 2px; background: var(--rainbow); }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(22px, 4vw, 48px); align-items: center; padding: clamp(28px, 5vw, 56px); border: 0;
+  background: radial-gradient(600px 300px at 0% 0%, rgba(72, 219, 251, 0.18), transparent 70%), radial-gradient(500px 300px at 100% 100%, rgba(95, 39, 205, 0.28), transparent 70%), var(--navy); }
+.hero > * { min-width: 0; }
+.hero h1 { font-size: clamp(2.1rem, 5vw, 3.3rem); font-weight: 800; letter-spacing: -0.02em; margin-block: 14px; }
+.hero h1 .grad { background: linear-gradient(90deg, var(--teal), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero .sub { font-size: 1.1rem; color: var(--soft); max-width: 52ch; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+.hero-note { margin-top: 16px; font-size: .95rem; color: var(--soft); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+.bill { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 12px; padding: 20px; font-size: .88rem; }
+.bill-head { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; color: var(--soft); padding-bottom: 10px; border-bottom: 1px dashed rgba(255, 255, 255, 0.2); }
+.bill-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding-block: 9px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); align-items: baseline; }
+.bill-row small { display: block; color: var(--soft); font-size: .78rem; }
+.bill-row .amt { text-align: right; }
+.bill-row .sv { display: block; color: var(--teal); font-family: var(--font); font-size: .78rem; font-weight: 600; }
+.tag { display: inline-block; font-size: .68rem; font-weight: 700; padding: 1px 7px; border-radius: 20px; background: rgba(255, 107, 107, 0.18); color: #ff9b9d; margin-left: 4px; vertical-align: 1px; }
+.bill-total { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding-top: 10px; font-weight: 700; }
+.bill-total.save { margin-top: 10px; padding: 10px 12px; border-radius: 8px; background: rgba(29, 209, 161, 0.16); color: var(--teal); }
+.bill-foot { margin-top: 10px; font-size: .74rem; color: var(--soft); }
+
+/* Cards */
+.tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 14px; }
+.tool-card { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.tool-card p { color: var(--soft); font-size: .95rem; }
+.pill { justify-self: start; padding: 2px 9px; border-radius: 20px; font-size: .74rem; font-weight: 700; background: var(--tint); color: var(--soft); font-family: var(--mono); }
+#how .pill { background: var(--navy); color: #fff; }
+.hero .pill { background: rgba(29, 209, 161, 0.16); color: var(--teal); font-family: var(--font); }
+
+/* Calculator */
+.calc { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.calc > * { min-width: 0; }
+.calc-in { display: grid; gap: 20px; align-content: start; }
+.field { display: grid; gap: 8px; border: 0; margin: 0; padding: 0; min-width: 0; }
+.field label, .field legend { font-weight: 650; padding: 0; }
+.spend-out { font-family: var(--mono); font-size: 1.6rem; font-weight: 600; }
+input[type="range"] { width: 100%; accent-color: #12a37d; }
+.toggle { display: flex; gap: 8px; flex-wrap: wrap; }
+.toggle label { font-size: .92rem; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; padding: 7px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--line); }
+.toggle input { margin: 0; accent-color: #12a37d; }
+.toggle label:has(input:checked) { border-color: #12a37d; box-shadow: inset 0 0 0 1px #12a37d; }
+.calc-out { background: var(--navy); border-radius: 12px; padding: 24px; display: grid; gap: 16px; align-content: start; }
+.calc-out .kicker { color: var(--soft); }
+.big { font-family: var(--mono); font-size: clamp(2.1rem, 5.5vw, 3rem); font-weight: 600; line-height: 1; color: var(--teal); }
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: rgba(255, 255, 255, 0.12); border-radius: 8px; overflow: hidden; }
+.stat-box { background: var(--navy); padding: 12px; display: grid; gap: 2px; }
+.stat-box span { font-size: .78rem; color: var(--soft); }
+.stat-box b { font-family: var(--mono); font-size: 1.05rem; font-weight: 600; }
+.fine { font-size: .8rem; color: var(--soft); }
+#how .fine { font-size: .9rem; }
+
+/* Pricing */
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.plan { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: grid; grid-template-rows: auto auto auto 1fr auto; gap: 12px; }
+.plan.featured { border: 2px solid var(--navy); position: relative; }
+:root[data-theme="dark"] .plan.featured { border-color: var(--cyan); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .plan.featured { border-color: var(--cyan); } }
+.plan.featured .pill { background: var(--navy); color: #fff; font-family: var(--font); }
+.plan .fit { font-size: .85rem; color: var(--soft); }
+.price { font-family: var(--mono); font-size: 2.2rem; font-weight: 600; line-height: 1; }
+.price small { font-family: var(--font); font-size: .95rem; font-weight: 600; color: var(--soft); }
+.plan ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; align-content: start; font-size: .95rem; }
+.plan li { padding-left: 22px; position: relative; }
+.plan li::before { content: "✓"; position: absolute; left: 0; font-weight: 800; color: #12a37d; }
+.addon { display: flex; gap: 14px 28px; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 18px 22px; border-radius: 12px; background: var(--bg); border: 1px dashed var(--line); }
+.addon > div { flex: 1 1 280px; min-width: 0; display: grid; gap: 4px; }
+.addon p { color: var(--soft); font-size: .95rem; }
+
+/* Guarantee */
+.guarantee { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(20px, 4vw, 44px); align-items: center; }
+.seal { width: clamp(120px, 16vw, 150px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; display: grid; place-items: center; text-align: center; position: relative; font-weight: 700; text-transform: uppercase; font-size: .74rem; letter-spacing: .08em; color: var(--soft); }
+.seal::before { content: ""; position: absolute; inset: 0; border-radius: 50%; padding: 5px; background: conic-gradient(#ff6b6b, #feca57, #48dbfb, #1dd1a1, #5f27cd, #ff6b6b); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+.seal strong { display: block; font-family: var(--mono); font-size: 2.4rem; letter-spacing: 0; line-height: 1; color: var(--ink); }
+.guarantee h2 { font-size: clamp(1.3rem, 2.8vw, 1.8rem); font-weight: 750; }
+.guarantee p { color: var(--soft); margin-top: 10px; max-width: 62ch; }
+
+/* FAQ */
+.faq { display: grid; border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); padding: 16px 2px; }
+.faq summary { cursor: pointer; font-weight: 650; list-style: none; display: flex; justify-content: space-between; gap: 14px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--mono); color: var(--soft); }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { margin-top: 8px; color: var(--soft); max-width: 72ch; }
+
+/* CTA + footer */
+.cta { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; align-items: center; padding: clamp(24px, 4vw, 44px); border: 0;
+  background: radial-gradient(500px 260px at 100% 0%, rgba(29, 209, 161, 0.2), transparent 70%), var(--navy); }
+.cta > * { min-width: 0; }
+.cta h2 { font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 750; }
+.cta p { color: var(--soft); margin-top: 10px; }
+.cta-side { display: grid; gap: 10px; }
+.mail { font-family: var(--mono); font-size: .88rem; word-break: break-all; color: var(--soft); text-align: center; }
+footer { text-align: center; padding: 24px clamp(16px, 3vw, 28px) calc(24px + env(safe-area-inset-bottom, 0px)); background: var(--navy); margin-top: 40px; font-size: .9rem; display: grid; gap: 4px; border-top: 3px solid transparent; border-image: var(--rainbow) 1; }
+footer .small { color: var(--soft); font-size: .8rem; }
+
+@media (max-width: 880px) {
+  .hero, .calc, .cta { grid-template-columns: 1fr; }
+  .plans { grid-template-columns: 1fr; }
+  .topbar nav { display: none; }
+  .logo { height: 46px; }
+}
+@media (max-width: 520px) {
+  .guarantee { grid-template-columns: 1fr; justify-items: start; }
+  .right { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+.hero.one { grid-template-columns: 1fr; }
+.tool-grid.two { grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+.tool-card ul { margin: 0; padding-left: 18px; color: var(--soft); font-size: .95rem; display: grid; gap: 6px; }
+.tool-card.yes h3 { color: #12a37d; }
+.tool-card.no h3 { color: var(--red); }
+.files { display: flex; gap: 10px; flex-wrap: wrap; }
+.topbar nav a[aria-current="page"] { color: #fff; background: rgba(255, 255, 255, 0.12); }
+#how .pill { font-family: var(--mono); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="index.html" aria-label="Home">
+    <svg class="logo" viewBox="0 0 520 170" role="img" aria-label="Delight Choice Services logo">
+      <defs>
+        <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#ff6b6b"/><stop offset="25%" stop-color="#feca57"/>
+          <stop offset="50%" stop-color="#48dbfb"/><stop offset="75%" stop-color="#1dd1a1"/>
+          <stop offset="100%" stop-color="#5f27cd"/>
+        </linearGradient>
+      </defs>
+      <circle cx="80" cy="85" r="60" fill="none" stroke="url(#lg)" stroke-width="10"/>
+      <path d="M46 76a22 22 0 0 1 30-22a26 26 0 0 1 48 10a18 18 0 0 1-4 36H52a18 18 0 0 1-6-24z" fill="url(#lg)"/>
+      <path d="M85 62v34m-12-12l12 13l12-13" fill="none" stroke="#0b1026" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="160" y="68" font-family="Segoe UI,Arial,sans-serif" font-size="37" font-weight="800" fill="url(#lg)" textLength="352" lengthAdjust="spacingAndGlyphs">DELIGHT CHOICE</text>
+      <text x="160" y="106" font-family="Segoe UI,Arial,sans-serif" font-size="37" font-weight="800" fill="url(#lg)">SERVICES</text>
+      <text x="162" y="130" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="600" fill="#ffffff">AWS Cost Audits</text>
+      <text x="162" y="152" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#ffffee" data-i18n="logo_tag">Find the waste. Keep the savings.</text>
+    </svg>
+  </a>
+  <nav aria-label="Main">
+    <a href="index.html#how" data-i18n="nav_how">How it works</a>
+    <a href="index.html#calculator" data-i18n="nav_calc">Savings estimate</a>
+    <a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a>
+    <a href="trust.html" data-i18n="nav_trust" aria-current="page">Security</a>
+    <a href="index.html#faq" data-i18n="nav_faq">FAQ</a>
+  </nav>
+  <div class="right">
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+    </div>
+    <a class="btn sm" data-book href="#contact" data-i18n="nav_book">Book a call</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="glass hero one">
+    <div>
+      <span class="kicker" data-i18n="h_kicker">Trust and security</span>
+      <h1 data-i18n="h_title">Your AWS account stays yours.</h1>
+      <p class="sub" data-i18n="h_sub">An audit only needs to read your billing and resource data. Here is exactly what we can see, what we can't, and what you can count on before you pay.</p>
+      <div class="hero-ctas">
+        <a class="btn" data-book href="#contact" data-i18n="h_cta">Book a free 15-min call</a>
+        <a class="btn ghost" href="#permissions" data-i18n="h_cta2">Read the exact permissions</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="glass section" id="access">
+    <div class="section-head">
+      <span class="kicker" data-i18n="a_kicker">Access</span>
+      <h2 data-i18n="a_title">What we can see, and what we can't</h2>
+      <p data-i18n="a_sub">Access is read-only and limited to cost and resource metadata. Nothing in your account can be changed through it.</p>
+    </div>
+    <div class="tool-grid two">
+      <div class="tool-card yes"><h3 data-i18n="y_t">What the audit uses</h3><ul>
+<li data-i18n="y1">Billing and Cost Explorer data</li>
+<li data-i18n="y2">Lists of resources: servers, databases, volumes, load balancers, buckets</li>
+<li data-i18n="y3">Usage metrics such as CPU and network traffic</li>
+<li data-i18n="y4">Savings Plan and reserved capacity status</li>
+      </ul></div>
+      <div class="tool-card no"><h3 data-i18n="n_t">What we never need</h3><ul>
+<li data-i18n="n1">Your application code or customer data</li>
+<li data-i18n="n2">Database contents or the files inside your buckets</li>
+<li data-i18n="n3">Passwords, keys and secrets</li>
+<li data-i18n="n4">Root credentials, IAM users or access keys</li>
+<li data-i18n="n5">Permission to create, change or delete anything</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="glass section" id="how">
+    <div class="section-head">
+      <span class="kicker" data-i18n="w_kicker">How access works</span>
+      <h2 data-i18n="w_title">You stay in control at every step</h2>
+    </div>
+    <div class="tool-grid">
+      <div class="tool-card"><span class="pill">1</span><h3 data-i18n="w1_t">You review the permissions</h3><p data-i18n="w1_d">Read the exact policy below, or have your engineer check it, before you create anything.</p></div>
+      <div class="tool-card"><span class="pill">2</span><h3 data-i18n="w2_t">You create the role</h3><p data-i18n="w2_d">One role in your own account, from our CloudFormation template or by hand. We never create anything there.</p></div>
+      <div class="tool-card"><span class="pill">3</span><h3 data-i18n="w3_t">We run the audit</h3><p data-i18n="w3_d">We analyze your cost and usage data and write up each finding with its savings, effort and risk.</p></div>
+      <div class="tool-card"><span class="pill">4</span><h3 data-i18n="w4_t">Access ends at delivery</h3><p data-i18n="w4_d">When your report is delivered you delete the role, and we confirm in writing that we no longer use it. You can revoke it yourself at any moment.</p></div>
+    </div>
+    <p class="fine" data-i18n="w_note">AWS CloudTrail records each use of the role in your account, so you can see exactly when we accessed it.</p>
+  </section>
+
+  <section class="glass section" id="permissions">
+    <div class="section-head">
+      <span class="kicker" data-i18n="p_kicker">Permissions</span>
+      <h2 data-i18n="p_title">Read the exact permissions before you agree to anything</h2>
+      <p data-i18n="p_sub">This is the policy and template clients use. They are plain text, so your engineer can read every line.</p>
+    </div>
+    <div class="files">
+      <a class="btn ghost sm" href="security/delight-choice-audit-role.yaml" data-i18n="p_l1">CloudFormation template (creates the role)</a>
+      <a class="btn ghost sm" href="security/delight-choice-audit-policy.json" data-i18n="p_l2">Permission policy (JSON)</a>
+      <a class="btn ghost sm" href="security/delight-choice-trust-policy.json" data-i18n="p_l3">Trust policy for manual setup (JSON)</a>
+    </div>
+    <div class="tool-grid">
+      <div class="tool-card"><h3 data-i18n="p1_t">Cost and billing data</h3><p data-i18n="p1_d">Spend by service, account and tag, budgets, Savings Plan status and AWS list prices. It shows where the money goes.</p></div>
+      <div class="tool-card"><h3 data-i18n="p2_t">Recommendations</h3><p data-i18n="p2_d">AWS's own rightsizing and savings suggestions, so we can cross-check our findings against theirs.</p></div>
+      <div class="tool-card"><h3 data-i18n="p3_t">Compute and network inventory</h3><p data-i18n="p3_d">Lists of servers, volumes, snapshots, NAT gateways and load balancers, to find idle and oversized resources. No startup scripts.</p></div>
+      <div class="tool-card"><h3 data-i18n="p4_t">Database inventory</h3><p data-i18n="p4_d">Type, size and snapshots of databases, never their contents.</p></div>
+      <div class="tool-card"><h3 data-i18n="p5_t">Storage inventory</h3><p data-i18n="p5_d">Bucket names, regions, lifecycle rules and tags, never the files.</p></div>
+      <div class="tool-card"><h3 data-i18n="p6_t">Usage metrics</h3><p data-i18n="p6_d">CPU, network and request counts, to see what is actually used.</p></div>
+      <div class="tool-card"><h3 data-i18n="p7_t">Explicit deny</h3><p data-i18n="p7_d">Blocks reading S3 objects, secrets, parameters, KMS decryption, DynamoDB items, queue messages and Windows passwords, whatever else is attached later.</p></div>
+    </div>
+  </section>
+
+  <section class="glass section" id="commitments">
+    <div class="section-head">
+      <span class="kicker" data-i18n="c_kicker">Our commitments</span>
+      <h2 data-i18n="c_title">What you can count on</h2>
+    </div>
+    <div class="tool-grid">
+      <div class="tool-card"><h3 data-i18n="c1_t">Fixed price</h3><p data-i18n="c1_d">You know the fee up front. It changes only if you ask for extra work, and only in writing.</p></div>
+      <div class="tool-card"><h3 data-i18n="c2_t">Full-refund guarantee</h3><p data-i18n="c2_d">If we don't identify at least twice our fee in annual savings, you get a full refund. You keep the report either way.</p></div>
+      <div class="tool-card"><h3 data-i18n="c3_t">10 business days</h3><p data-i18n="c3_d">Your report is delivered within 10 business days once payment and read-only access are in place.</p></div>
+      <div class="tool-card"><h3 data-i18n="c4_t">NDA on request</h3><p data-i18n="c4_d">We sign yours or provide a simple one.</p></div>
+      <div class="tool-card"><h3 data-i18n="c5_t">Your data is deleted</h3><p data-i18n="c5_d">Exported billing data is kept only for the audit and deleted within 30 days of delivery.</p></div>
+    </div>
+  </section>
+
+  <section class="glass section" id="faq">
+    <div class="section-head">
+      <span class="kicker" data-i18n="f_kicker">Questions</span>
+      <h2 data-i18n="f_title">Straight answers before you share any access</h2>
+    </div>
+    <div class="faq">
+      <details><summary data-i18n="f1_q">Can you change anything in my AWS account?</summary><p data-i18n="f1_a">No. The role has no write permissions, so we can look but not create, modify or delete anything. Any changes are made by your team.</p></details>
+      <details><summary data-i18n="f2_q">Will you see my customers' data?</summary><p data-i18n="f2_a">No. The role cannot read the contents of storage buckets or databases, and an explicit deny blocks it. We see how much is stored and what it costs, not what is in it.</p></details>
+      <details><summary data-i18n="f3_q">Who works on my audit?</summary><p data-i18n="f3_a">Kossi Sikpe leads every audit and runs your walkthrough call. First-pass analysis may involve freelance cloud specialists. We share only what a job needs, never one client's data with another, and every finding is checked before it reaches you.</p></details>
+      <details><summary data-i18n="f4_q">What if the audit finds very little?</summary><p data-i18n="f4_a">That is what the guarantee is for. If we don't identify at least twice our fee in annual savings, you get a full refund.</p></details>
+      <details><summary data-i18n="f5_q">Do you implement the changes?</summary><p data-i18n="f5_a">The audit delivers a ranked report and a roadmap. Hands-on help afterward is a separate Implementation project with its own scoped access that you approve.</p></details>
+    </div>
+  </section>
+
+  <section class="glass section" id="about">
+    <div class="section-head">
+      <span class="kicker" data-i18n="o_kicker">About</span>
+      <h2 data-i18n="o_title">Who you're working with</h2>
+      <p data-i18n="o_d1">Delight Choice Services is led by Kossi Sikpe, a DevOps and cloud infrastructure engineer based in the Twin Cities. He runs your walkthrough call himself.</p>
+      <p data-i18n="o_d2">Training in AWS, DevOps and Linux, a Google IT Support Professional certificate, and a Java Backend Software Engineering certificate (Kenzie Academy at SNHU). Available in English and French.</p>
+      <p><span data-i18n="o_work">See his work:</span> <a href="https://github.com/lsikkoss" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/kossi-sikpe-a07598294" rel="noopener">LinkedIn</a></p>
+    </div>
+  </section>
+
+  <section class="glass cta" id="contact">
+    <div>
+      <h2 data-i18n="cta_title">See what's in your bill, no obligation</h2>
+      <p data-i18n="cta_text">A free 15-minute call. We look at your spend at a high level and tell you honestly whether an audit is worth it.</p>
+    </div>
+    <div class="cta-side">
+      <a class="btn block" data-book href="#contact" data-i18n="cta_btn">Book a free call</a>
+      <p class="mail"><span data-i18n="cta_mail">Or email</span> <a data-email href="mailto:lsikkoss@icloud.com">lsikkoss@icloud.com</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span><span data-brand>Delight Choice Services</span> — <span data-i18n="foot_line">AWS cost audits for SaaS teams</span> | <a data-email href="mailto:lsikkoss@icloud.com">lsikkoss@icloud.com</a></span>
+  <span class="small">© <span id="year">2026</span> · <a href="privacy.html" data-i18n="foot_privacy">Privacy</a> · <a href="index.html">Home</a> · <span data-i18n="foot_legal">Independent consultancy, not affiliated with Amazon Web Services. AWS is a trademark of Amazon.com, Inc.</span></span>
+</footer>
+
+<script>
+const CONFIG = {
+  brand: "Delight Choice Services",
+  email: "lsikkoss@icloud.com",
+  bookingUrl: ""
+};
+const I18N = { fr: {
+  "nav_how": "Fonctionnement",
+  "nav_calc": "Estimation",
+  "nav_pricing": "Tarifs",
+  "nav_trust": "Sécurité",
+  "nav_faq": "FAQ",
+  "nav_book": "Réserver un appel",
+  "logo_tag": "Trouvez le gaspillage. Gardez les économies.",
+  "h_kicker": "Confiance et sécurité",
+  "h_title": "Votre compte AWS reste le vôtre.",
+  "h_sub": "Un audit n'a besoin que de lire vos données de facturation et de ressources. Voici exactement ce que nous pouvons voir, ce que nous ne pouvons pas voir, et ce sur quoi vous pouvez compter avant de payer.",
+  "h_cta": "Réserver un appel gratuit de 15 min",
+  "h_cta2": "Lire les permissions exactes",
+  "a_kicker": "Accès",
+  "a_title": "Ce que nous pouvons voir, et ce que nous ne pouvons pas voir",
+  "a_sub": "L'accès est en lecture seule et limité aux données de coûts et aux métadonnées des ressources. Rien dans votre compte ne peut être modifié par ce biais.",
+  "y_t": "Ce que l'audit utilise",
+  "y1": "Données de facturation et de Cost Explorer",
+  "y2": "Listes de ressources : serveurs, bases de données, volumes, équilibreurs de charge, buckets",
+  "y3": "Métriques d'utilisation comme le CPU et le trafic réseau",
+  "y4": "État des Savings Plans et de la capacité réservée",
+  "n_t": "Ce dont nous n'avons jamais besoin",
+  "n1": "Votre code applicatif ou les données de vos clients",
+  "n2": "Le contenu des bases de données ou des fichiers de vos buckets",
+  "n3": "Mots de passe, clés et secrets",
+  "n4": "Identifiants root, utilisateurs IAM ou clés d'accès",
+  "n5": "Le droit de créer, modifier ou supprimer quoi que ce soit",
+  "w_kicker": "Comment fonctionne l'accès",
+  "w_title": "Vous gardez le contrôle à chaque étape",
+  "w1_t": "Vous vérifiez les permissions",
+  "w1_d": "Lisez la politique exacte ci-dessous, ou faites-la vérifier par votre ingénieur, avant de créer quoi que ce soit.",
+  "w2_t": "Vous créez le rôle",
+  "w2_d": "Un rôle dans votre propre compte, à partir de notre modèle CloudFormation ou à la main. Nous ne créons jamais rien chez vous.",
+  "w3_t": "Nous réalisons l'audit",
+  "w3_d": "Nous analysons vos données de coûts et d'utilisation et décrivons chaque constat avec ses économies, son effort et son risque.",
+  "w4_t": "L'accès prend fin à la livraison",
+  "w4_d": "À la livraison du rapport, vous supprimez le rôle et nous confirmons par écrit que nous ne l'utilisons plus. Vous pouvez aussi le révoquer à tout moment.",
+  "w_note": "AWS CloudTrail enregistre chaque utilisation du rôle dans votre compte, ce qui vous permet de voir exactement quand nous y avons accédé.",
+  "p_kicker": "Permissions",
+  "p_title": "Lisez les permissions exactes avant de vous engager",
+  "p_sub": "Voici la politique et le modèle que les clients utilisent. Ce sont des fichiers texte : votre ingénieur peut lire chaque ligne.",
+  "p_l1": "Modèle CloudFormation (crée le rôle)",
+  "p_l2": "Politique de permissions (JSON)",
+  "p_l3": "Politique de confiance pour une création manuelle (JSON)",
+  "p1_t": "Données de coûts et de facturation",
+  "p1_d": "Dépenses par service, compte et étiquette, budgets, état des Savings Plans et tarifs publics AWS. Cela montre où va l'argent.",
+  "p2_t": "Recommandations",
+  "p2_d": "Les suggestions de dimensionnement et d'économies d'AWS, pour recouper nos constats avec les leurs.",
+  "p3_t": "Inventaire calcul et réseau",
+  "p3_d": "Listes de serveurs, volumes, snapshots, passerelles NAT et équilibreurs de charge, pour repérer les ressources inactives ou surdimensionnées. Pas de scripts de démarrage.",
+  "p4_t": "Inventaire des bases de données",
+  "p4_d": "Type, taille et snapshots des bases de données, jamais leur contenu.",
+  "p5_t": "Inventaire du stockage",
+  "p5_d": "Noms, régions, règles de cycle de vie et étiquettes des buckets, jamais les fichiers.",
+  "p6_t": "Métriques d'utilisation",
+  "p6_d": "CPU, trafic réseau et nombre de requêtes, pour voir ce qui est réellement utilisé.",
+  "p7_t": "Refus explicite",
+  "p7_d": "Bloque la lecture des objets S3, des secrets, des paramètres, du déchiffrement KMS, des éléments DynamoDB, des messages de file d'attente et des mots de passe Windows, quoi qu'on attache plus tard.",
+  "c_kicker": "Nos engagements",
+  "c_title": "Ce sur quoi vous pouvez compter",
+  "c1_t": "Prix fixe",
+  "c1_d": "Vous connaissez les honoraires d'avance. Ils ne changent que si vous demandez du travail supplémentaire, et seulement par écrit.",
+  "c2_t": "Garantie de remboursement intégral",
+  "c2_d": "Si nous n'identifions pas au moins deux fois nos honoraires en économies annuelles, vous êtes remboursé intégralement. Vous gardez le rapport dans tous les cas.",
+  "c3_t": "10 jours ouvrables",
+  "c3_d": "Votre rapport est livré en 10 jours ouvrables une fois le paiement et l'accès en lecture seule en place.",
+  "c4_t": "Accord de confidentialité sur demande",
+  "c4_d": "Nous signons le vôtre ou vous en fournissons un simple.",
+  "c5_t": "Vos données sont supprimées",
+  "c5_d": "Les données de facturation exportées ne sont conservées que pour l'audit et supprimées dans les 30 jours suivant la livraison.",
+  "f_kicker": "Questions",
+  "f_title": "Des réponses claires avant de partager le moindre accès",
+  "f1_q": "Pouvez-vous modifier quelque chose dans mon compte AWS ?",
+  "f1_a": "Non. Le rôle n'a aucune permission d'écriture : nous pouvons regarder, mais pas créer, modifier ou supprimer quoi que ce soit. Les changements sont faits par votre équipe.",
+  "f2_q": "Verrez-vous les données de mes clients ?",
+  "f2_a": "Non. Le rôle ne peut pas lire le contenu des buckets ou des bases de données, et un refus explicite l'interdit. Nous voyons le volume stocké et son coût, pas son contenu.",
+  "f3_q": "Qui travaille sur mon audit ?",
+  "f3_a": "Kossi Sikpe dirige chaque audit et mène votre appel de présentation. L'analyse initiale peut faire appel à des spécialistes cloud indépendants. Nous ne partageons que ce que la mission exige, jamais les données d'un client avec un autre, et chaque constat est vérifié avant de vous parvenir.",
+  "f4_q": "Et si l'audit ne trouve presque rien ?",
+  "f4_a": "C'est à cela que sert la garantie. Si nous n'identifions pas au moins deux fois nos honoraires en économies annuelles, vous êtes remboursé intégralement.",
+  "f5_q": "Appliquez-vous les changements ?",
+  "f5_a": "L'audit livre un rapport classé et une feuille de route. L'aide concrète ensuite est un projet de mise en œuvre séparé, avec un accès limité que vous approuvez.",
+  "o_kicker": "À propos",
+  "o_title": "Avec qui vous travaillez",
+  "o_d1": "Delight Choice Services est dirigé par Kossi Sikpe, ingénieur DevOps et infrastructure cloud basé dans les Twin Cities. Il mène lui-même votre appel de présentation.",
+  "o_d2": "Formation en AWS, DevOps et Linux, certificat Google IT Support Professional et certificat en génie logiciel Java Backend (Kenzie Academy at SNHU). Service disponible en anglais et en français.",
+  "o_work": "Voir ses réalisations :",
+  "cta_title": "Voyez ce que contient votre facture, sans engagement",
+  "cta_text": "Un appel gratuit de 15 minutes. Nous regardons vos dépenses dans les grandes lignes et vous disons honnêtement si un audit en vaut la peine.",
+  "cta_btn": "Réserver un appel gratuit",
+  "cta_mail": "Ou écrivez à",
+  "foot_line": "Audits de coûts AWS pour équipes SaaS",
+  "foot_privacy": "Confidentialité",
+  "foot_legal": "Cabinet indépendant, non affilié à Amazon Web Services. AWS est une marque d'Amazon.com, Inc."
+} };
+
+document.querySelectorAll("[data-brand]").forEach(el => el.textContent = CONFIG.brand);
+document.querySelectorAll("[data-email]").forEach(el => { el.textContent = CONFIG.email; el.href = "mailto:" + CONFIG.email; });
+document.getElementById("year").textContent = new Date().getFullYear();
+document.querySelectorAll("[data-book]").forEach(a => {
+  if (CONFIG.bookingUrl) { a.href = CONFIG.bookingUrl; a.target = "_blank"; a.rel = "noopener"; }
+  else a.href = "mailto:" + CONFIG.email + "?subject=" + encodeURIComponent("Free 15-minute AWS bill review");
+});
+
+const EN = {};
+document.querySelectorAll("[data-i18n]").forEach(el => { EN[el.dataset.i18n] = el.textContent; });
+let lang = "en";
+function t(k) { return (lang !== "en" && I18N[lang][k]) || EN[k]; }
+function setLang(l) {
+  lang = I18N[l] ? l : "en";
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll(".lang-switch button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+  try { localStorage.setItem("site-lang", lang); } catch (e) {}
+}
+document.querySelectorAll(".lang-switch button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+let saved = (navigator.language || "en").toLowerCase().startsWith("fr") ? "fr" : "en";
+try { saved = localStorage.getItem("site-lang") || saved; } catch (e) {}
+setLang(saved);
+</script>
+
+</body>
+</html>
