@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AWS Cost Audits for SaaS Teams | Delight Choice Services</title>
-<meta name="description" content="Fixed-price AWS cost audits for SaaS teams. A ranked savings report within 10 business days, read-only access, and a full refund if we don't find 2x our fee in annual savings.">
-<meta property="og:title" content="AWS Cost Audits for SaaS Teams">
-<meta property="og:description" content="See where your AWS bill leaks within 10 business days. Full refund if we don't find 2x our fee in annual savings.">
+<title>Websites for Coaches and Consultants | Delight Choice Services</title>
+<meta name="description" content="A fixed-price website for coaches and consultants: six pages, booking button, English and French, live in 10 business days or less, with your deposit back if you don't love the first design preview.">
+<meta property="og:title" content="Websites for Coaches and Consultants">
+<meta property="og:description" content="One fixed price, one clear package. Live in 10 business days or less. Deposit back if you don't love the first preview.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0b1026">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -185,12 +185,15 @@ footer .small { color: var(--soft); font-size: .8rem; }
   .right { margin-left: 0; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* web design additions */
+.bill-row .ok { color: var(--teal); font-weight: 800; }
+.fine { font-size: .8rem; color: var(--soft); }
+#how .fine { font-size: .9rem; }
+.files { display: flex; gap: 10px; flex-wrap: wrap; }
 </style>
 </head>
 <body>
-
-
-
 
 <header class="topbar">
   <a href="#top" aria-label="Home">
@@ -207,15 +210,15 @@ footer .small { color: var(--soft); font-size: .8rem; }
       <path d="M85 62v34m-12-12l12 13l12-13" fill="none" stroke="#0b1026" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
       <text x="160" y="68" font-family="Segoe UI,Arial,sans-serif" font-size="37" font-weight="800" fill="url(#lg)" textLength="352" lengthAdjust="spacingAndGlyphs">DELIGHT CHOICE</text>
       <text x="160" y="106" font-family="Segoe UI,Arial,sans-serif" font-size="37" font-weight="800" fill="url(#lg)">SERVICES</text>
-      <text x="162" y="130" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="600" fill="#ffffff">AWS Cost Audits</text>
-      <text x="162" y="152" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#ffffee" data-i18n="logo_tag">Find the waste. Keep the savings.</text>
+      <text x="162" y="130" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="600" fill="#ffffff">Website Design</text>
+      <text x="162" y="152" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#ffffee" data-i18n="logo_tag">Your business, online.</text>
     </svg>
   </a>
   <nav aria-label="Main">
     <a href="#how" data-i18n="nav_how">How it works</a>
-    <a href="#calculator" data-i18n="nav_calc">Savings estimate</a>
+    <a href="#pages" data-i18n="nav_pages">What you get</a>
     <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
-    <a href="trust.html" data-i18n="nav_trust">Security</a>
+    <a href="trust.html" data-i18n="nav_trust">Trust</a>
     <a href="#faq" data-i18n="nav_faq">FAQ</a>
   </nav>
   <div class="right">
@@ -230,153 +233,117 @@ footer .small { color: var(--soft); font-size: .8rem; }
 <main id="top">
   <section class="glass hero">
     <div>
-      <span class="kicker" data-i18n="hero_kicker">AWS cost audits for SaaS teams</span>
-      <h1 data-i18n="hero_title" data-html>Find the waste in your AWS bill, <span class="grad">or pay nothing</span>.</h1>
-      <p class="sub" data-i18n="hero_sub">Within 10 business days we show you exactly where your cloud spend is leaking, ranked by dollars saved, with step-by-step fixes your team can ship. Read-only access. No product changes.</p>
+      <span class="kicker" data-i18n="hero_kicker">Websites for coaches and consultants</span>
+      <h1 data-i18n="hero_title" data-html>A professional website for your coaching or consulting business, <span class="grad">live in 10 business days or less</span>.</h1>
+      <p class="sub" data-i18n="hero_sub">One fixed price, one clear package. Your site shows your expertise, lets clients book a call, and works in English and French. You own everything.</p>
       <div class="hero-ctas">
         <a class="btn" data-book href="#contact" data-i18n="hero_cta">Book a free 15-min call</a>
-        <a class="btn ghost" href="#calculator" data-i18n="hero_cta2">Estimate your savings</a>
+        <a class="btn ghost" href="#pricing" data-i18n="hero_cta2">See packages and prices</a>
       </div>
-      <p class="hero-note"><span class="pill p3" data-i18n="guarantee_pill">Guarantee</span><span data-i18n="hero_note">We identify at least 2× our fee in annual savings, or you get a full refund.</span></p>
+      <p class="hero-note"><span class="pill p3" data-i18n="guarantee_pill">Guarantee</span><span data-i18n="hero_note">Don't love the first design preview? You get your deposit back.</span></p>
     </div>
-    <figure class="bill" style="margin:0" aria-label="Example audit findings on a monthly AWS bill">
-      <div class="bill-head"><span data-i18n="bill_title">Example findings · 12-person SaaS</span><span class="num">us-east-1</span></div>
-      <div class="bill-row cut"><span>EC2 · production <span class="tag" data-i18n="bill_t1">oversized</span><small data-i18n="bill_r1">m5.2xlarge × 6, avg CPU 11%</small></span><span class="amt num">$2,214<small class="sv" data-i18n="bill_s1">save $330/mo</small></span></div>
-      <div class="bill-row cut"><span>EC2 · staging &amp; dev <span class="tag" data-i18n="bill_t2">idle nights</span><small data-i18n="bill_r2">running 168 h/week</small></span><span class="amt num">$1,108<small class="sv" data-i18n="bill_s2">save $620/mo</small></span></div>
-      <div class="bill-row cut"><span>EBS · unattached <span class="tag" data-i18n="bill_t3">orphaned</span><small data-i18n="bill_r3">14 volumes, 2.1 TB</small></span><span class="amt num">$214<small class="sv" data-i18n="bill_s3">save $214/mo</small></span></div>
-      <div class="bill-row cut"><span>RDS · Multi-AZ on dev <span class="tag" data-i18n="bill_t4">not needed</span><small>db.r5.large</small></span><span class="amt num">$368<small class="sv" data-i18n="bill_s4">save $184/mo</small></span></div>
-      <div class="bill-row cut"><span>NAT Gateway <span class="tag" data-i18n="bill_t5">routing</span><small data-i18n="bill_r5">S3 traffic without VPC endpoint</small></span><span class="amt num">$402<small class="sv" data-i18n="bill_s5">save $160/mo</small></span></div>
-      <div class="bill-row"><span data-i18n="bill_o">All other services</span><span class="amt num">$874</span></div>
-      <div class="bill-total"><span data-i18n="bill_total">Monthly total</span><span class="num">$5,180</span></div>
-      <div class="bill-total save"><span data-i18n="bill_save">Recoverable · $1,508/mo</span><span class="num" data-i18n="bill_year">$18,096/yr</span></div>
-      <p class="bill-foot" data-i18n="bill_foot">Illustrative example with sample numbers. Your findings depend on your account.</p>
+    <figure class="bill" style="margin:0" aria-label="What the Expert Site includes">
+      <div class="bill-head"><span data-i18n="incl_title">Your Expert Site includes</span><span class="num">$1,800</span></div>
+      <div class="bill-row"><span data-i18n="i1">6 pages: Home, About, Services, Results, Book, Contact</span><span class="ok" aria-hidden="true">✓</span></div>
+      <div class="bill-row"><span data-i18n="i2">Booking button connected to your calendar</span><span class="ok" aria-hidden="true">✓</span></div>
+      <div class="bill-row"><span data-i18n="i3">Mobile-first design on fast, secure hosting</span><span class="ok" aria-hidden="true">✓</span></div>
+      <div class="bill-row"><span data-i18n="i4">Basic SEO so people can find you by name and service</span><span class="ok" aria-hidden="true">✓</span></div>
+      <div class="bill-row"><span data-i18n="i5">English and French versions available</span><span class="ok" aria-hidden="true">✓</span></div>
+      <div class="bill-row"><span data-i18n="i6">You own your domain, content and files</span><span class="ok" aria-hidden="true">✓</span></div>
+      <p class="bill-foot" data-i18n="incl_foot">$1,800 fixed price. A one-page option starts at $750.</p>
     </figure>
   </section>
 
   <section class="glass section" id="how">
     <div class="section-head">
       <span class="kicker" data-i18n="how_kicker">How it works</span>
-      <h2 data-i18n="how_title">A ranked savings report within 10 business days</h2>
+      <h2 data-i18n="how_title">From kickoff to launch in 10 business days or less</h2>
     </div>
     <div class="tool-grid">
-      <div class="tool-card"><span class="pill p1" data-i18n="day0">Day 0</span><h3 data-i18n="s1_t">Kickoff</h3><p data-i18n="s1_d">A 10-minute form: monthly spend, main services, environments, and what's bugging you.</p></div>
-      <div class="tool-card"><span class="pill p2" data-i18n="day1">Days 1–2</span><h3 data-i18n="s2_t">Read-only access</h3><p data-i18n="s2_d">You create one read-only IAM role from our template. We never ask for root or admin credentials.</p></div>
-      <div class="tool-card"><span class="pill p4" data-i18n="day16">Days 3–8</span><h3 data-i18n="s3_t">Analysis</h3><p data-i18n="s3_d">We go through every service line, verify each finding, and price it in monthly and annual dollars.</p></div>
-      <div class="tool-card"><span class="pill p3" data-i18n="day7">Day 10</span><h3 data-i18n="s4_t">Report and walkthrough</h3><p data-i18n="s4_d">You get the ranked report and a 45-minute call on the top wins, then you remove our access. The report is yours to keep.</p></div>
+      <div class="tool-card"><span class="pill p1" data-i18n="st1">Step 1</span><h3 data-i18n="s1_t">Kickoff</h3><p data-i18n="s1_d">A 15-minute call or short form: your business, who you help, what you offer, and examples you like.</p></div>
+      <div class="tool-card"><span class="pill p2" data-i18n="st2">Step 2</span><h3 data-i18n="s2_t">Design preview</h3><p data-i18n="s2_d">You get a design of your homepage to react to before we build anything else.</p></div>
+      <div class="tool-card"><span class="pill p3" data-i18n="st3">Step 3</span><h3 data-i18n="s3_t">Build and review</h3><p data-i18n="s3_d">We build every page, test it on phones and desktops, and you review it with up to two rounds of changes.</p></div>
+      <div class="tool-card"><span class="pill p4" data-i18n="st4">Step 4</span><h3 data-i18n="s4_t">Launch and handoff</h3><p data-i18n="s4_d">We connect your domain, go live, and hand you everything: files, logins you own, and a short guide to updating your site.</p></div>
     </div>
-    <p class="fine" data-i18n="how_note">The 10 business days start once payment and read-only access are both in place.</p>
+    <p class="fine" data-i18n="how_note">The clock starts once your deposit and your content (text, logo, photos) are received. Custom projects get their own schedule.</p>
+  </section>
+
+  <section class="glass section" id="pages">
+    <div class="section-head">
+      <span class="kicker" data-i18n="pg_kicker">What you get</span>
+      <h2 data-i18n="pg_title">Your Expert Site, page by page</h2>
+      <p data-i18n="pg_sub">The same clear structure every time, adapted to your business, so it's fast to build and easy for visitors to follow.</p>
+    </div>
+    <div class="tool-grid">
+      <div class="tool-card"><span class="pill p1">01</span><h3 data-i18n="g1_t">Home</h3><p data-i18n="g1_d">Who you help, what you offer and the next step, clear in seconds.</p></div>
+      <div class="tool-card"><span class="pill p2">02</span><h3 data-i18n="g2_t">About</h3><p data-i18n="g2_d">Your story, credentials and why clients should trust you.</p></div>
+      <div class="tool-card"><span class="pill p3">03</span><h3 data-i18n="g3_t">Services</h3><p data-i18n="g3_d">What you offer, who it's for and how it works.</p></div>
+      <div class="tool-card"><span class="pill p4">04</span><h3 data-i18n="g4_t">Results</h3><p data-i18n="g4_d">Testimonials and outcomes, designed to work with one testimonial or none yet.</p></div>
+      <div class="tool-card"><span class="pill p5">05</span><h3 data-i18n="g5_t">Book a call</h3><p data-i18n="g5_d">A booking button connected to your calendar, so interested visitors can schedule in one click.</p></div>
+      <div class="tool-card"><span class="pill p6">06</span><h3 data-i18n="g6_t">Contact</h3><p data-i18n="g6_d">A contact form, your email and social links, plus a newsletter sign-up if you want one.</p></div>
+    </div>
   </section>
 
   <section class="glass section" id="checks">
     <div class="section-head">
-      <span class="kicker" data-i18n="chk_kicker">What we check</span>
-      <h2 data-i18n="chk_title">The six places small teams lose the most money</h2>
+      <span class="kicker" data-i18n="chk_kicker">Why it works</span>
+      <h2 data-i18n="chk_title">Built around how experts win clients</h2>
     </div>
     <div class="tool-grid">
-      <div class="tool-card"><span class="pill p2">EC2 · Fargate · Lambda</span><h3 data-i18n="c1_t">Oversized compute</h3><p data-i18n="c1_d">Instances sized for launch day and never revisited. Graviton candidates.</p></div>
-      <div class="tool-card"><span class="pill p1" data-i18n="c2_p">Non-prod</span><h3 data-i18n="c2_t">Always-on environments</h3><p data-i18n="c2_d">Staging and dev running 168 hours a week when people use them 50.</p></div>
-      <div class="tool-card"><span class="pill p3">Savings Plans · RIs</span><h3 data-i18n="c3_t">Missing commitments</h3><p data-i18n="c3_d">Steady workloads paying on-demand rates, or commitments that no longer match usage.</p></div>
-      <div class="tool-card"><span class="pill p4">EBS · S3 · Snapshots</span><h3 data-i18n="c4_t">Storage that never tiers down</h3><p data-i18n="c4_d">Orphaned volumes, years of snapshots, and cold data in the most expensive class.</p></div>
-      <div class="tool-card"><span class="pill p5">NAT · Inter-AZ · Egress</span><h3 data-i18n="c5_t">Data transfer surprises</h3><p data-i18n="c5_d">Traffic routed the expensive way, often fixable with a VPC endpoint.</p></div>
-      <div class="tool-card"><span class="pill p6">RDS · ElastiCache</span><h3 data-i18n="c6_t">Oversized databases</h3><p data-i18n="c6_d">Multi-AZ on dev, oversized instances, and provisioned IOPS nobody uses.</p></div>
-    </div>
-  </section>
-
-  <section class="glass section" id="calculator">
-    <div class="section-head">
-      <span class="kicker" data-i18n="calc_kicker">Savings estimate</span>
-      <h2 data-i18n="calc_title">What could you get back this year?</h2>
-      <p data-i18n="calc_sub">A rough estimate from patterns we see in small SaaS accounts. The audit gives you the real number.</p>
-    </div>
-    <div class="calc">
-      <form class="calc-in" id="calc-form" aria-label="Savings estimate inputs">
-        <div class="field">
-          <label for="spend" data-i18n="q_spend">Monthly AWS spend</label>
-          <output class="spend-out" id="spend-out" for="spend">$5,000</output>
-          <input type="range" id="spend" min="1000" max="30000" step="500" value="5000">
-        </div>
-        <fieldset class="field">
-          <legend data-i18n="q_commit">Do you use Savings Plans or Reserved Instances?</legend>
-          <div class="toggle">
-            <label><input type="radio" name="commit" id="commit-no" value="no" checked> <span data-i18n="a_no">No</span></label>
-            <label><input type="radio" name="commit" id="commit-some" value="some"> <span data-i18n="a_some">Some</span></label>
-            <label><input type="radio" name="commit" id="commit-yes" value="yes"> <span data-i18n="a_reviewed">Yes, reviewed recently</span></label>
-          </div>
-        </fieldset>
-        <fieldset class="field">
-          <legend data-i18n="q_nonprod">Do staging and dev run around the clock?</legend>
-          <div class="toggle">
-            <label><input type="radio" name="nonprod" id="np-yes" value="yes" checked> <span data-i18n="a_yes">Yes</span></label>
-            <label><input type="radio" name="nonprod" id="np-no" value="no"> <span data-i18n="a_sched">No, they're scheduled</span></label>
-          </div>
-        </fieldset>
-        <fieldset class="field">
-          <legend data-i18n="q_review">Does someone review the bill every month?</legend>
-          <div class="toggle">
-            <label><input type="radio" name="review" id="rv-no" value="no" checked> <span data-i18n="a_no">No</span></label>
-            <label><input type="radio" name="review" id="rv-yes" value="yes"> <span data-i18n="a_yes">Yes</span></label>
-          </div>
-        </fieldset>
-      </form>
-      <div class="calc-out" aria-live="polite">
-        <span class="kicker" style="justify-self:start" data-i18n="est_label">Estimated annual savings</span>
-        <p class="big" id="save-range">$12k–$18k</p>
-        <div class="stats">
-          <div class="stat-box"><span data-i18n="st_waste">Likely waste</span><b id="pct">20–30%</b></div>
-          <div class="stat-box"><span data-i18n="st_plan">Suggested audit</span><b id="plan-name">Standard</b></div>
-          <div class="stat-box"><span data-i18n="st_fee">Audit fee</span><b id="fee">$1,497</b></div>
-          <div class="stat-box"><span data-i18n="st_roi">Return on fee</span><b id="roi">8×</b></div>
-        </div>
-        <a class="btn block" data-book href="#contact" data-i18n="calc_cta">Get the real number</a>
-        <p class="fine" data-i18n="calc_fine">Estimate only, based on typical patterns. Not a quote or a promise of specific results.</p>
-      </div>
+      <div class="tool-card"><span class="pill p1">Offer</span><h3 data-i18n="w1_t">A clear offer</h3><p data-i18n="w1_d">Visitors understand what you do, who it's for and what to do next.</p></div>
+      <div class="tool-card"><span class="pill p2">Trust</span><h3 data-i18n="w2_t">Credibility up front</h3><p data-i18n="w2_d">Your credentials, story and results sit where visitors look first.</p></div>
+      <div class="tool-card"><span class="pill p3">Booking</span><h3 data-i18n="w3_t">One-click booking</h3><p data-i18n="w3_d">Calendly or Cal.com connected, so a visitor goes from interested to booked in a click.</p></div>
+      <div class="tool-card"><span class="pill p4">Email</span><h3 data-i18n="w4_t">Email list ready</h3><p data-i18n="w4_d">A sign-up form connected to your email tool, such as Mailchimp or MailerLite.</p></div>
+      <div class="tool-card"><span class="pill p5">EN · FR</span><h3 data-i18n="w5_t">Bilingual option</h3><p data-i18n="w5_d">English and French versions with a language switch, built in from the start.</p></div>
+      <div class="tool-card"><span class="pill p6">HTTPS</span><h3 data-i18n="w6_t">Fast and secure</h3><p data-i18n="w6_d">Quick loading, HTTPS, and optional monthly care for updates and backups.</p></div>
     </div>
   </section>
 
   <section class="glass section" id="pricing">
     <div class="section-head">
       <span class="kicker" data-i18n="pr_kicker">Pricing</span>
-      <h2 data-i18n="pr_title">Fixed prices, covered by the guarantee</h2>
+      <h2 data-i18n="pr_title">One clear package, plus two options</h2>
+      <p data-i18n="pr_note">You pay 50% to start and the other 50% when you approve the final site.</p>
     </div>
     <div class="plans">
       <article class="plan">
-        <span class="fit" data-i18n="pl1_fit">For bills of $1k–$3k/mo</span>
-        <h3>Starter Scan</h3>
-        <p class="price">$497</p>
-        <ul><li data-i18n="pl1_a">Cost Explorer review</li><li data-i18n="pl1_b">Top 10 savings, priced</li><li data-i18n="pl1_c">One-page report</li><li data-i18n="pl1_d">20-minute call</li></ul>
-        <a class="btn ghost block" data-pay="starter" href="#contact" data-i18n="pl1_cta">Get the Starter Scan</a>
+        <span class="fit" data-i18n="pl1_fit">Just starting out</span>
+        <h3>Launch Page</h3>
+        <p class="price">$750</p>
+        <ul><li data-i18n="pl1_a">One page: offer, about, booking button</li><li data-i18n="pl1_b">Contact form and basic SEO</li><li data-i18n="pl1_c">Mobile-ready, on secure hosting</li><li data-i18n="pl1_d">2 rounds of changes</li><li data-i18n="pl1_e">Live in 7 business days</li></ul>
+        <a class="btn ghost block" data-pay="starter" href="#contact" data-i18n="pl1_cta">Get the Launch Page</a>
       </article>
       <article class="plan featured">
-        <span class="pill p2" data-i18n="pl_badge">Most teams pick this</span>
-        <span class="fit" data-i18n="pl2_fit">For bills of $3k–$15k/mo</span>
-        <h3>Standard Audit</h3>
-        <p class="price">$1,497</p>
-        <ul><li data-i18n="pl2_a">All six areas, every service line</li><li data-i18n="pl2_b">Ranked report with dollar estimates</li><li data-i18n="pl2_c">Risk and effort for each fix</li><li data-i18n="pl2_d">45-minute walkthrough</li><li data-i18n="pl2_e">Budget and anomaly alert setup guide</li></ul>
-        <a class="btn block" data-pay="standard" href="#contact" data-i18n="pl2_cta">Get the Standard Audit</a>
+        <span class="pill p2" data-i18n="pl_badge">Our main package</span>
+        <span class="fit" data-i18n="pl2_fit">For coaches and consultants</span>
+        <h3>Expert Site</h3>
+        <p class="price">$1,800</p>
+        <ul><li data-i18n="pl2_a">6 pages: Home, About, Services, Results, Book, Contact</li><li data-i18n="pl2_b">Custom design, with help polishing your text</li><li data-i18n="pl2_c">Booking calendar and email sign-up connected</li><li data-i18n="pl2_d">SEO basics and analytics setup</li><li data-i18n="pl2_e">2 rounds of changes</li><li data-i18n="pl2_f">Live in 10 business days</li></ul>
+        <a class="btn block" data-pay="expert" href="#contact" data-i18n="pl2_cta">Get the Expert Site</a>
       </article>
       <article class="plan">
-        <span class="fit" data-i18n="pl3_fit">For bills over $15k/mo</span>
-        <h3>Custom Audit</h3>
-        <p class="price"><small data-i18n="from">From</small> $2,997</p>
-        <ul><li data-i18n="pl3_a">Multi-account and Organizations</li><li data-i18n="pl3_b">Commitment purchase plan</li><li data-i18n="pl3_c">Architecture-level savings</li><li data-i18n="pl3_d">Two review calls</li></ul>
+        <span class="fit" data-i18n="pl3_fit">Courses, memberships, stores</span>
+        <h3>Custom Build</h3>
+        <p class="price"><small data-i18n="from">From</small> $3,500</p>
+        <ul><li data-i18n="pl3_a">9+ pages, online store or membership area</li><li data-i18n="pl3_b">Integrations and advanced features</li><li data-i18n="pl3_c">Scoped on a call, fixed quote</li><li data-i18n="pl3_d">Schedule set in your quote</li></ul>
         <a class="btn ghost block" data-book href="#contact" data-i18n="pl3_cta">Book a scoping call</a>
       </article>
     </div>
     <div class="addon">
       <div>
-        <h3 data-i18n="add_t">After the audit: Implementation and Cost Guard</h3>
-        <p data-i18n="add_d">We apply the fixes you approve, priced per project. Cost Guard keeps the bill down with monthly anomaly checks and quarterly commitment reviews, from $397/mo.</p>
+        <h3 data-i18n="add_t">Add-ons: a second language and monthly care</h3>
+        <p data-i18n="add_d">A second language (English and French) adds $400 to the Launch Page and Expert Site. Monthly care starts at $79/mo: hosting, security updates, backups and up to one hour of edits each month.</p>
       </div>
       <a class="btn ghost sm" data-book href="#contact" data-i18n="add_cta">Ask about it</a>
     </div>
   </section>
 
   <section class="glass section guarantee" id="guarantee">
-    <div class="seal" aria-hidden="true"><span><strong>2×</strong><span data-i18n="seal">or refunded</span></span></div>
+    <div class="seal" aria-hidden="true"><span><strong>100%</strong><span data-i18n="seal">deposit back</span></span></div>
     <div>
       <span class="kicker" data-i18n="g_kicker">The guarantee</span>
-      <h2 style="margin-top:10px" data-i18n="g_title">If we don't find at least twice our fee in annual savings, you get a full refund.</h2>
-      <p data-i18n="g_text">Savings count when we identify them with a dollar estimate in your report. You decide what to implement, and you keep the report either way.</p>
+      <h2 style="margin-top:10px" data-i18n="g_title">Don't love the first design preview? You get your deposit back.</h2>
+      <p data-i18n="g_text">You pay 50% to start and the balance only when you approve the final site. If the first design preview isn't right for you, tell us within 5 business days and we refund your deposit in full.</p>
     </div>
   </section>
 
@@ -386,18 +353,19 @@ footer .small { color: var(--soft); font-size: .8rem; }
       <h2 data-i18n="faq_title">Before you book</h2>
     </div>
     <div class="faq">
-      <details><summary data-i18n="f1_q">What access do you need?</summary><p data-i18n="f1_a">One read-only IAM role in your account, created from a template we send. It can view costs and configuration but cannot change, create, or delete anything, and it cannot read your files or databases. You remove it when the audit ends.</p></details>
-      <details><summary data-i18n="f2_q">Will you change anything in my account?</summary><p data-i18n="f2_a">No. The audit is read-only. If you want help applying the fixes, that's a separate Implementation project with its own scoped access that you approve.</p></details>
-      <details><summary data-i18n="f3_q">How is my data handled?</summary><p data-i18n="f3_a">We sign an NDA on request, keep exported billing data only for the audit, and delete it within 30 days of delivery.</p></details>
-      <details><summary data-i18n="f4_q">We only spend $1,500 a month. Is it worth it?</summary><p data-i18n="f4_a">The Starter Scan is built for that size. Below about $1,000 a month, the savings usually don't justify a paid audit, and we'll tell you so on the call.</p></details>
-      <details><summary data-i18n="f5_q">Do you work with Azure or Google Cloud?</summary><p data-i18n="f5_a">We focus on AWS today. Ask on the call if you run a mix.</p></details>
+      <details><summary data-i18n="f1_q">What do you need from me?</summary><p data-i18n="f1_a">Your logo, bio, text and photos if you have them, plus a few examples of sites you like. If your text needs work, the Expert Site includes help structuring and polishing it. Writing everything from scratch is quoted separately.</p></details>
+      <details><summary data-i18n="f2_q">What if I don't have testimonials or a logo yet?</summary><p data-i18n="f2_a">No problem. The Results page works with one testimonial or none for now, and we show you how to collect more. A logo can be quoted separately.</p></details>
+      <details><summary data-i18n="f3_q">Who owns the website?</summary><p data-i18n="f3_a">You do: the design, content, files and your domain. We hand everything over at launch.</p></details>
+      <details><summary data-i18n="f4_q">Do you need my passwords?</summary><p data-i18n="f4_a">No. Where we need access to your domain or hosting, you add us as a collaborator or delegate, and you can remove us at any time.</p></details>
+      <details><summary data-i18n="f5_q">What happens after launch?</summary><p data-i18n="f5_a">Your site is yours either way. Monthly care covers hosting, updates, backups and small edits; without it, changes are quoted separately.</p></details>
+      <details><summary data-i18n="f6_q">Can you work with me if I'm not in Minnesota?</summary><p data-i18n="f6_a">Yes. Everything is online: calls, previews and reviews, in English or French.</p></details>
     </div>
   </section>
 
   <section class="glass cta" id="contact">
     <div>
-      <h2 data-i18n="cta_title">Find out what your AWS bill is hiding</h2>
-      <p data-i18n="cta_text">A free 15-minute call. We look at your spend at a high level and tell you honestly whether an audit is worth it.</p>
+      <h2 data-i18n="cta_title">Let's talk about your website</h2>
+      <p data-i18n="cta_text">A free 15-minute call. We look at what you have and what you need, and tell you honestly which package fits.</p>
     </div>
     <div class="cta-side">
       <a class="btn block" data-book href="#contact" data-i18n="cta_btn">Book a free call</a>
@@ -407,96 +375,164 @@ footer .small { color: var(--soft); font-size: .8rem; }
 </main>
 
 <footer>
-  <span><span data-brand>Delight Choice Services</span> — <span data-i18n="foot_line">AWS cost audits for SaaS teams</span> | <a data-email href="mailto:lsikkoss@icloud.com">lsikkoss@icloud.com</a></span>
-  <span class="small">© <span id="year">2026</span> · <a href="privacy.html" data-i18n="foot_privacy">Privacy</a> · <a href="trust.html" data-i18n="nav_trust">Security</a> · <span data-i18n="foot_legal">Independent consultancy, not affiliated with Amazon Web Services. AWS is a trademark of Amazon.com, Inc.</span></span>
+  <span><span data-brand>Delight Choice Services</span> — <span data-i18n="foot_line">Websites for coaches and consultants</span> | <a data-email href="mailto:lsikkoss@icloud.com">lsikkoss@icloud.com</a></span>
+  <span class="small">© <span id="year">2026</span> · <a href="privacy.html" data-i18n="foot_privacy">Privacy</a> · <a href="trust.html" data-i18n="nav_trust">Trust</a> · <span data-i18n="foot_legal">Independent web design studio.</span></span>
 </footer>
 
 <script>
 /* ===== EDIT THESE BEFORE GOING LIVE ===== */
 const CONFIG = {
-  brand: "Delight Choice Services",         // your business name
+  brand: "Delight Choice Services",          // your business name
   email: "lsikkoss@icloud.com",              // swap for your business email when you have one
   bookingUrl: "",                            // e.g. https://calendly.com/yourname/15min
   stripe: {
-    starter: "",                             // Stripe Payment Link for the $497 Starter Scan
-    standard: ""                             // Stripe Payment Link for the $1,497 Standard Audit
+    starter: "",                             // Stripe Payment Link: Launch Page deposit
+    expert: ""                               // Stripe Payment Link: Expert Site deposit
   }
 };
 /* ======================================== */
 
-const I18N = {
-  fr: {
-    logo_tag: "Trouvez le gaspillage. Gardez les économies.",
-    nav_how: "Fonctionnement", nav_calc: "Estimation", nav_pricing: "Tarifs", nav_trust: "Sécurité", nav_faq: "FAQ", nav_book: "Réserver un appel",
-    hero_kicker: "Audits de coûts AWS pour équipes SaaS",
-    hero_title: 'Trouvez le gaspillage dans votre facture AWS, <span class="grad">ou ne payez rien</span>.',
-    hero_sub: "En 10 jours ouvrables, nous vous montrons exactement où votre budget cloud fuit, classé par dollars économisés, avec des correctifs étape par étape. Accès en lecture seule. Aucun changement à votre produit.",
-    hero_cta: "Réserver un appel gratuit de 15 min", hero_cta2: "Estimer vos économies",
-    guarantee_pill: "Garantie", hero_note: "Nous identifions au moins 2× nos honoraires en économies annuelles, sinon vous êtes remboursé intégralement.",
-    bill_title: "Exemple · SaaS de 12 personnes", bill_r1: "m5.2xlarge × 6, CPU moyen 11 %", bill_t1: "surdimensionné", bill_t2: "inactif la nuit", bill_r2: "allumé 168 h/semaine",
-    bill_t3: "orphelins", bill_r3: "14 volumes, 2,1 To", bill_t4: "inutile", bill_t5: "routage", bill_r5: "trafic S3 sans point de terminaison VPC",
-    bill_s1: "économie 330 $/mois", bill_s2: "économie 620 $/mois", bill_s3: "économie 214 $/mois", bill_s4: "économie 184 $/mois", bill_s5: "économie 160 $/mois", bill_o: "Tous les autres services",
-    bill_total: "Total mensuel", bill_save: "Récupérable · 1 508 $/mois", bill_year: "18 096 $/an", bill_foot: "Exemple illustratif avec des chiffres fictifs. Vos résultats dépendent de votre compte.",
-    how_kicker: "Fonctionnement", how_title: "Un rapport d'économies classé en 10 jours ouvrables",
-    how_note: "Les 10 jours ouvrables commencent lorsque le paiement et l'accès en lecture seule sont en place.",
-    day0: "Jour 0", day1: "Jours 1 à 2", day16: "Jours 3 à 8", day7: "Jour 10",
-    s1_t: "Lancement", s1_d: "Un formulaire de 10 minutes : dépenses mensuelles, services principaux, environnements et ce qui vous préoccupe.",
-    s2_t: "Accès en lecture seule", s2_d: "Vous créez un rôle IAM en lecture seule à partir de notre modèle. Jamais d'identifiants root ou admin.",
-    s3_t: "Analyse", s3_d: "Nous passons chaque ligne de service en revue, vérifions chaque constat et le chiffrons en dollars par mois et par an.",
-    s4_t: "Rapport et présentation", s4_d: "Vous recevez le rapport classé et un appel de 45 minutes sur les gains principaux, puis vous retirez notre accès. Le rapport vous appartient.",
-    chk_kicker: "Ce que nous vérifions", chk_title: "Les six endroits où les petites équipes perdent le plus d'argent",
-    c1_t: "Calcul surdimensionné", c1_d: "Des instances dimensionnées pour le lancement et jamais revues. Candidats à Graviton.",
-    c2_p: "Hors production", c2_t: "Environnements toujours allumés", c2_d: "Staging et dev tournent 168 heures par semaine alors qu'on les utilise 50.",
-    c3_t: "Engagements manquants", c3_d: "Des charges stables payées au tarif à la demande, ou des engagements qui ne correspondent plus à l'usage.",
-    c4_t: "Stockage jamais optimisé", c4_d: "Volumes orphelins, années de snapshots et données froides dans la classe la plus chère.",
-    c5_t: "Surprises de transfert de données", c5_d: "Du trafic acheminé de la façon la plus coûteuse, souvent corrigeable avec un point de terminaison VPC.",
-    c6_t: "Bases de données surdimensionnées", c6_d: "Multi-AZ en dev, instances trop grandes et IOPS provisionnés inutilisés.",
-    calc_kicker: "Estimation", calc_title: "Combien pourriez-vous récupérer cette année ?", calc_sub: "Une estimation basée sur ce que nous voyons dans les petits comptes SaaS. L'audit vous donne le vrai chiffre.",
-    q_spend: "Dépenses AWS mensuelles", q_commit: "Utilisez-vous des Savings Plans ou des instances réservées ?", q_nonprod: "Staging et dev tournent-ils en continu ?", q_review: "Quelqu'un vérifie-t-il la facture chaque mois ?",
-    a_no: "Non", a_some: "Certains", a_reviewed: "Oui, revus récemment", a_yes: "Oui", a_sched: "Non, ils sont programmés",
-    est_label: "Économies annuelles estimées", st_waste: "Gaspillage probable", st_plan: "Audit conseillé", st_fee: "Honoraires", st_roi: "Retour sur honoraires",
-    calc_cta: "Obtenir le vrai chiffre", calc_fine: "Estimation seulement, basée sur des tendances courantes. Ni un devis ni une promesse de résultats.",
-    pr_kicker: "Tarifs", pr_title: "Prix fixes, couverts par la garantie",
-    pl1_fit: "Factures de 1 k$ à 3 k$/mois", pl1_a: "Revue de Cost Explorer", pl1_b: "10 principales économies, chiffrées", pl1_c: "Rapport d'une page", pl1_d: "Appel de 20 minutes", pl1_cta: "Choisir le Starter Scan",
-    pl_badge: "Le choix le plus courant", pl2_fit: "Factures de 3 k$ à 15 k$/mois", pl2_a: "Les six domaines, chaque ligne de service", pl2_b: "Rapport classé avec estimations en dollars", pl2_c: "Risque et effort pour chaque correctif", pl2_d: "Présentation de 45 minutes", pl2_e: "Guide de mise en place des alertes de budget", pl2_cta: "Choisir le Standard Audit",
-    pl3_fit: "Factures de plus de 15 k$/mois", from: "Dès", pl3_a: "Multi-comptes et Organizations", pl3_b: "Plan d'achat d'engagements", pl3_c: "Économies au niveau de l'architecture", pl3_d: "Deux appels de revue", pl3_cta: "Réserver un appel de cadrage",
-    add_t: "Après l'audit : mise en œuvre et Cost Guard", add_d: "Nous appliquons les correctifs que vous approuvez, au forfait. Cost Guard maintient la facture basse avec un suivi mensuel des anomalies et une revue trimestrielle des engagements, dès 397 $/mois.", add_cta: "En savoir plus",
-    seal: "ou remboursé", g_kicker: "La garantie", g_title: "Si nous ne trouvons pas au moins deux fois nos honoraires en économies annuelles, vous êtes remboursé intégralement.",
-    g_text: "Les économies comptent dès que nous les identifions avec une estimation en dollars dans votre rapport. Vous décidez quoi mettre en œuvre, et vous gardez le rapport dans tous les cas.",
-    faq_kicker: "Questions", faq_title: "Avant de réserver",
-    f1_q: "De quel accès avez-vous besoin ?", f1_a: "Un rôle IAM en lecture seule dans votre compte, créé à partir d'un modèle que nous envoyons. Il voit les coûts et la configuration mais ne peut rien modifier, créer ou supprimer, ni lire vos fichiers ou bases de données. Vous le supprimez à la fin de l'audit.",
-    f2_q: "Allez-vous modifier quelque chose dans mon compte ?", f2_a: "Non. L'audit est en lecture seule. Si vous voulez de l'aide pour appliquer les correctifs, c'est un projet de mise en œuvre séparé, avec un accès limité que vous approuvez.",
-    f3_q: "Comment mes données sont-elles traitées ?", f3_a: "Nous signons un accord de confidentialité sur demande, conservons les données de facturation uniquement pour l'audit et les supprimons dans les 30 jours suivant la livraison.",
-    f4_q: "Nous dépensons seulement 1 500 $ par mois. Est-ce que ça vaut la peine ?", f4_a: "Le Starter Scan est conçu pour cette taille. En dessous d'environ 1 000 $ par mois, les économies justifient rarement un audit payant, et nous vous le dirons pendant l'appel.",
-    f5_q: "Travaillez-vous avec Azure ou Google Cloud ?", f5_a: "Nous nous concentrons sur AWS pour l'instant. Parlez-en pendant l'appel si vous utilisez plusieurs clouds.",
-    cta_title: "Découvrez ce que cache votre facture AWS", cta_text: "Un appel gratuit de 15 minutes. Nous regardons vos dépenses dans les grandes lignes et vous disons honnêtement si un audit en vaut la peine.",
-    cta_btn: "Réserver un appel gratuit", cta_mail: "Ou écrivez à",
-    foot_line: "Audits de coûts AWS pour équipes SaaS", foot_legal: "Cabinet indépendant, non affilié à Amazon Web Services. AWS est une marque d'Amazon.com, Inc.",
-    foot_privacy: "Confidentialité", under: "moins de 1×", fromfee: "dès "
-  }
-};
+const I18N = { fr: {
+  "nav_how": "Fonctionnement",
+  "nav_pages": "Ce que vous obtenez",
+  "nav_pricing": "Tarifs",
+  "nav_trust": "Confiance",
+  "nav_faq": "FAQ",
+  "nav_book": "Réserver un appel",
+  "logo_tag": "Votre entreprise, en ligne.",
+  "hero_kicker": "Sites web pour coachs et consultants",
+  "hero_sub": "Un prix fixe, un forfait clair. Votre site met en valeur votre expertise, permet aux clients de réserver un appel et fonctionne en français et en anglais. Tout vous appartient.",
+  "hero_cta": "Réserver un appel gratuit de 15 min",
+  "hero_cta2": "Voir forfaits et prix",
+  "guarantee_pill": "Garantie",
+  "hero_note": "Le premier aperçu du design ne vous plaît pas ? Votre acompte vous est remboursé.",
+  "incl_title": "Votre Site Expert comprend",
+  "i1": "6 pages : Accueil, À propos, Services, Résultats, Réservation, Contact",
+  "i2": "Bouton de réservation relié à votre calendrier",
+  "i3": "Design pensé d'abord pour le mobile, sur un hébergement rapide et sécurisé",
+  "i4": "Référencement de base pour qu'on vous trouve par votre nom et votre service",
+  "i5": "Versions française et anglaise disponibles",
+  "i6": "Vous possédez votre domaine, votre contenu et vos fichiers",
+  "incl_foot": "1 800 $, prix fixe. Une version d'une page commence à 750 $.",
+  "how_kicker": "Fonctionnement",
+  "how_title": "Du lancement à la mise en ligne en 10 jours ouvrables ou moins",
+  "st1": "Étape 1",
+  "st2": "Étape 2",
+  "st3": "Étape 3",
+  "st4": "Étape 4",
+  "s1_t": "Lancement",
+  "s1_d": "Un appel de 15 minutes ou un court formulaire : votre entreprise, qui vous aidez, ce que vous offrez et des exemples que vous aimez.",
+  "s2_t": "Aperçu du design",
+  "s2_d": "Vous recevez le design de votre page d'accueil pour réagir avant que nous construisions le reste.",
+  "s3_t": "Construction et révision",
+  "s3_d": "Nous construisons chaque page, la testons sur téléphones et ordinateurs, et vous la révisez avec jusqu'à deux séries de modifications.",
+  "s4_t": "Mise en ligne et remise",
+  "s4_d": "Nous connectons votre domaine, mettons le site en ligne et vous remettons tout : fichiers, accès qui vous appartiennent et un court guide pour le mettre à jour.",
+  "how_note": "Le délai commence lorsque votre acompte et votre contenu (textes, logo, photos) sont reçus. Les projets sur mesure ont leur propre calendrier.",
+  "pg_kicker": "Ce que vous obtenez",
+  "pg_title": "Votre Site Expert, page par page",
+  "pg_sub": "La même structure claire à chaque fois, adaptée à votre activité : rapide à construire et facile à suivre pour les visiteurs.",
+  "g1_t": "Accueil",
+  "g1_d": "À qui vous vous adressez, ce que vous offrez et la prochaine étape, clairs en quelques secondes.",
+  "g2_t": "À propos",
+  "g2_d": "Votre parcours, vos références et les raisons de vous faire confiance.",
+  "g3_t": "Services",
+  "g3_d": "Ce que vous offrez, à qui cela s'adresse et comment cela fonctionne.",
+  "g4_t": "Résultats",
+  "g4_d": "Témoignages et résultats, conçus pour fonctionner avec un seul témoignage, ou aucun pour l'instant.",
+  "g5_t": "Réserver un appel",
+  "g5_d": "Un bouton de réservation relié à votre calendrier, pour que les visiteurs intéressés planifient en un clic.",
+  "g6_t": "Contact",
+  "g6_d": "Un formulaire de contact, votre courriel et vos liens sociaux, plus une inscription à l'infolettre si vous le souhaitez.",
+  "chk_kicker": "Pourquoi ça fonctionne",
+  "chk_title": "Conçu autour de la façon dont les experts trouvent des clients",
+  "w1_t": "Une offre claire",
+  "w1_d": "Les visiteurs comprennent ce que vous faites, à qui cela s'adresse et quoi faire ensuite.",
+  "w2_t": "La crédibilité d'emblée",
+  "w2_d": "Vos références, votre parcours et vos résultats se trouvent là où les visiteurs regardent d'abord.",
+  "w3_t": "Réservation en un clic",
+  "w3_d": "Calendly ou Cal.com intégré : le visiteur passe d'intéressé à inscrit en un clic.",
+  "w4_t": "Liste de courriels prête",
+  "w4_d": "Un formulaire d'inscription relié à votre outil de courriel, comme Mailchimp ou MailerLite.",
+  "w5_t": "Option bilingue",
+  "w5_d": "Versions anglaise et française avec sélecteur de langue, intégrées dès le départ.",
+  "w6_t": "Rapide et sécurisé",
+  "w6_d": "Chargement rapide, HTTPS et suivi mensuel optionnel pour les mises à jour et les sauvegardes.",
+  "pr_kicker": "Tarifs",
+  "pr_title": "Un forfait clair, plus deux options",
+  "pr_note": "Vous payez 50 % pour commencer et les 50 % restants lorsque vous approuvez le site final.",
+  "pl1_fit": "Pour démarrer",
+  "pl1_a": "Une page : offre, à propos, bouton de réservation",
+  "pl1_b": "Formulaire de contact et référencement de base",
+  "pl1_c": "Adapté au mobile, sur hébergement sécurisé",
+  "pl1_d": "2 séries de modifications",
+  "pl1_e": "En ligne en 7 jours ouvrables",
+  "pl1_cta": "Choisir le Launch Page",
+  "pl_badge": "Notre forfait principal",
+  "pl2_fit": "Pour coachs et consultants",
+  "pl2_a": "6 pages : Accueil, À propos, Services, Résultats, Réservation, Contact",
+  "pl2_b": "Design sur mesure, avec de l'aide pour peaufiner vos textes",
+  "pl2_c": "Calendrier de réservation et inscription par courriel reliés",
+  "pl2_d": "Bases du référencement et mise en place des statistiques",
+  "pl2_e": "2 séries de modifications",
+  "pl2_f": "En ligne en 10 jours ouvrables",
+  "pl2_cta": "Choisir le Site Expert",
+  "pl3_fit": "Cours, abonnements, boutiques",
+  "from": "Dès",
+  "pl3_a": "9 pages ou plus, boutique en ligne ou espace membres",
+  "pl3_b": "Intégrations et fonctions avancées",
+  "pl3_c": "Cadré lors d'un appel, devis fixe",
+  "pl3_d": "Calendrier fixé dans votre devis",
+  "pl3_cta": "Réserver un appel de cadrage",
+  "add_t": "Options : deuxième langue et suivi mensuel",
+  "add_d": "Une deuxième langue (français et anglais) ajoute 400 $ au Launch Page et au Site Expert. Le suivi mensuel commence à 79 $/mois : hébergement, mises à jour de sécurité, sauvegardes et jusqu'à une heure de modifications par mois.",
+  "add_cta": "En savoir plus",
+  "seal": "acompte remboursé",
+  "g_kicker": "La garantie",
+  "g_title": "Le premier aperçu du design ne vous plaît pas ? Votre acompte vous est remboursé.",
+  "g_text": "Vous payez 50 % pour commencer et le solde seulement lorsque vous approuvez le site final. Si le premier aperçu du design ne vous convient pas, dites-le-nous dans les 5 jours ouvrables et nous vous remboursons votre acompte en entier.",
+  "faq_kicker": "Questions",
+  "faq_title": "Avant de réserver",
+  "f1_q": "De quoi avez-vous besoin de ma part ?",
+  "f1_a": "Votre logo, votre biographie, vos textes et vos photos si vous en avez, plus quelques exemples de sites que vous aimez. Si vos textes demandent du travail, le Site Expert comprend de l'aide pour les structurer et les peaufiner. Rédiger tout de zéro est facturé à part.",
+  "f2_q": "Et si je n'ai pas encore de témoignages ni de logo ?",
+  "f2_a": "Aucun problème. La page Résultats fonctionne avec un seul témoignage, ou aucun pour l'instant, et nous vous montrons comment en recueillir d'autres. Un logo peut être facturé à part.",
+  "f3_q": "À qui appartient le site ?",
+  "f3_a": "À vous : le design, le contenu, les fichiers et votre domaine. Nous remettons tout à la mise en ligne.",
+  "f4_q": "Avez-vous besoin de mes mots de passe ?",
+  "f4_a": "Non. Lorsque nous avons besoin d'accéder à votre domaine ou à votre hébergement, vous nous ajoutez comme collaborateur ou délégué, et vous pouvez nous retirer à tout moment.",
+  "f5_q": "Que se passe-t-il après la mise en ligne ?",
+  "f5_a": "Votre site est à vous dans tous les cas. Le suivi mensuel couvre l'hébergement, les mises à jour, les sauvegardes et les petites modifications ; sans lui, les changements sont facturés séparément.",
+  "f6_q": "Pouvez-vous travailler avec moi si je ne suis pas au Minnesota ?",
+  "f6_a": "Oui. Tout se fait en ligne : appels, aperçus et révisions, en anglais ou en français.",
+  "cta_title": "Parlons de votre site web",
+  "cta_text": "Un appel gratuit de 15 minutes. Nous regardons ce que vous avez et ce dont vous avez besoin, et nous vous disons honnêtement quel forfait convient.",
+  "cta_btn": "Réserver un appel gratuit",
+  "cta_mail": "Ou écrivez à",
+  "foot_line": "Sites web pour coachs et consultants",
+  "foot_privacy": "Confidentialité",
+  "foot_legal": "Studio de conception web indépendant.",
+  "hero_title": "Un site web professionnel pour votre activité de coaching ou de consultation, <span class=\"grad\">en ligne en 10 jours ouvrables ou moins</span>."
+} };
 
-/* Config wiring */
 document.querySelectorAll("[data-brand]").forEach(el => el.textContent = CONFIG.brand);
-document.querySelectorAll("[data-brand-upper]").forEach(el => el.textContent = CONFIG.brand.toUpperCase());
 document.querySelectorAll("[data-email]").forEach(el => { el.textContent = CONFIG.email; el.href = "mailto:" + CONFIG.email; });
 document.getElementById("year").textContent = new Date().getFullYear();
 const ext = (a, url) => { a.href = url; a.target = "_blank"; a.rel = "noopener"; };
 const mailto = subject => "mailto:" + CONFIG.email + "?subject=" + encodeURIComponent(subject);
 document.querySelectorAll("[data-book]").forEach(a => {
-  if (CONFIG.bookingUrl) ext(a, CONFIG.bookingUrl); else a.href = mailto("Free 15-minute AWS bill review");
+  if (CONFIG.bookingUrl) ext(a, CONFIG.bookingUrl); else a.href = mailto("Free 15-minute website call");
 });
 document.querySelectorAll("[data-pay]").forEach(a => {
   const link = CONFIG.stripe[a.dataset.pay];
   if (link) ext(a, link);
   else if (CONFIG.bookingUrl) ext(a, CONFIG.bookingUrl);
-  else a.href = mailto((a.dataset.pay === "starter" ? "Starter Scan" : "Standard Audit") + " request");
+  else a.href = mailto((a.dataset.pay === "starter" ? "Launch Page" : "Expert Site") + " request");
 });
 
 /* Language switch */
 const EN = {};
 document.querySelectorAll("[data-i18n]").forEach(el => { EN[el.dataset.i18n] = el.hasAttribute("data-html") ? el.innerHTML : el.textContent; });
-EN.under = "under 1×"; EN.fromfee = "from ";
 let lang = "en";
 function t(k) { return (lang !== "en" && I18N[lang][k]) || EN[k]; }
 function setLang(l) {
@@ -508,39 +544,8 @@ function setLang(l) {
   });
   document.querySelectorAll(".lang-switch button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
   try { localStorage.setItem("site-lang", lang); } catch (e) {}
-  update();
 }
 document.querySelectorAll(".lang-switch button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
-
-/* Savings estimate */
-const money = n => n >= 1000 ? "$" + Math.round(n / 1000) + "k" : "$" + Math.round(n);
-const usd = n => "$" + n.toLocaleString("en-US");
-function estimate(spend, commit, nonprod, review) {
-  let pct = 10;
-  if (commit === "no") pct += 9; else if (commit === "some") pct += 4;
-  if (nonprod === "yes") pct += 6;
-  if (review === "no") pct += 4;
-  pct = Math.min(pct, 35);
-  const lo = Math.max(pct - 5, 5), hi = pct + 5;
-  let plan = "Standard", fee = 1497;
-  if (spend < 3000) { plan = "Starter"; fee = 497; }
-  else if (spend > 15000) { plan = "Custom"; fee = 2997; }
-  const annLo = spend * 12 * lo / 100, annHi = spend * 12 * hi / 100;
-  return { lo, hi, plan, fee, annLo, annHi, roi: Math.floor(annLo / fee) };
-}
-function update() {
-  const spend = Number(document.getElementById("spend").value);
-  const pick = n => document.querySelector(`input[name="${n}"]:checked`).value;
-  const r = estimate(spend, pick("commit"), pick("nonprod"), pick("review"));
-  document.getElementById("spend-out").textContent = usd(spend);
-  document.getElementById("save-range").textContent = `${money(r.annLo)}–${money(r.annHi)}`;
-  document.getElementById("pct").textContent = `${r.lo}–${r.hi}%`;
-  document.getElementById("plan-name").textContent = r.plan;
-  document.getElementById("fee").textContent = (r.plan === "Custom" ? t("fromfee") : "") + usd(r.fee);
-  document.getElementById("roi").textContent = r.roi >= 1 ? r.roi + "×" : t("under");
-}
-document.getElementById("calc-form").addEventListener("input", update);
-document.getElementById("calc-form").addEventListener("submit", e => e.preventDefault());
 
 let saved = (navigator.language || "en").toLowerCase().startsWith("fr") ? "fr" : "en";
 try { saved = localStorage.getItem("site-lang") || saved; } catch (e) {}

@@ -2,10 +2,6 @@
 
 The site is a few static files in `public/`. No build step, no framework.
 
-## 0. Security files
-
-`public/security/` holds the CloudFormation template and IAM policies that the trust page links to. If you change the permissions, change all three files together and re-test the role in your own AWS account before sending it to a client.
-
 ## 1. Edit the CONFIG block
 
 Open `public/index.html`, scroll to the bottom, and fill in:
@@ -16,8 +12,8 @@ const CONFIG = {
   email: "lsikkoss@icloud.com",        // swap for your business email when you have one
   bookingUrl: "https://calendly.com/yourname/15min",
   stripe: {
-    starter:  "https://buy.stripe.com/xxxx",   // $497 Starter Scan
-    standard: "https://buy.stripe.com/yyyy"    // $1,497 Standard Audit
+    starter: "https://buy.stripe.com/xxxx",   // Launch Page deposit ($375)
+    expert:  "https://buy.stripe.com/yyyy"    // Expert Site deposit ($900)
   }
 };
 ```
@@ -31,17 +27,17 @@ If you ever rename the business, also change the logo SVG text, the `data-brand`
 You do this part yourself because it needs your identity and bank details.
 
 1. Create a Stripe account in your LLC's name and verify it.
-2. Products → Add product: "Starter Scan" $497 one-time, "Standard Audit" $1,497 one-time.
+2. Products → Add product: "Launch Page deposit" $375 one-time and "Expert Site deposit" $900 one-time (50% of $750 and $1,800). Send the 50% balance as a Stripe Invoice when the client approves the site.
 3. For each: Create payment link. Under "After payment", redirect to your booking link so buyers schedule kickoff right away.
 4. Turn on "Collect customer's company name" and "Require phone or email".
 5. Paste both links into CONFIG.
 
-For the Custom Audit, Implementation and the Cost Guard retainer, send a Stripe Invoice (or a subscription for the retainer) after the call.
+For Custom Builds, second-language add-ons and monthly care ($79/mo), send a Stripe Invoice or a subscription after the call.
 
 ## 3. Booking (Calendly or Cal.com)
 
-- Event 1: "Free 15-min AWS bill review". Add intake questions: company, monthly AWS spend range, main services.
-- Event 2: "Audit kickoff (paid clients)", 20 min, linked from the Stripe redirect.
+- Event 1: "Free 15-min website call". Add intake questions: business, who you help, existing site (if any), launch date.
+- Event 2: "Website kickoff (paid clients)", 20 min, linked from the Stripe redirect.
 - Put Event 1's link in `bookingUrl`.
 
 ## 4. Domain and business email
@@ -66,7 +62,7 @@ pages:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 ```
 
-**AWS (good portfolio piece):** S3 bucket (private) + CloudFront with Origin Access Control + ACM certificate + Route 53. Costs cents a month and is a nice talking point with clients.
+**Portfolio:** build 2-3 demo sites (for example a coach, a consultant and a small shop) and link them from the pricing section. Label them clearly as demos until real clients exist.
 
 ## 6. Tracking (needed before you spend on ads)
 
@@ -77,7 +73,7 @@ pages:
 ## 7. Before launch checklist
 
 - [ ] CONFIG filled in, name replaced in HTML
-- [ ] Test both Stripe links in test mode, then switch to live
+- [ ] Test both Stripe deposit links in test mode, then switch to live
 - [ ] Book a test call through the site
 - [ ] Check on your phone in light and dark mode
 - [ ] Analytics and ad tags firing

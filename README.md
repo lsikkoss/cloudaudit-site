@@ -1,10 +1,9 @@
 # Delight Choice Services website
 
-Static site for the AWS cost audit business. No build step.
+Static site for the website design business (coaches and consultants, with a Launch Page and Custom Build for everyone else). No build step.
 
-- `public/index.html` – landing page (EN/FR, savings estimator, pricing)
-- `public/trust.html` – trust and security page (EN/FR) with links to the exact client permissions
-- `public/security/` – the CloudFormation template and IAM policies clients use to create the read-only audit role
+- `public/index.html` – landing page (EN/FR, packages and pricing)
+- `public/trust.html` – trust page (EN/FR)
 - `public/privacy.html` – privacy policy (required for Google and LinkedIn ads)
 - `SETUP.md` – go-live guide: CONFIG block, Stripe, Calendly, domain, tracking
 

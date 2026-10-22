@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Trust and Security | Delight Choice Services</title>
-<meta name="description" content="How Delight Choice Services keeps your AWS account safe during a cost audit: read-only access, readable permissions, a full-refund guarantee and delivery within 10 business days.">
+<title>Trust | Delight Choice Services</title>
+<meta name="description" content="How Delight Choice Services works: you own your site, we never need your passwords, fixed price, and your deposit back if you don't love the first design preview.">
 <meta name="theme-color" content="#0b1026">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
@@ -182,14 +182,18 @@ footer .small { color: var(--soft); font-size: .8rem; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 
+/* web design additions */
+.bill-row .ok { color: var(--teal); font-weight: 800; }
+.fine { font-size: .8rem; color: var(--soft); }
+#how .fine { font-size: .9rem; }
+.files { display: flex; gap: 10px; flex-wrap: wrap; }
+
 .hero.one { grid-template-columns: 1fr; }
 .tool-grid.two { grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
 .tool-card ul { margin: 0; padding-left: 18px; color: var(--soft); font-size: .95rem; display: grid; gap: 6px; }
 .tool-card.yes h3 { color: #12a37d; }
 .tool-card.no h3 { color: var(--red); }
-.files { display: flex; gap: 10px; flex-wrap: wrap; }
 .topbar nav a[aria-current="page"] { color: #fff; background: rgba(255, 255, 255, 0.12); }
-#how .pill { font-family: var(--mono); }
 </style>
 </head>
 <body>
@@ -209,15 +213,15 @@ footer .small { color: var(--soft); font-size: .8rem; }
       <path d="M85 62v34m-12-12l12 13l12-13" fill="none" stroke="#0b1026" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
       <text x="160" y="68" font-family="Segoe UI,Arial,sans-serif" font-size="37" font-weight="800" fill="url(#lg)" textLength="352" lengthAdjust="spacingAndGlyphs">DELIGHT CHOICE</text>
       <text x="160" y="106" font-family="Segoe UI,Arial,sans-serif" font-size="37" font-weight="800" fill="url(#lg)">SERVICES</text>
-      <text x="162" y="130" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="600" fill="#ffffff">AWS Cost Audits</text>
-      <text x="162" y="152" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#ffffee" data-i18n="logo_tag">Find the waste. Keep the savings.</text>
+      <text x="162" y="130" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="600" fill="#ffffff">Website Design</text>
+      <text x="162" y="152" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#ffffee" data-i18n="logo_tag">Your business, online.</text>
     </svg>
   </a>
   <nav aria-label="Main">
     <a href="index.html#how" data-i18n="nav_how">How it works</a>
-    <a href="index.html#calculator" data-i18n="nav_calc">Savings estimate</a>
+    <a href="index.html#pages" data-i18n="nav_pages">What you get</a>
     <a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a>
-    <a href="trust.html" data-i18n="nav_trust" aria-current="page">Security</a>
+    <a href="trust.html" data-i18n="nav_trust" aria-current="page">Trust</a>
     <a href="index.html#faq" data-i18n="nav_faq">FAQ</a>
   </nav>
   <div class="right">
@@ -232,100 +236,85 @@ footer .small { color: var(--soft); font-size: .8rem; }
 <main id="top">
   <section class="glass hero one">
     <div>
-      <span class="kicker" data-i18n="h_kicker">Trust and security</span>
-      <h1 data-i18n="h_title">Your AWS account stays yours.</h1>
-      <p class="sub" data-i18n="h_sub">An audit only needs to read your billing and resource data. Here is exactly what we can see, what we can't, and what you can count on before you pay.</p>
-      <div class="hero-ctas">
-        <a class="btn" data-book href="#contact" data-i18n="h_cta">Book a free 15-min call</a>
-        <a class="btn ghost" href="#permissions" data-i18n="h_cta2">Read the exact permissions</a>
-      </div>
+      <span class="kicker" data-i18n="h_kicker">Trust</span>
+      <h1 data-i18n="h_title">Your website, your domain, your content. All yours.</h1>
+      <p class="sub" data-i18n="h_sub">Here is exactly what we need from you, what we never need, and what you can count on before you pay anything.</p>
+      <div class="hero-ctas"><a class="btn" data-book href="#contact" data-i18n="h_cta">Book a free 15-min call</a></div>
     </div>
   </section>
-
   <section class="glass section" id="access">
     <div class="section-head">
       <span class="kicker" data-i18n="a_kicker">Access</span>
-      <h2 data-i18n="a_title">What we can see, and what we can't</h2>
-      <p data-i18n="a_sub">Access is read-only and limited to cost and resource metadata. Nothing in your account can be changed through it.</p>
+      <h2 data-i18n="a_title">What we need, and what we never need</h2>
+      <p data-i18n="a_sub">Most of the work uses only the content you give us. When we need access to your accounts, you stay in control.</p>
     </div>
     <div class="tool-grid two">
-      <div class="tool-card yes"><h3 data-i18n="y_t">What the audit uses</h3><ul>
-<li data-i18n="y1">Billing and Cost Explorer data</li>
-<li data-i18n="y2">Lists of resources: servers, databases, volumes, load balancers, buckets</li>
-<li data-i18n="y3">Usage metrics such as CPU and network traffic</li>
-<li data-i18n="y4">Savings Plan and reserved capacity status</li>
+      <div class="tool-card yes"><h3 data-i18n="y_t">What we need</h3><ul>
+        <li data-i18n="y1">Your logo, text and photos (or we help you shape them)</li>
+        <li data-i18n="y2">Examples of sites you like</li>
+        <li data-i18n="y3">Collaborator access to your domain or hosting, only if needed</li>
+        <li data-i18n="y4">Your calendar and email tool links for booking and sign-ups</li>
       </ul></div>
       <div class="tool-card no"><h3 data-i18n="n_t">What we never need</h3><ul>
-<li data-i18n="n1">Your application code or customer data</li>
-<li data-i18n="n2">Database contents or the files inside your buckets</li>
-<li data-i18n="n3">Passwords, keys and secrets</li>
-<li data-i18n="n4">Root credentials, IAM users or access keys</li>
-<li data-i18n="n5">Permission to create, change or delete anything</li>
+        <li data-i18n="n1">Your passwords</li>
+        <li data-i18n="n2">Your bank or card details (payments go through your payment provider)</li>
+        <li data-i18n="n3">Ownership of your domain or accounts</li>
+        <li data-i18n="n4">Anything you haven't chosen to share</li>
       </ul></div>
     </div>
   </section>
-
   <section class="glass section" id="how">
     <div class="section-head">
       <span class="kicker" data-i18n="w_kicker">How access works</span>
       <h2 data-i18n="w_title">You stay in control at every step</h2>
+      
     </div>
     <div class="tool-grid">
-      <div class="tool-card"><span class="pill">1</span><h3 data-i18n="w1_t">You review the permissions</h3><p data-i18n="w1_d">Read the exact policy below, or have your engineer check it, before you create anything.</p></div>
-      <div class="tool-card"><span class="pill">2</span><h3 data-i18n="w2_t">You create the role</h3><p data-i18n="w2_d">One role in your own account, from our CloudFormation template or by hand. We never create anything there.</p></div>
-      <div class="tool-card"><span class="pill">3</span><h3 data-i18n="w3_t">We run the audit</h3><p data-i18n="w3_d">We analyze your cost and usage data and write up each finding with its savings, effort and risk.</p></div>
-      <div class="tool-card"><span class="pill">4</span><h3 data-i18n="w4_t">Access ends at delivery</h3><p data-i18n="w4_d">When your report is delivered you delete the role, and we confirm in writing that we no longer use it. You can revoke it yourself at any moment.</p></div>
+      <div class="tool-card"><span class="pill p1">01</span><h3 data-i18n="w1_t">You keep your accounts</h3><p data-i18n="w1_d">Your domain and hosting stay in your name, registered by you.</p></div>
+      <div class="tool-card"><span class="pill p2">02</span><h3 data-i18n="w2_t">You add us as a collaborator</h3><p data-i18n="w2_d">Where access is needed, you invite us as a collaborator or delegate. We never ask for your password.</p></div>
+      <div class="tool-card"><span class="pill p3">03</span><h3 data-i18n="w3_t">We build and show you</h3><p data-i18n="w3_d">You see a design preview first, then a working draft of the site before anything goes live.</p></div>
+      <div class="tool-card"><span class="pill p4">04</span><h3 data-i18n="w4_t">Access ends at handoff</h3><p data-i18n="w4_d">When we hand over your site, you remove our access, and we confirm in writing that we no longer use it. You can also remove us at any moment.</p></div>
     </div>
-    <p class="fine" data-i18n="w_note">AWS CloudTrail records each use of the role in your account, so you can see exactly when we accessed it.</p>
   </section>
-
-  <section class="glass section" id="permissions">
+  <section class="glass section" id="security">
     <div class="section-head">
-      <span class="kicker" data-i18n="p_kicker">Permissions</span>
-      <h2 data-i18n="p_title">Read the exact permissions before you agree to anything</h2>
-      <p data-i18n="p_sub">This is the policy and template clients use. They are plain text, so your engineer can read every line.</p>
-    </div>
-    <div class="files">
-      <a class="btn ghost sm" href="security/delight-choice-audit-role.yaml" data-i18n="p_l1">CloudFormation template (creates the role)</a>
-      <a class="btn ghost sm" href="security/delight-choice-audit-policy.json" data-i18n="p_l2">Permission policy (JSON)</a>
-      <a class="btn ghost sm" href="security/delight-choice-trust-policy.json" data-i18n="p_l3">Trust policy for manual setup (JSON)</a>
+      <span class="kicker" data-i18n="s_kicker">Security basics</span>
+      <h2 data-i18n="s_title">Safe by default</h2>
+      
     </div>
     <div class="tool-grid">
-      <div class="tool-card"><h3 data-i18n="p1_t">Cost and billing data</h3><p data-i18n="p1_d">Spend by service, account and tag, budgets, Savings Plan status and AWS list prices. It shows where the money goes.</p></div>
-      <div class="tool-card"><h3 data-i18n="p2_t">Recommendations</h3><p data-i18n="p2_d">AWS's own rightsizing and savings suggestions, so we can cross-check our findings against theirs.</p></div>
-      <div class="tool-card"><h3 data-i18n="p3_t">Compute and network inventory</h3><p data-i18n="p3_d">Lists of servers, volumes, snapshots, NAT gateways and load balancers, to find idle and oversized resources. No startup scripts.</p></div>
-      <div class="tool-card"><h3 data-i18n="p4_t">Database inventory</h3><p data-i18n="p4_d">Type, size and snapshots of databases, never their contents.</p></div>
-      <div class="tool-card"><h3 data-i18n="p5_t">Storage inventory</h3><p data-i18n="p5_d">Bucket names, regions, lifecycle rules and tags, never the files.</p></div>
-      <div class="tool-card"><h3 data-i18n="p6_t">Usage metrics</h3><p data-i18n="p6_d">CPU, network and request counts, to see what is actually used.</p></div>
-      <div class="tool-card"><h3 data-i18n="p7_t">Explicit deny</h3><p data-i18n="p7_d">Blocks reading S3 objects, secrets, parameters, KMS decryption, DynamoDB items, queue messages and Windows passwords, whatever else is attached later.</p></div>
+      <div class="tool-card"><span class="pill p1">01</span><h3 data-i18n="s1_t">HTTPS everywhere</h3><p data-i18n="s1_d">Every site is served over a secure connection.</p></div>
+      <div class="tool-card"><span class="pill p2">02</span><h3 data-i18n="s2_t">Spam-protected forms</h3><p data-i18n="s2_d">Contact and sign-up forms include spam protection.</p></div>
+      <div class="tool-card"><span class="pill p3">03</span><h3 data-i18n="s3_t">Backups and updates</h3><p data-i18n="s3_d">Included in monthly care. Without it, we hand you a short guide to keep your site safe yourself.</p></div>
+      <div class="tool-card"><span class="pill p4">04</span><h3 data-i18n="s4_t">Payments stay with your provider</h3><p data-i18n="s4_d">Online payments run through providers such as Stripe or PayPal, never through us.</p></div>
     </div>
   </section>
-
   <section class="glass section" id="commitments">
     <div class="section-head">
-      <span class="kicker" data-i18n="c_kicker">Our commitments</span>
+      <span class="kicker" data-i18n="c_kicker">Commitments</span>
       <h2 data-i18n="c_title">What you can count on</h2>
+      
     </div>
     <div class="tool-grid">
-      <div class="tool-card"><h3 data-i18n="c1_t">Fixed price</h3><p data-i18n="c1_d">You know the fee up front. It changes only if you ask for extra work, and only in writing.</p></div>
-      <div class="tool-card"><h3 data-i18n="c2_t">Full-refund guarantee</h3><p data-i18n="c2_d">If we don't identify at least twice our fee in annual savings, you get a full refund. You keep the report either way.</p></div>
-      <div class="tool-card"><h3 data-i18n="c3_t">10 business days</h3><p data-i18n="c3_d">Your report is delivered within 10 business days once payment and read-only access are in place.</p></div>
-      <div class="tool-card"><h3 data-i18n="c4_t">NDA on request</h3><p data-i18n="c4_d">We sign yours or provide a simple one.</p></div>
-      <div class="tool-card"><h3 data-i18n="c5_t">Your data is deleted</h3><p data-i18n="c5_d">Exported billing data is kept only for the audit and deleted within 30 days of delivery.</p></div>
+      <div class="tool-card"><span class="pill p1">01</span><h3 data-i18n="c1_t">Fixed price</h3><p data-i18n="c1_d">You know the fee up front. It changes only if you ask for extra work, and only in writing.</p></div>
+      <div class="tool-card"><span class="pill p2">02</span><h3 data-i18n="c2_t">Deposit-back guarantee</h3><p data-i18n="c2_d">If the first design preview isn't right, tell us within 5 business days and your deposit is refunded in full.</p></div>
+      <div class="tool-card"><span class="pill p3">03</span><h3 data-i18n="c3_t">Clear timelines</h3><p data-i18n="c3_d">7 business days for a Launch Page and 10 for an Expert Site, counted from your deposit and content.</p></div>
+      <div class="tool-card"><span class="pill p4">04</span><h3 data-i18n="c4_t">You own it</h3><p data-i18n="c4_d">Design, content, files and domain are yours at handoff.</p></div>
+      <div class="tool-card"><span class="pill p5">05</span><h3 data-i18n="c5_t">Confidentiality</h3><p data-i18n="c5_d">We sign your NDA or provide a simple one on request.</p></div>
     </div>
   </section>
-
   <section class="glass section" id="faq">
     <div class="section-head">
       <span class="kicker" data-i18n="f_kicker">Questions</span>
-      <h2 data-i18n="f_title">Straight answers before you share any access</h2>
+      <h2 data-i18n="f_title">Common questions</h2>
+      
     </div>
     <div class="faq">
-      <details><summary data-i18n="f1_q">Can you change anything in my AWS account?</summary><p data-i18n="f1_a">No. The role has no write permissions, so we can look but not create, modify or delete anything. Any changes are made by your team.</p></details>
-      <details><summary data-i18n="f2_q">Will you see my customers' data?</summary><p data-i18n="f2_a">No. The role cannot read the contents of storage buckets or databases, and an explicit deny blocks it. We see how much is stored and what it costs, not what is in it.</p></details>
-      <details><summary data-i18n="f3_q">Who works on my audit?</summary><p data-i18n="f3_a">Kossi Sikpe leads every audit and runs your walkthrough call. First-pass analysis may involve freelance cloud specialists. We share only what a job needs, never one client's data with another, and every finding is checked before it reaches you.</p></details>
-      <details><summary data-i18n="f4_q">What if the audit finds very little?</summary><p data-i18n="f4_a">That is what the guarantee is for. If we don't identify at least twice our fee in annual savings, you get a full refund.</p></details>
-      <details><summary data-i18n="f5_q">Do you implement the changes?</summary><p data-i18n="f5_a">The audit delivers a ranked report and a roadmap. Hands-on help afterward is a separate Implementation project with its own scoped access that you approve.</p></details>
+      <details><summary data-i18n="f1_q">Who works on my site?</summary><p data-i18n="f1_a">I lead every project and review everything before you see it. Independent specialists may help with parts of the work; they only receive what the job needs, and they never get your passwords.</p></details>
+      <details><summary data-i18n="f2_q">Do I need to give you my passwords?</summary><p data-i18n="f2_a">No. Where access is needed, you add us as a collaborator and can remove us at any time.</p></details>
+      <details><summary data-i18n="f3_q">What if I don't like the design?</summary><p data-i18n="f3_a">Tell us within 5 business days of the first design preview and we refund your deposit. After that, two rounds of changes are included.</p></details>
+      <details><summary data-i18n="f4_q">Who owns the website?</summary><p data-i18n="f4_a">You do: design, content, files and domain, handed over at launch.</p></details>
+      <details><summary data-i18n="f5_q">Do you show previous work?</summary><p data-i18n="f5_a">We are building our portfolio, so ask on a call and we will tell you honestly what we can show. That is why the deposit-back guarantee exists.</p></details>
     </div>
   </section>
 
@@ -333,16 +322,16 @@ footer .small { color: var(--soft); font-size: .8rem; }
     <div class="section-head">
       <span class="kicker" data-i18n="o_kicker">About</span>
       <h2 data-i18n="o_title">Who you're working with</h2>
-      <p data-i18n="o_d1">Delight Choice Services is led by Kossi Sikpe, a DevOps and cloud infrastructure engineer based in the Twin Cities. He runs your walkthrough call himself.</p>
-      <p data-i18n="o_d2">Training in AWS, DevOps and Linux, a Google IT Support Professional certificate, and a Java Backend Software Engineering certificate (Kenzie Academy at SNHU). Available in English and French.</p>
-      <p><span data-i18n="o_work">See his work:</span> <a href="https://github.com/lsikkoss" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/kossi-sikpe-a07598294" rel="noopener">LinkedIn</a></p>
+      <p data-i18n="o_d1">I'm Kossi Sikpe, a DevOps and cloud infrastructure engineer based in the Twin Cities. I lead every project, from the first call to handoff.</p>
+      <p data-i18n="o_d2">Training in AWS, DevOps and Linux, a Google IT Support Professional certificate and a Java Backend Software Engineering certificate (Kenzie Academy at SNHU). I speak English and French.</p>
+      <p><span data-i18n="o_work">See my work:</span> <a href="https://github.com/lsikkoss" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/kossi-sikpe-a07598294" rel="noopener">LinkedIn</a></p>
     </div>
   </section>
 
   <section class="glass cta" id="contact">
     <div>
-      <h2 data-i18n="cta_title">See what's in your bill, no obligation</h2>
-      <p data-i18n="cta_text">A free 15-minute call. We look at your spend at a high level and tell you honestly whether an audit is worth it.</p>
+      <h2 data-i18n="cta_title">Let's talk about your website</h2>
+      <p data-i18n="cta_text">A free 15-minute call. We look at what you have and what you need, and tell you honestly which package fits.</p>
     </div>
     <div class="cta-side">
       <a class="btn block" data-book href="#contact" data-i18n="cta_btn">Book a free call</a>
@@ -352,120 +341,101 @@ footer .small { color: var(--soft); font-size: .8rem; }
 </main>
 
 <footer>
-  <span><span data-brand>Delight Choice Services</span> — <span data-i18n="foot_line">AWS cost audits for SaaS teams</span> | <a data-email href="mailto:lsikkoss@icloud.com">lsikkoss@icloud.com</a></span>
-  <span class="small">© <span id="year">2026</span> · <a href="privacy.html" data-i18n="foot_privacy">Privacy</a> · <a href="index.html">Home</a> · <span data-i18n="foot_legal">Independent consultancy, not affiliated with Amazon Web Services. AWS is a trademark of Amazon.com, Inc.</span></span>
+  <span><span data-brand>Delight Choice Services</span> — <span data-i18n="foot_line">Websites for coaches and consultants</span> | <a data-email href="mailto:lsikkoss@icloud.com">lsikkoss@icloud.com</a></span>
+  <span class="small">© <span id="year">2026</span> · <a href="privacy.html" data-i18n="foot_privacy">Privacy</a> · <a href="index.html">Home</a> · <span data-i18n="foot_legal">Independent web design studio.</span></span>
 </footer>
 
 <script>
-const CONFIG = {
-  brand: "Delight Choice Services",
-  email: "lsikkoss@icloud.com",
-  bookingUrl: ""
-};
+const CONFIG = { brand: "Delight Choice Services", email: "lsikkoss@icloud.com", bookingUrl: "" };
 const I18N = { fr: {
   "nav_how": "Fonctionnement",
-  "nav_calc": "Estimation",
+  "nav_pages": "Ce que vous obtenez",
   "nav_pricing": "Tarifs",
-  "nav_trust": "Sécurité",
+  "nav_trust": "Confiance",
   "nav_faq": "FAQ",
   "nav_book": "Réserver un appel",
-  "logo_tag": "Trouvez le gaspillage. Gardez les économies.",
-  "h_kicker": "Confiance et sécurité",
-  "h_title": "Votre compte AWS reste le vôtre.",
-  "h_sub": "Un audit n'a besoin que de lire vos données de facturation et de ressources. Voici exactement ce que nous pouvons voir, ce que nous ne pouvons pas voir, et ce sur quoi vous pouvez compter avant de payer.",
+  "logo_tag": "Votre entreprise, en ligne.",
+  "h_kicker": "Confiance",
+  "h_title": "Votre site, votre domaine, votre contenu. Tout est à vous.",
+  "h_sub": "Voici exactement ce dont nous avons besoin, ce dont nous n'avons jamais besoin, et ce sur quoi vous pouvez compter avant de payer quoi que ce soit.",
   "h_cta": "Réserver un appel gratuit de 15 min",
-  "h_cta2": "Lire les permissions exactes",
   "a_kicker": "Accès",
-  "a_title": "Ce que nous pouvons voir, et ce que nous ne pouvons pas voir",
-  "a_sub": "L'accès est en lecture seule et limité aux données de coûts et aux métadonnées des ressources. Rien dans votre compte ne peut être modifié par ce biais.",
-  "y_t": "Ce que l'audit utilise",
-  "y1": "Données de facturation et de Cost Explorer",
-  "y2": "Listes de ressources : serveurs, bases de données, volumes, équilibreurs de charge, buckets",
-  "y3": "Métriques d'utilisation comme le CPU et le trafic réseau",
-  "y4": "État des Savings Plans et de la capacité réservée",
+  "a_title": "Ce dont nous avons besoin, et ce dont nous n'avons jamais besoin",
+  "a_sub": "L'essentiel du travail n'utilise que le contenu que vous nous remettez. Lorsque nous avons besoin d'accéder à vos comptes, vous gardez le contrôle.",
+  "y_t": "Ce dont nous avons besoin",
+  "y1": "Votre logo, vos textes et vos photos (ou nous vous aidons à les préparer)",
+  "y2": "Des exemples de sites que vous aimez",
+  "y3": "Un accès de collaborateur à votre domaine ou hébergement, seulement si nécessaire",
+  "y4": "Les liens de votre calendrier et de votre outil de courriel pour les réservations et inscriptions",
   "n_t": "Ce dont nous n'avons jamais besoin",
-  "n1": "Votre code applicatif ou les données de vos clients",
-  "n2": "Le contenu des bases de données ou des fichiers de vos buckets",
-  "n3": "Mots de passe, clés et secrets",
-  "n4": "Identifiants root, utilisateurs IAM ou clés d'accès",
-  "n5": "Le droit de créer, modifier ou supprimer quoi que ce soit",
+  "n1": "Vos mots de passe",
+  "n2": "Vos données bancaires ou de carte (les paiements passent par votre fournisseur de paiement)",
+  "n3": "La propriété de votre domaine ou de vos comptes",
+  "n4": "Quoi que ce soit que vous n'avez pas choisi de partager",
   "w_kicker": "Comment fonctionne l'accès",
   "w_title": "Vous gardez le contrôle à chaque étape",
-  "w1_t": "Vous vérifiez les permissions",
-  "w1_d": "Lisez la politique exacte ci-dessous, ou faites-la vérifier par votre ingénieur, avant de créer quoi que ce soit.",
-  "w2_t": "Vous créez le rôle",
-  "w2_d": "Un rôle dans votre propre compte, à partir de notre modèle CloudFormation ou à la main. Nous ne créons jamais rien chez vous.",
-  "w3_t": "Nous réalisons l'audit",
-  "w3_d": "Nous analysons vos données de coûts et d'utilisation et décrivons chaque constat avec ses économies, son effort et son risque.",
-  "w4_t": "L'accès prend fin à la livraison",
-  "w4_d": "À la livraison du rapport, vous supprimez le rôle et nous confirmons par écrit que nous ne l'utilisons plus. Vous pouvez aussi le révoquer à tout moment.",
-  "w_note": "AWS CloudTrail enregistre chaque utilisation du rôle dans votre compte, ce qui vous permet de voir exactement quand nous y avons accédé.",
-  "p_kicker": "Permissions",
-  "p_title": "Lisez les permissions exactes avant de vous engager",
-  "p_sub": "Voici la politique et le modèle que les clients utilisent. Ce sont des fichiers texte : votre ingénieur peut lire chaque ligne.",
-  "p_l1": "Modèle CloudFormation (crée le rôle)",
-  "p_l2": "Politique de permissions (JSON)",
-  "p_l3": "Politique de confiance pour une création manuelle (JSON)",
-  "p1_t": "Données de coûts et de facturation",
-  "p1_d": "Dépenses par service, compte et étiquette, budgets, état des Savings Plans et tarifs publics AWS. Cela montre où va l'argent.",
-  "p2_t": "Recommandations",
-  "p2_d": "Les suggestions de dimensionnement et d'économies d'AWS, pour recouper nos constats avec les leurs.",
-  "p3_t": "Inventaire calcul et réseau",
-  "p3_d": "Listes de serveurs, volumes, snapshots, passerelles NAT et équilibreurs de charge, pour repérer les ressources inactives ou surdimensionnées. Pas de scripts de démarrage.",
-  "p4_t": "Inventaire des bases de données",
-  "p4_d": "Type, taille et snapshots des bases de données, jamais leur contenu.",
-  "p5_t": "Inventaire du stockage",
-  "p5_d": "Noms, régions, règles de cycle de vie et étiquettes des buckets, jamais les fichiers.",
-  "p6_t": "Métriques d'utilisation",
-  "p6_d": "CPU, trafic réseau et nombre de requêtes, pour voir ce qui est réellement utilisé.",
-  "p7_t": "Refus explicite",
-  "p7_d": "Bloque la lecture des objets S3, des secrets, des paramètres, du déchiffrement KMS, des éléments DynamoDB, des messages de file d'attente et des mots de passe Windows, quoi qu'on attache plus tard.",
-  "c_kicker": "Nos engagements",
+  "w1_t": "Vous gardez vos comptes",
+  "w1_d": "Votre domaine et votre hébergement restent à votre nom, enregistrés par vous.",
+  "w2_t": "Vous nous ajoutez comme collaborateur",
+  "w2_d": "Là où un accès est nécessaire, vous nous invitez comme collaborateur ou délégué. Nous ne demandons jamais votre mot de passe.",
+  "w3_t": "Nous construisons et vous montrons",
+  "w3_d": "Vous voyez d'abord un aperçu du design, puis une version fonctionnelle du site avant toute mise en ligne.",
+  "w4_t": "L'accès prend fin à la remise",
+  "w4_d": "À la remise de votre site, vous retirez notre accès et nous confirmons par écrit que nous ne l'utilisons plus. Vous pouvez aussi nous retirer à tout moment.",
+  "s_kicker": "Bases de la sécurité",
+  "s_title": "Sûr par défaut",
+  "s1_t": "HTTPS partout",
+  "s1_d": "Chaque site est servi par une connexion sécurisée.",
+  "s2_t": "Formulaires protégés contre le spam",
+  "s2_d": "Les formulaires de contact et d'inscription incluent une protection contre le spam.",
+  "s3_t": "Sauvegardes et mises à jour",
+  "s3_d": "Inclus dans le suivi mensuel. Sans lui, nous vous remettons un court guide pour garder votre site en sécurité vous-même.",
+  "s4_t": "Les paiements restent chez votre fournisseur",
+  "s4_d": "Les paiements en ligne passent par des fournisseurs comme Stripe ou PayPal, jamais par nous.",
+  "c_kicker": "Engagements",
   "c_title": "Ce sur quoi vous pouvez compter",
   "c1_t": "Prix fixe",
-  "c1_d": "Vous connaissez les honoraires d'avance. Ils ne changent que si vous demandez du travail supplémentaire, et seulement par écrit.",
-  "c2_t": "Garantie de remboursement intégral",
-  "c2_d": "Si nous n'identifions pas au moins deux fois nos honoraires en économies annuelles, vous êtes remboursé intégralement. Vous gardez le rapport dans tous les cas.",
-  "c3_t": "10 jours ouvrables",
-  "c3_d": "Votre rapport est livré en 10 jours ouvrables une fois le paiement et l'accès en lecture seule en place.",
-  "c4_t": "Accord de confidentialité sur demande",
-  "c4_d": "Nous signons le vôtre ou vous en fournissons un simple.",
-  "c5_t": "Vos données sont supprimées",
-  "c5_d": "Les données de facturation exportées ne sont conservées que pour l'audit et supprimées dans les 30 jours suivant la livraison.",
+  "c1_d": "Vous connaissez le prix d'avance. Il ne change que si vous demandez du travail supplémentaire, et seulement par écrit.",
+  "c2_t": "Garantie de remboursement de l'acompte",
+  "c2_d": "Si le premier aperçu du design ne convient pas, dites-le-nous dans les 5 jours ouvrables et votre acompte est remboursé en entier.",
+  "c3_t": "Délais clairs",
+  "c3_d": "7 jours ouvrables pour un Launch Page et 10 pour un Site Expert, comptés à partir de votre acompte et de votre contenu.",
+  "c4_t": "Vous en êtes propriétaire",
+  "c4_d": "Le design, le contenu, les fichiers et le domaine sont à vous à la remise.",
+  "c5_t": "Confidentialité",
+  "c5_d": "Nous signons votre entente de confidentialité ou en fournissons une simple sur demande.",
   "f_kicker": "Questions",
-  "f_title": "Des réponses claires avant de partager le moindre accès",
-  "f1_q": "Pouvez-vous modifier quelque chose dans mon compte AWS ?",
-  "f1_a": "Non. Le rôle n'a aucune permission d'écriture : nous pouvons regarder, mais pas créer, modifier ou supprimer quoi que ce soit. Les changements sont faits par votre équipe.",
-  "f2_q": "Verrez-vous les données de mes clients ?",
-  "f2_a": "Non. Le rôle ne peut pas lire le contenu des buckets ou des bases de données, et un refus explicite l'interdit. Nous voyons le volume stocké et son coût, pas son contenu.",
-  "f3_q": "Qui travaille sur mon audit ?",
-  "f3_a": "Kossi Sikpe dirige chaque audit et mène votre appel de présentation. L'analyse initiale peut faire appel à des spécialistes cloud indépendants. Nous ne partageons que ce que la mission exige, jamais les données d'un client avec un autre, et chaque constat est vérifié avant de vous parvenir.",
-  "f4_q": "Et si l'audit ne trouve presque rien ?",
-  "f4_a": "C'est à cela que sert la garantie. Si nous n'identifions pas au moins deux fois nos honoraires en économies annuelles, vous êtes remboursé intégralement.",
-  "f5_q": "Appliquez-vous les changements ?",
-  "f5_a": "L'audit livre un rapport classé et une feuille de route. L'aide concrète ensuite est un projet de mise en œuvre séparé, avec un accès limité que vous approuvez.",
+  "f_title": "Questions fréquentes",
+  "f1_q": "Qui travaille sur mon site ?",
+  "f1_a": "Je dirige chaque projet et je révise tout avant que vous ne le voyiez. Des spécialistes indépendants peuvent aider pour certaines parties ; ils ne reçoivent que ce dont la tâche a besoin, et jamais vos mots de passe.",
+  "f2_q": "Dois-je vous donner mes mots de passe ?",
+  "f2_a": "Non. Là où un accès est nécessaire, vous nous ajoutez comme collaborateur et pouvez nous retirer à tout moment.",
+  "f3_q": "Et si le design ne me plaît pas ?",
+  "f3_a": "Dites-le-nous dans les 5 jours ouvrables suivant le premier aperçu et nous remboursons votre acompte. Ensuite, deux séries de modifications sont incluses.",
+  "f4_q": "À qui appartient le site ?",
+  "f4_a": "À vous : design, contenu, fichiers et domaine, remis à la mise en ligne.",
+  "f5_q": "Montrez-vous des réalisations ?",
+  "f5_a": "Nous constituons notre portfolio : demandez lors d'un appel et nous vous dirons honnêtement ce que nous pouvons montrer. C'est la raison d'être de la garantie de remboursement de l'acompte.",
   "o_kicker": "À propos",
   "o_title": "Avec qui vous travaillez",
-  "o_d1": "Delight Choice Services est dirigé par Kossi Sikpe, ingénieur DevOps et infrastructure cloud basé dans les Twin Cities. Il mène lui-même votre appel de présentation.",
-  "o_d2": "Formation en AWS, DevOps et Linux, certificat Google IT Support Professional et certificat en génie logiciel Java Backend (Kenzie Academy at SNHU). Service disponible en anglais et en français.",
-  "o_work": "Voir ses réalisations :",
-  "cta_title": "Voyez ce que contient votre facture, sans engagement",
-  "cta_text": "Un appel gratuit de 15 minutes. Nous regardons vos dépenses dans les grandes lignes et vous disons honnêtement si un audit en vaut la peine.",
+  "o_d1": "Je suis Kossi Sikpe, ingénieur DevOps et infrastructure infonuagique établi dans les Villes jumelles. Je dirige chaque projet, du premier appel à la remise.",
+  "o_d2": "Formation en AWS, DevOps et Linux, certificat Google IT Support Professional et certificat en génie logiciel Java Backend (Kenzie Academy à SNHU). Je parle français et anglais.",
+  "o_work": "Mon travail :",
+  "cta_title": "Parlons de votre site web",
+  "cta_text": "Un appel gratuit de 15 minutes. Nous regardons ce que vous avez et ce dont vous avez besoin, et nous vous disons honnêtement quel forfait convient.",
   "cta_btn": "Réserver un appel gratuit",
   "cta_mail": "Ou écrivez à",
-  "foot_line": "Audits de coûts AWS pour équipes SaaS",
+  "foot_line": "Sites web pour coachs et consultants",
   "foot_privacy": "Confidentialité",
-  "foot_legal": "Cabinet indépendant, non affilié à Amazon Web Services. AWS est une marque d'Amazon.com, Inc."
+  "foot_legal": "Studio de conception web indépendant."
 } };
-
 document.querySelectorAll("[data-brand]").forEach(el => el.textContent = CONFIG.brand);
 document.querySelectorAll("[data-email]").forEach(el => { el.textContent = CONFIG.email; el.href = "mailto:" + CONFIG.email; });
 document.getElementById("year").textContent = new Date().getFullYear();
 document.querySelectorAll("[data-book]").forEach(a => {
   if (CONFIG.bookingUrl) { a.href = CONFIG.bookingUrl; a.target = "_blank"; a.rel = "noopener"; }
-  else a.href = "mailto:" + CONFIG.email + "?subject=" + encodeURIComponent("Free 15-minute AWS bill review");
+  else a.href = "mailto:" + CONFIG.email + "?subject=" + encodeURIComponent("Free 15-minute website call");
 });
-
 const EN = {};
 document.querySelectorAll("[data-i18n]").forEach(el => { EN[el.dataset.i18n] = el.textContent; });
 let lang = "en";
