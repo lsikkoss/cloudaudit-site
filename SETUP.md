@@ -9,7 +9,7 @@ Open `public/index.html`, scroll to the bottom, and fill in:
 ```js
 const CONFIG = {
   brand: "Delight Choice Services",   // your business name
-  email: "lsikkoss@icloud.com",        // swap for your business email when you have one
+  email: "contact@delightchoiceservices.com",
   bookingUrl: "https://calendly.com/yourname/15min",
   stripe: {
     starter: "https://buy.stripe.com/xxxx",   // Launch Page deposit ($375)
