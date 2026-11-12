@@ -3,554 +3,385 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Websites for Coaches and Consultants | Delight Choice Services</title>
-<meta name="description" content="A fixed-price website for coaches and consultants: six pages, booking button, English and French, live in 10 business days or less, with your deposit back if you don't love the first design preview.">
-<meta property="og:title" content="Websites for Coaches and Consultants">
-<meta property="og:description" content="One fixed price, one clear package. Live in 10 business days or less. Deposit back if you don't love the first preview.">
+<title>Web Design and Development Studio | Delight Choice Services</title>
+<meta name="description" content="Delight Choice Services designs and builds websites and web apps for coaches, consultants and service businesses. Fixed prices, live in 10 business days, you own everything. English and French.">
+<meta property="og:title" content="Delight Choice Services — websites that win clients">
+<meta property="og:description" content="Websites and web apps for coaches, consultants and service businesses. Fixed price, live in 10 business days.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#0b1026">
+<meta name="theme-color" content="#13224a">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-
-<style>
-/* Layout: a calm consultancy page. Navy header and hero carry the Egbanname ink; the rainbow survives only as a thin rule, the logo and the guarantee seal. Everything else is quiet surfaces, one teal action color, and numbers set in mono. */
-:root {
-  --bg: #f4f6fa;
-  --surface: #ffffff;
-  --ink: #0b1026;
-  --soft: #4a5470;
-  --line: #dde2ec;
-  --navy: #0b1026;
-  --navy-2: #151d45;
-  --teal: #1dd1a1;
-  --cyan: #48dbfb;
-  --red: #e5484d;
-  --btn-ink: #04263a;
-  --tint: #eef2f8;
-  --rainbow: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1, #5f27cd);
-  --font: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
-  --mono: ui-monospace, "Cascadia Mono", Consolas, Menlo, monospace;
-  --r: 14px;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --bg: #080c1f; --surface: #111836; --ink: #eef1f8; --soft: #a7b0c8; --line: #252f57; --navy: #0d1330; --navy-2: #182152; --tint: #182048; --red: #ff7b7f; color-scheme: dark; }
-}
-:root[data-theme="dark"] { --bg: #080c1f; --surface: #111836; --ink: #eef1f8; --soft: #a7b0c8; --line: #252f57; --navy: #0d1330; --navy-2: #182152; --tint: #182048; --red: #ff7b7f; color-scheme: dark; }
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
-a { color: inherit; }
-:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
-h1, h2, h3 { margin: 0; line-height: 1.15; text-wrap: balance; }
-h3 { font-size: 1.08rem; }
-p { margin: 0; }
-.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
-
-/* Dark zones keep white text in both themes */
-.topbar, .hero, .calc-out, .cta, footer { --soft: rgba(255, 255, 255, 0.78); color: #fff; }
-
-/* Top bar */
-.topbar { display: flex; align-items: center; gap: 12px 20px; flex-wrap: wrap; padding: calc(10px + env(safe-area-inset-top, 0px)) clamp(16px, 3vw, 32px) 10px;
-  position: sticky; top: 0; z-index: 50; background: var(--navy); border-bottom: 3px solid transparent; border-image: var(--rainbow) 1; }
-.logo { height: 62px; width: auto; max-width: 100%; display: block; }
-.topbar nav { display: flex; flex-wrap: wrap; gap: 2px; }
-.topbar nav a { text-decoration: none; font-weight: 600; font-size: .95rem; padding: 6px 10px; border-radius: 8px; color: var(--soft); }
-.topbar nav a:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
-.right { margin-left: auto; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-.lang-switch { display: flex; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px; overflow: hidden; }
-.lang-switch button { padding: 5px 10px; border: 0; cursor: pointer; font: inherit; font-weight: 700; font-size: .8rem; background: transparent; color: var(--soft); }
-.lang-switch button[aria-pressed="true"] { background: #fff; color: var(--navy); }
-
-/* Buttons */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; border: 1px solid transparent; cursor: pointer;
-  font: inherit; font-weight: 700; font-size: 1rem; padding: 12px 20px; border-radius: 10px; background: var(--teal); color: var(--btn-ink); transition: background-color .15s, transform .15s; }
-.btn:hover { background: #3be0b4; transform: translateY(-1px); }
-.btn.ghost { background: transparent; color: inherit; border-color: currentColor; }
-.btn.ghost:hover { background: rgba(127, 140, 170, 0.12); }
-.btn.sm { padding: 7px 14px; font-size: .9rem; }
-.btn.block { width: 100%; }
-
-/* Layout */
-main { max-width: 1120px; margin: 0 auto; padding: 28px clamp(16px, 3vw, 24px) 0; display: grid; gap: 28px; }
-.glass { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
-.section { padding: clamp(24px, 4vw, 44px); display: grid; gap: 24px; }
-.section-head { display: grid; gap: 8px; max-width: 64ch; }
-.section-head h2 { font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 750; letter-spacing: -0.01em; }
-.section-head p { color: var(--soft); font-size: 1.05rem; }
-.kicker { justify-self: start; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--soft); display: inline-flex; align-items: center; gap: 8px; }
-.kicker::before { content: ""; width: 18px; height: 3px; border-radius: 2px; background: var(--rainbow); }
-
-/* Hero */
-.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(22px, 4vw, 48px); align-items: center; padding: clamp(28px, 5vw, 56px); border: 0;
-  background: radial-gradient(600px 300px at 0% 0%, rgba(72, 219, 251, 0.18), transparent 70%), radial-gradient(500px 300px at 100% 100%, rgba(95, 39, 205, 0.28), transparent 70%), var(--navy); }
-.hero > * { min-width: 0; }
-.hero h1 { font-size: clamp(2.1rem, 5vw, 3.3rem); font-weight: 800; letter-spacing: -0.02em; margin-block: 14px; }
-.hero h1 .grad { background: linear-gradient(90deg, var(--teal), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.hero .sub { font-size: 1.1rem; color: var(--soft); max-width: 52ch; }
-.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
-.hero-note { margin-top: 16px; font-size: .95rem; color: var(--soft); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-
-.bill { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 12px; padding: 20px; font-size: .88rem; }
-.bill-head { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; color: var(--soft); padding-bottom: 10px; border-bottom: 1px dashed rgba(255, 255, 255, 0.2); }
-.bill-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding-block: 9px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); align-items: baseline; }
-.bill-row small { display: block; color: var(--soft); font-size: .78rem; }
-.bill-row .amt { text-align: right; }
-.bill-row .sv { display: block; color: var(--teal); font-family: var(--font); font-size: .78rem; font-weight: 600; }
-.tag { display: inline-block; font-size: .68rem; font-weight: 700; padding: 1px 7px; border-radius: 20px; background: rgba(255, 107, 107, 0.18); color: #ff9b9d; margin-left: 4px; vertical-align: 1px; }
-.bill-total { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding-top: 10px; font-weight: 700; }
-.bill-total.save { margin-top: 10px; padding: 10px 12px; border-radius: 8px; background: rgba(29, 209, 161, 0.16); color: var(--teal); }
-.bill-foot { margin-top: 10px; font-size: .74rem; color: var(--soft); }
-
-/* Cards */
-.tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 14px; }
-.tool-card { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: grid; gap: 8px; align-content: start; min-width: 0; }
-.tool-card p { color: var(--soft); font-size: .95rem; }
-.pill { justify-self: start; padding: 2px 9px; border-radius: 20px; font-size: .74rem; font-weight: 700; background: var(--tint); color: var(--soft); font-family: var(--mono); }
-#how .pill { background: var(--navy); color: #fff; }
-.hero .pill { background: rgba(29, 209, 161, 0.16); color: var(--teal); font-family: var(--font); }
-
-/* Calculator */
-.calc { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.calc > * { min-width: 0; }
-.calc-in { display: grid; gap: 20px; align-content: start; }
-.field { display: grid; gap: 8px; border: 0; margin: 0; padding: 0; min-width: 0; }
-.field label, .field legend { font-weight: 650; padding: 0; }
-.spend-out { font-family: var(--mono); font-size: 1.6rem; font-weight: 600; }
-input[type="range"] { width: 100%; accent-color: #12a37d; }
-.toggle { display: flex; gap: 8px; flex-wrap: wrap; }
-.toggle label { font-size: .92rem; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; padding: 7px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--line); }
-.toggle input { margin: 0; accent-color: #12a37d; }
-.toggle label:has(input:checked) { border-color: #12a37d; box-shadow: inset 0 0 0 1px #12a37d; }
-.calc-out { background: var(--navy); border-radius: 12px; padding: 24px; display: grid; gap: 16px; align-content: start; }
-.calc-out .kicker { color: var(--soft); }
-.big { font-family: var(--mono); font-size: clamp(2.1rem, 5.5vw, 3rem); font-weight: 600; line-height: 1; color: var(--teal); }
-.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: rgba(255, 255, 255, 0.12); border-radius: 8px; overflow: hidden; }
-.stat-box { background: var(--navy); padding: 12px; display: grid; gap: 2px; }
-.stat-box span { font-size: .78rem; color: var(--soft); }
-.stat-box b { font-family: var(--mono); font-size: 1.05rem; font-weight: 600; }
-.fine { font-size: .8rem; color: var(--soft); }
-#how .fine { font-size: .9rem; }
-
-/* Pricing */
-.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
-.plan { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: grid; grid-template-rows: auto auto auto 1fr auto; gap: 12px; }
-.plan.featured { border: 2px solid var(--navy); position: relative; }
-:root[data-theme="dark"] .plan.featured { border-color: var(--cyan); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .plan.featured { border-color: var(--cyan); } }
-.plan.featured .pill { background: var(--navy); color: #fff; font-family: var(--font); }
-.plan .fit { font-size: .85rem; color: var(--soft); }
-.price { font-family: var(--mono); font-size: 2.2rem; font-weight: 600; line-height: 1; }
-.price small { font-family: var(--font); font-size: .95rem; font-weight: 600; color: var(--soft); }
-.plan ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; align-content: start; font-size: .95rem; }
-.plan li { padding-left: 22px; position: relative; }
-.plan li::before { content: "✓"; position: absolute; left: 0; font-weight: 800; color: #12a37d; }
-.addon { display: flex; gap: 14px 28px; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 18px 22px; border-radius: 12px; background: var(--bg); border: 1px dashed var(--line); }
-.addon > div { flex: 1 1 280px; min-width: 0; display: grid; gap: 4px; }
-.addon p { color: var(--soft); font-size: .95rem; }
-
-/* Guarantee */
-.guarantee { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(20px, 4vw, 44px); align-items: center; }
-.seal { width: clamp(120px, 16vw, 150px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; display: grid; place-items: center; text-align: center; position: relative; font-weight: 700; text-transform: uppercase; font-size: .74rem; letter-spacing: .08em; color: var(--soft); }
-.seal::before { content: ""; position: absolute; inset: 0; border-radius: 50%; padding: 5px; background: conic-gradient(#ff6b6b, #feca57, #48dbfb, #1dd1a1, #5f27cd, #ff6b6b); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
-.seal strong { display: block; font-family: var(--mono); font-size: 2.4rem; letter-spacing: 0; line-height: 1; color: var(--ink); }
-.guarantee h2 { font-size: clamp(1.3rem, 2.8vw, 1.8rem); font-weight: 750; }
-.guarantee p { color: var(--soft); margin-top: 10px; max-width: 62ch; }
-
-/* FAQ */
-.faq { display: grid; border-top: 1px solid var(--line); }
-.faq details { border-bottom: 1px solid var(--line); padding: 16px 2px; }
-.faq summary { cursor: pointer; font-weight: 650; list-style: none; display: flex; justify-content: space-between; gap: 14px; }
-.faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; font-family: var(--mono); color: var(--soft); }
-.faq details[open] summary::after { content: "−"; }
-.faq details p { margin-top: 8px; color: var(--soft); max-width: 72ch; }
-
-/* CTA + footer */
-.cta { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; align-items: center; padding: clamp(24px, 4vw, 44px); border: 0;
-  background: radial-gradient(500px 260px at 100% 0%, rgba(29, 209, 161, 0.2), transparent 70%), var(--navy); }
-.cta > * { min-width: 0; }
-.cta h2 { font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 750; }
-.cta p { color: var(--soft); margin-top: 10px; }
-.cta-side { display: grid; gap: 10px; }
-.mail { font-family: var(--mono); font-size: .88rem; word-break: break-all; color: var(--soft); text-align: center; }
-footer { text-align: center; padding: 24px clamp(16px, 3vw, 28px) calc(24px + env(safe-area-inset-bottom, 0px)); background: var(--navy); margin-top: 40px; font-size: .9rem; display: grid; gap: 4px; border-top: 3px solid transparent; border-image: var(--rainbow) 1; }
-footer .small { color: var(--soft); font-size: .8rem; }
-
-@media (max-width: 880px) {
-  .hero, .calc, .cta { grid-template-columns: 1fr; }
-  .plans { grid-template-columns: 1fr; }
-  .topbar nav { display: none; }
-  .logo { height: 46px; }
-}
-@media (max-width: 520px) {
-  .guarantee { grid-template-columns: 1fr; justify-items: start; }
-  .right { margin-left: 0; }
-}
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
-
-/* web design additions */
-.bill-row .ok { color: var(--teal); font-weight: 800; }
-.fine { font-size: .8rem; color: var(--soft); }
-#how .fine { font-size: .9rem; }
-.files { display: flex; gap: 10px; flex-wrap: wrap; }
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,450..800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 
-<header class="topbar">
-  <a href="#top" aria-label="Home">
-    <svg class="logo" viewBox="0 0 520 170" role="img" aria-label="Delight Choice Services logo">
-      <defs>
-        <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#ff6b6b"/><stop offset="25%" stop-color="#feca57"/>
-          <stop offset="50%" stop-color="#48dbfb"/><stop offset="75%" stop-color="#1dd1a1"/>
-          <stop offset="100%" stop-color="#5f27cd"/>
-        </linearGradient>
-      </defs>
-      <circle cx="80" cy="85" r="60" fill="none" stroke="url(#lg)" stroke-width="10"/>
-      <path d="M46 76a22 22 0 0 1 30-22a26 26 0 0 1 48 10a18 18 0 0 1-4 36H52a18 18 0 0 1-6-24z" fill="url(#lg)"/>
-      <path d="M85 62v34m-12-12l12 13l12-13" fill="none" stroke="#0b1026" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-      <text x="160" y="68" font-family="Segoe UI,Arial,sans-serif" font-size="37" font-weight="800" fill="url(#lg)" textLength="352" lengthAdjust="spacingAndGlyphs">DELIGHT CHOICE</text>
-      <text x="160" y="106" font-family="Segoe UI,Arial,sans-serif" font-size="37" font-weight="800" fill="url(#lg)">SERVICES</text>
-      <text x="162" y="130" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="600" fill="#ffffff">Website Design</text>
-      <text x="162" y="152" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#ffffee" data-i18n="logo_tag">Your business, online.</text>
-    </svg>
-  </a>
-  <nav aria-label="Main">
-    <a href="#how" data-i18n="nav_how">How it works</a>
-    <a href="#pages" data-i18n="nav_pages">What you get</a>
-    <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
-    <a href="trust.html" data-i18n="nav_trust">Trust</a>
-    <a href="#faq" data-i18n="nav_faq">FAQ</a>
-  </nav>
-  <div class="right">
-    <div class="lang-switch" role="group" aria-label="Language">
-      <button type="button" data-lang="en" aria-pressed="true">EN</button>
-      <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Delight Choice Services home">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="5" width="30" height="30" rx="4" fill="#13224a"/><text x="20" y="25.5" text-anchor="middle" font-family="Bricolage Grotesque, Segoe UI, sans-serif" font-weight="750" font-size="14.5" fill="#fff">dc</text><g fill="#f4b63f" stroke="#13224a" stroke-width="1.2"><rect x="1.5" y="1.5" width="7" height="7" rx="1.5"/><rect x="31.5" y="1.5" width="7" height="7" rx="1.5"/><rect x="1.5" y="31.5" width="7" height="7" rx="1.5"/><rect x="31.5" y="31.5" width="7" height="7" rx="1.5"/></g></svg>
+      <span class="brand-name">Delight Choice<span data-i18n="brand_sub">Web design and development</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="#services" data-i18n="nav_services">Services</a>
+      <a href="#work" data-i18n="nav_work">Work</a>
+      <a href="#process" data-i18n="nav_process">Process</a>
+      <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+      <a href="trust.html" data-i18n="nav_trust">Trust</a>
+    </nav>
+    <div class="head-actions">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+      </div>
+      <a class="btn sm" data-book href="#contact" data-i18n="nav_book">Book a call</a>
     </div>
-    <a class="btn sm" data-book href="#contact" data-i18n="nav_book">Book a call</a>
   </div>
 </header>
 
-<main id="top">
-  <section class="glass hero">
-    <div>
-      <span class="kicker" data-i18n="hero_kicker">Websites for coaches and consultants</span>
-      <h1 data-i18n="hero_title" data-html>A professional website for your coaching or consulting business, <span class="grad">live in 10 business days or less</span>.</h1>
-      <p class="sub" data-i18n="hero_sub">One fixed price, one clear package. Your site shows your expertise, lets clients book a call, and works in English and French. You own everything.</p>
-      <div class="hero-ctas">
-        <a class="btn" data-book href="#contact" data-i18n="hero_cta">Book a free 15-min call</a>
-        <a class="btn ghost" href="#pricing" data-i18n="hero_cta2">See packages and prices</a>
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1 data-i18n="hero_title">Websites that make clients choose you.</h1>
+        <p class="lede" data-i18n="hero_sub">We design and build websites and web apps for coaches, consultants and service businesses. One fixed price, live in 10 business days, and everything belongs to you.</p>
+        <div class="hero-ctas">
+          <a class="btn" data-book href="#contact" data-i18n="hero_cta">Book a free 15-minute call</a>
+          <a class="btn line" href="#pricing" data-i18n="hero_cta2">See packages and prices</a>
+        </div>
+        <p class="hero-promise">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#f4b63f"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#13224a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-i18n="hero_note">Don't love the first design preview? You get your deposit back in full.</span>
+        </p>
       </div>
-      <p class="hero-note"><span class="pill p3" data-i18n="guarantee_pill">Guarantee</span><span data-i18n="hero_note">Don't love the first design preview? You get your deposit back.</span></p>
-    </div>
-    <figure class="bill" style="margin:0" aria-label="What the Expert Site includes">
-      <div class="bill-head"><span data-i18n="incl_title">Your Expert Site includes</span><span class="num">$1,800</span></div>
-      <div class="bill-row"><span data-i18n="i1">6 pages: Home, About, Services, Results, Book, Contact</span><span class="ok" aria-hidden="true">✓</span></div>
-      <div class="bill-row"><span data-i18n="i2">Booking button connected to your calendar</span><span class="ok" aria-hidden="true">✓</span></div>
-      <div class="bill-row"><span data-i18n="i3">Mobile-first design on fast, secure hosting</span><span class="ok" aria-hidden="true">✓</span></div>
-      <div class="bill-row"><span data-i18n="i4">Basic SEO so people can find you by name and service</span><span class="ok" aria-hidden="true">✓</span></div>
-      <div class="bill-row"><span data-i18n="i5">English and French versions available</span><span class="ok" aria-hidden="true">✓</span></div>
-      <div class="bill-row"><span data-i18n="i6">You own your domain, content and files</span><span class="ok" aria-hidden="true">✓</span></div>
-      <p class="bill-foot" data-i18n="incl_foot">$1,800 fixed price. A one-page option starts at $750.</p>
-    </figure>
-  </section>
 
-  <section class="glass section" id="how">
-    <div class="section-head">
-      <span class="kicker" data-i18n="how_kicker">How it works</span>
-      <h2 data-i18n="how_title">From kickoff to launch in 10 business days or less</h2>
-    </div>
-    <div class="tool-grid">
-      <div class="tool-card"><span class="pill p1" data-i18n="st1">Step 1</span><h3 data-i18n="s1_t">Kickoff</h3><p data-i18n="s1_d">A 15-minute call or short form: your business, who you help, what you offer, and examples you like.</p></div>
-      <div class="tool-card"><span class="pill p2" data-i18n="st2">Step 2</span><h3 data-i18n="s2_t">Design preview</h3><p data-i18n="s2_d">You get a design of your homepage to react to before we build anything else.</p></div>
-      <div class="tool-card"><span class="pill p3" data-i18n="st3">Step 3</span><h3 data-i18n="s3_t">Build and review</h3><p data-i18n="s3_d">We build every page, test it on phones and desktops, and you review it with up to two rounds of changes.</p></div>
-      <div class="tool-card"><span class="pill p4" data-i18n="st4">Step 4</span><h3 data-i18n="s4_t">Launch and handoff</h3><p data-i18n="s4_d">We connect your domain, go live, and hand you everything: files, logins you own, and a short guide to updating your site.</p></div>
-    </div>
-    <p class="fine" data-i18n="how_note">The clock starts once your deposit and your content (text, logo, photos) are received. Custom projects get their own schedule.</p>
-  </section>
-
-  <section class="glass section" id="pages">
-    <div class="section-head">
-      <span class="kicker" data-i18n="pg_kicker">What you get</span>
-      <h2 data-i18n="pg_title">Your Expert Site, page by page</h2>
-      <p data-i18n="pg_sub">The same clear structure every time, adapted to your business, so it's fast to build and easy for visitors to follow.</p>
-    </div>
-    <div class="tool-grid">
-      <div class="tool-card"><span class="pill p1">01</span><h3 data-i18n="g1_t">Home</h3><p data-i18n="g1_d">Who you help, what you offer and the next step, clear in seconds.</p></div>
-      <div class="tool-card"><span class="pill p2">02</span><h3 data-i18n="g2_t">About</h3><p data-i18n="g2_d">Your story, credentials and why clients should trust you.</p></div>
-      <div class="tool-card"><span class="pill p3">03</span><h3 data-i18n="g3_t">Services</h3><p data-i18n="g3_d">What you offer, who it's for and how it works.</p></div>
-      <div class="tool-card"><span class="pill p4">04</span><h3 data-i18n="g4_t">Results</h3><p data-i18n="g4_d">Testimonials and outcomes, designed to work with one testimonial or none yet.</p></div>
-      <div class="tool-card"><span class="pill p5">05</span><h3 data-i18n="g5_t">Book a call</h3><p data-i18n="g5_d">A booking button connected to your calendar, so interested visitors can schedule in one click.</p></div>
-      <div class="tool-card"><span class="pill p6">06</span><h3 data-i18n="g6_t">Contact</h3><p data-i18n="g6_d">A contact form, your email and social links, plus a newsletter sign-up if you want one.</p></div>
-    </div>
-  </section>
-
-  <section class="glass section" id="checks">
-    <div class="section-head">
-      <span class="kicker" data-i18n="chk_kicker">Why it works</span>
-      <h2 data-i18n="chk_title">Built around how experts win clients</h2>
-    </div>
-    <div class="tool-grid">
-      <div class="tool-card"><span class="pill p1">Offer</span><h3 data-i18n="w1_t">A clear offer</h3><p data-i18n="w1_d">Visitors understand what you do, who it's for and what to do next.</p></div>
-      <div class="tool-card"><span class="pill p2">Trust</span><h3 data-i18n="w2_t">Credibility up front</h3><p data-i18n="w2_d">Your credentials, story and results sit where visitors look first.</p></div>
-      <div class="tool-card"><span class="pill p3">Booking</span><h3 data-i18n="w3_t">One-click booking</h3><p data-i18n="w3_d">Calendly or Cal.com connected, so a visitor goes from interested to booked in a click.</p></div>
-      <div class="tool-card"><span class="pill p4">Email</span><h3 data-i18n="w4_t">Email list ready</h3><p data-i18n="w4_d">A sign-up form connected to your email tool, such as Mailchimp or MailerLite.</p></div>
-      <div class="tool-card"><span class="pill p5">EN · FR</span><h3 data-i18n="w5_t">Bilingual option</h3><p data-i18n="w5_d">English and French versions with a language switch, built in from the start.</p></div>
-      <div class="tool-card"><span class="pill p6">HTTPS</span><h3 data-i18n="w6_t">Fast and secure</h3><p data-i18n="w6_d">Quick loading, HTTPS, and optional monthly care for updates and backups.</p></div>
-    </div>
-  </section>
-
-  <section class="glass section" id="pricing">
-    <div class="section-head">
-      <span class="kicker" data-i18n="pr_kicker">Pricing</span>
-      <h2 data-i18n="pr_title">One clear package, plus two options</h2>
-      <p data-i18n="pr_note">You pay 50% to start and the other 50% when you approve the final site.</p>
-    </div>
-    <div class="plans">
-      <article class="plan">
-        <span class="fit" data-i18n="pl1_fit">Just starting out</span>
-        <h3>Launch Page</h3>
-        <p class="price">$750</p>
-        <ul><li data-i18n="pl1_a">One page: offer, about, booking button</li><li data-i18n="pl1_b">Contact form and basic SEO</li><li data-i18n="pl1_c">Mobile-ready, on secure hosting</li><li data-i18n="pl1_d">2 rounds of changes</li><li data-i18n="pl1_e">Live in 7 business days</li></ul>
-        <a class="btn ghost block" data-pay="starter" href="#contact" data-i18n="pl1_cta">Get the Launch Page</a>
-      </article>
-      <article class="plan featured">
-        <span class="pill p2" data-i18n="pl_badge">Our main package</span>
-        <span class="fit" data-i18n="pl2_fit">For coaches and consultants</span>
-        <h3>Expert Site</h3>
-        <p class="price">$1,800</p>
-        <ul><li data-i18n="pl2_a">6 pages: Home, About, Services, Results, Book, Contact</li><li data-i18n="pl2_b">Custom design, with help polishing your text</li><li data-i18n="pl2_c">Booking calendar and email sign-up connected</li><li data-i18n="pl2_d">SEO basics and analytics setup</li><li data-i18n="pl2_e">2 rounds of changes</li><li data-i18n="pl2_f">Live in 10 business days</li></ul>
-        <a class="btn block" data-pay="expert" href="#contact" data-i18n="pl2_cta">Get the Expert Site</a>
-      </article>
-      <article class="plan">
-        <span class="fit" data-i18n="pl3_fit">Courses, memberships, stores</span>
-        <h3>Custom Build</h3>
-        <p class="price"><small data-i18n="from">From</small> $3,500</p>
-        <ul><li data-i18n="pl3_a">9+ pages, online store or membership area</li><li data-i18n="pl3_b">Integrations and advanced features</li><li data-i18n="pl3_c">Scoped on a call, fixed quote</li><li data-i18n="pl3_d">Schedule set in your quote</li></ul>
-        <a class="btn ghost block" data-book href="#contact" data-i18n="pl3_cta">Book a scoping call</a>
-      </article>
-    </div>
-    <div class="addon">
-      <div>
-        <h3 data-i18n="add_t">Add-ons: a second language and monthly care</h3>
-        <p data-i18n="add_d">A second language (English and French) adds $400 to the Launch Page and Expert Site. Monthly care starts at $79/mo: hosting, security updates, backups and up to one hour of edits each month.</p>
+      <div class="frame-wrap">
+        <div class="frame">
+          <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span class="frame-url">northfieldcoaching.com</span></div>
+          <div class="mock wire" id="hero-mock" role="img" aria-label="A coaching website shown first as a wireframe, then as the finished design">
+            <div class="m-nav"><span class="m-logo">Northfield</span><span>About</span><span>Coaching</span><span>Results</span><span class="m-pill">Book a call</span></div>
+            <div class="m-hero">
+              <div>
+                <p class="m-h">Lead with clarity, not burnout.</p>
+                <p class="m-p">Executive coaching for first-time leaders who want their team, and their evenings, back.</p>
+                <div class="m-btns"><span>Book a discovery call</span><span>How it works</span></div>
+              </div>
+              <div class="m-photo"></div>
+            </div>
+            <div class="m-row"><div>1:1 coaching</div><div>Team workshops</div><div>Leader reset</div></div>
+          </div>
+        </div>
+        <div class="frame-foot">
+          <span data-i18n="hero_caption">Concept design for a fictional coaching practice.</span>
+          <div class="view-toggle" role="group" aria-label="View">
+            <button type="button" data-view="wire" aria-pressed="true" data-i18n="v_wire">Wireframe</button>
+            <button type="button" data-view="design" aria-pressed="false" data-i18n="v_design">Design</button>
+          </div>
+        </div>
       </div>
-      <a class="btn ghost sm" data-book href="#contact" data-i18n="add_cta">Ask about it</a>
     </div>
   </section>
 
-  <section class="glass section guarantee" id="guarantee">
-    <div class="seal" aria-hidden="true"><span><strong>100%</strong><span data-i18n="seal">deposit back</span></span></div>
-    <div>
-      <span class="kicker" data-i18n="g_kicker">The guarantee</span>
-      <h2 style="margin-top:10px" data-i18n="g_title">Don't love the first design preview? You get your deposit back.</h2>
-      <p data-i18n="g_text">You pay 50% to start and the balance only when you approve the final site. If the first design preview isn't right for you, tell us within 5 business days and we refund your deposit in full.</p>
+  <section class="band mist" id="services">
+    <div class="wrap">
+      <div class="head">
+        <h2 data-i18n="sv_title">What we design and build</h2>
+        <p class="lede" data-i18n="sv_sub">Strategy, design and engineering under one roof, so the site looks right, loads fast and turns visitors into booked calls.</p>
+      </div>
+      <div class="services">
+        <article class="service">
+          <div><h3 data-i18n="sv1_t">Websites for experts</h3><p class="for" data-i18n="sv1_for">Coaches, consultants, therapists, advisors</p></div>
+          <div>
+            <p data-i18n="sv1_d">A clear, credible site built around how your clients decide: who you help, why you, and one easy way to book.</p>
+            <ul><li data-i18n="sv1_a">Custom design, with help polishing your copy</li><li data-i18n="sv1_b">Booking, email sign-up and analytics connected</li><li data-i18n="sv1_c">English, French or both</li></ul>
+          </div>
+          <p class="price-from"><small data-i18n="from">From</small>$750</p>
+        </article>
+        <article class="service">
+          <div><h3 data-i18n="sv2_t">Custom development</h3><p class="for" data-i18n="sv2_for">When a brochure site isn't enough</p></div>
+          <div>
+            <p data-i18n="sv2_d">Web apps and advanced features, engineered by a DevOps and cloud engineer and hosted properly.</p>
+            <ul><li data-i18n="sv2_a">Client portals, courses and membership areas</li><li data-i18n="sv2_b">Online stores, payments and booking flows</li><li data-i18n="sv2_c">Integrations with Stripe, Calendly, Mailchimp and your CRM</li></ul>
+          </div>
+          <p class="price-from"><small data-i18n="from">From</small>$3,500</p>
+        </article>
+        <article class="service">
+          <div><h3 data-i18n="sv3_t">Care and growth</h3><p class="for" data-i18n="sv3_for">After launch</p></div>
+          <div>
+            <p data-i18n="sv3_d">Your site stays fast, secure and up to date while you focus on clients.</p>
+            <ul><li data-i18n="sv3_a">Hosting, security updates and backups</li><li data-i18n="sv3_b">Up to one hour of edits every month</li><li data-i18n="sv3_c">New landing pages for launches and campaigns, quoted per page</li></ul>
+          </div>
+          <p class="price-from"><small data-i18n="from">From</small><span data-i18n="per_mo">$79/mo</span></p>
+        </article>
+      </div>
     </div>
   </section>
 
-  <section class="glass section" id="faq">
-    <div class="section-head">
-      <span class="kicker" data-i18n="faq_kicker">Questions</span>
-      <h2 data-i18n="faq_title">Before you book</h2>
-    </div>
-    <div class="faq">
-      <details><summary data-i18n="f1_q">What do you need from me?</summary><p data-i18n="f1_a">Your logo, bio, text and photos if you have them, plus a few examples of sites you like. If your text needs work, the Expert Site includes help structuring and polishing it. Writing everything from scratch is quoted separately.</p></details>
-      <details><summary data-i18n="f2_q">What if I don't have testimonials or a logo yet?</summary><p data-i18n="f2_a">No problem. The Results page works with one testimonial or none for now, and we show you how to collect more. A logo can be quoted separately.</p></details>
-      <details><summary data-i18n="f3_q">Who owns the website?</summary><p data-i18n="f3_a">You do: the design, content, files and your domain. We hand everything over at launch.</p></details>
-      <details><summary data-i18n="f4_q">Do you need my passwords?</summary><p data-i18n="f4_a">No. Where we need access to your domain or hosting, you add us as a collaborator or delegate, and you can remove us at any time.</p></details>
-      <details><summary data-i18n="f5_q">What happens after launch?</summary><p data-i18n="f5_a">Your site is yours either way. Monthly care covers hosting, updates, backups and small edits; without it, changes are quoted separately.</p></details>
-      <details><summary data-i18n="f6_q">Can you work with me if I'm not in Minnesota?</summary><p data-i18n="f6_a">Yes. Everything is online: calls, previews and reviews, in English or French.</p></details>
+  <section class="band" id="work">
+    <div class="wrap">
+      <div class="head">
+        <h2 data-i18n="wk_title">Concept work</h2>
+        <p class="lede" data-i18n="wk_sub">Three sites we designed for fictional brands to show our range, from warm and personal to sharp and corporate.</p>
+      </div>
+      <div class="work">
+        <figure class="work-item">
+          <div class="thumb">
+            <div class="mock t-advisory" aria-hidden="true">
+              <div class="m-nav"><span class="m-logo">Harbor &amp; Pine</span><span>Services</span><span>Insights</span><span class="m-pill">Talk to us</span></div>
+              <div class="m-hero">
+                <div><p class="m-h">Operations that scale with you.</p><p class="m-p">Advisory for founder-led firms between 10 and 100 people.</p><div class="m-btns"><span>Schedule a review</span></div></div>
+                <div class="m-chart"><i style="height:35%"></i><i style="height:52%"></i><i style="height:48%"></i><i style="height:70%"></i><i style="height:88%"></i></div>
+              </div>
+              <div class="m-row"><div>Process audit</div><div>Hiring plan</div><div>Fractional COO</div></div>
+            </div>
+          </div>
+          <figcaption><b>Harbor &amp; Pine Advisory</b><span data-i18n="wk1">Operations consulting firm, 7-page site with an insights blog</span></figcaption>
+        </figure>
+        <figure class="work-item">
+          <div class="thumb">
+            <div class="mock t-nutrition" aria-hidden="true">
+              <div class="m-nav"><span class="m-logo">Lumen</span><span>Programs</span><span class="m-pill">Start</span></div>
+              <div class="m-hero">
+                <div><p class="m-h">Eat well without the rules.</p><div class="m-btns"><span>Free guide</span></div></div>
+                <div class="m-bowl"></div>
+              </div>
+              <div></div>
+            </div>
+          </div>
+          <figcaption><b>Lumen Nutrition Coaching</b><span data-i18n="wk2">One-page launch site with email sign-up</span></figcaption>
+        </figure>
+        <figure class="work-item">
+          <div class="thumb">
+            <div class="mock" aria-hidden="true">
+              <div class="m-nav"><span class="m-logo">Northfield</span><span>About</span><span class="m-pill">Book a call</span></div>
+              <div class="m-hero">
+                <div><p class="m-h">Lead with clarity, not burnout.</p><div class="m-btns"><span>Book a call</span></div></div>
+                <div class="m-photo"></div>
+              </div>
+              <div></div>
+            </div>
+          </div>
+          <figcaption><b>Northfield Coaching</b><span data-i18n="wk3">Executive coach, 6-page Expert Site in English and French</span></figcaption>
+        </figure>
+      </div>
+      <p class="work-note" data-i18n="wk_note">These are concept designs, not client projects. Client work will appear here as projects launch, with each client's permission.</p>
     </div>
   </section>
 
-  <section class="glass cta" id="contact">
-    <div>
-      <h2 data-i18n="cta_title">Let's talk about your website</h2>
-      <p data-i18n="cta_text">A free 15-minute call. We look at what you have and what you need, and tell you honestly which package fits.</p>
+  <section class="band mist" id="process">
+    <div class="wrap">
+      <div class="head">
+        <h2 data-i18n="pc_title">From first call to launch in 10 business days</h2>
+        <p class="lede" data-i18n="pc_sub">A fixed process means fewer surprises. You always know what happens next and what we need from you.</p>
+      </div>
+      <ol class="steps">
+        <li><span class="when" data-i18n="pc1_w">Day 1</span><h3 data-i18n="pc1_t">Kickoff</h3><p data-i18n="pc1_d">A short call or form: your business, who you help, your offer and sites you like.</p></li>
+        <li><span class="when" data-i18n="pc2_w">Days 2 to 4</span><h3 data-i18n="pc2_t">Design preview</h3><p data-i18n="pc2_d">You see your homepage design and react to it before we build anything else.</p></li>
+        <li><span class="when" data-i18n="pc3_w">Days 5 to 8</span><h3 data-i18n="pc3_t">Build and review</h3><p data-i18n="pc3_d">We build every page, test it on phones and desktops, and you get two rounds of changes.</p></li>
+        <li><span class="when" data-i18n="pc4_w">Days 9 to 10</span><h3 data-i18n="pc4_t">Launch and handoff</h3><p data-i18n="pc4_d">We connect your domain, go live and hand you every file, login and a short guide to updating your site.</p></li>
+      </ol>
+      <p class="process-note" data-i18n="pc_note">The clock starts once your deposit and content (text, logo, photos) arrive. A Launch Page takes 7 business days. Custom projects get their own schedule in the quote.</p>
     </div>
-    <div class="cta-side">
-      <a class="btn block" data-book href="#contact" data-i18n="cta_btn">Book a free call</a>
-      <p class="mail"><span data-i18n="cta_mail">Or email</span> <a data-email href="mailto:contact@delightchoiceservices.com">contact@delightchoiceservices.com</a></p>
+  </section>
+
+  <section class="band" id="pricing">
+    <div class="wrap">
+      <div class="head">
+        <h2 data-i18n="pr_title">Fixed prices, agreed before we start</h2>
+        <p class="lede" data-i18n="pr_sub">Pay 50% to start and the other 50% when you approve the finished site.</p>
+      </div>
+      <div class="plans">
+        <article class="plan">
+          <span class="fit" data-i18n="pl1_fit">Just starting out</span>
+          <h3>Launch Page</h3>
+          <p class="price">$750</p>
+          <ul><li data-i18n="pl1_a">One page: offer, about and booking</li><li data-i18n="pl1_b">Contact form and basic SEO</li><li data-i18n="pl1_c">Mobile-first, on secure hosting</li><li data-i18n="pl1_d">2 rounds of changes</li><li data-i18n="pl1_e">Live in 7 business days</li></ul>
+          <a class="btn line block" data-pay="starter" href="#contact" data-i18n="pl1_cta">Start my Launch Page</a>
+        </article>
+        <article class="plan featured on-navy">
+          <span class="badge" data-i18n="pl_badge">Our main package</span>
+          <span class="fit" data-i18n="pl2_fit">For coaches and consultants</span>
+          <h3>Expert Site</h3>
+          <p class="price">$1,800</p>
+          <ul><li data-i18n="pl2_a">6 pages: Home, About, Services, Results, Book, Contact</li><li data-i18n="pl2_b">Custom design, with help polishing your copy</li><li data-i18n="pl2_c">Booking calendar and email sign-up connected</li><li data-i18n="pl2_d">SEO basics and analytics set up</li><li data-i18n="pl2_e">2 rounds of changes</li><li data-i18n="pl2_f">Live in 10 business days</li></ul>
+          <a class="btn block" data-pay="expert" href="#contact" data-i18n="pl2_cta">Start my Expert Site</a>
+        </article>
+        <article class="plan">
+          <span class="fit" data-i18n="pl3_fit">Courses, memberships, stores, web apps</span>
+          <h3>Custom Build</h3>
+          <p class="price"><small data-i18n="from">From</small>$3,500</p>
+          <ul><li data-i18n="pl3_a">9+ pages or an online store or member area</li><li data-i18n="pl3_b">Integrations and custom features</li><li data-i18n="pl3_c">Scoped on a call, with a fixed quote</li><li data-i18n="pl3_d">Schedule set in your quote</li></ul>
+          <a class="btn line block" data-book href="#contact" data-i18n="pl3_cta">Book a scoping call</a>
+        </article>
+      </div>
+      <div class="addons">
+        <div class="addon"><h3 data-i18n="ad1_t">Second language, +$400</h3><p data-i18n="ad1_d">English and French versions with a language switch, for the Launch Page or Expert Site.</p></div>
+        <div class="addon"><h3 data-i18n="ad2_t">Monthly care, from $79/mo</h3><p data-i18n="ad2_d">Hosting, security updates, backups and up to one hour of edits each month.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band guarantee">
+    <div class="wrap">
+      <h2 data-i18n="g_title">Don't love the first design? Your deposit comes back.</h2>
+      <p data-i18n="g_text">Tell us within 5 business days of the first design preview and we refund your deposit in full. You pay the balance only when you approve the final site.</p>
+    </div>
+  </section>
+
+  <section class="band founder">
+    <div class="wrap">
+      <div class="monogram" aria-hidden="true">KS</div>
+      <div class="founder-copy">
+        <h2 data-i18n="o_title">A founder-led studio</h2>
+        <p data-i18n="o_d1">I'm Kossi Sikpe, a DevOps and cloud infrastructure engineer in the Twin Cities. I lead every project from the first call to handoff and review every page before you see it.</p>
+        <p data-i18n="o_d2">That engineering background is why our sites load fast, stay secure and are set up so you own your domain, hosting and files. Independent specialists may help with parts of a project; they only get what the job needs, and never your passwords.</p>
+        <p class="links"><a href="trust.html" data-i18n="o_trust">How we keep your accounts safe</a><a href="https://github.com/lsikkoss" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/kossi-sikpe-a07598294" rel="noopener">LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band mist" id="faq">
+    <div class="wrap faq-grid">
+      <div class="head"><h2 data-i18n="faq_title">Questions before you book</h2><p class="lede" data-i18n="faq_sub">Something else on your mind? Ask on the call or in the form below.</p></div>
+      <div class="faq">
+        <details><summary data-i18n="f1_q">What do you need from me?</summary><p data-i18n="f1_a">Your logo, bio, text and photos if you have them, plus a few sites you like. The Expert Site includes help structuring and polishing your text. Writing everything from scratch is quoted separately.</p></details>
+        <details><summary data-i18n="f2_q">What if I don't have testimonials or a logo yet?</summary><p data-i18n="f2_a">No problem. The Results page works with one testimonial or none for now, and we show you how to collect more. A logo can be quoted separately.</p></details>
+        <details><summary data-i18n="f3_q">Who owns the website?</summary><p data-i18n="f3_a">You do: the design, content, files and domain. We hand everything over at launch.</p></details>
+        <details><summary data-i18n="f4_q">Do you need my passwords?</summary><p data-i18n="f4_a">No. Where we need access to your domain or hosting, you add us as a collaborator and can remove us at any time.</p></details>
+        <details><summary data-i18n="f5_q">Can you build something more complex, like a portal or store?</summary><p data-i18n="f5_a">Yes. That's the Custom Build. We scope it on a call and send a fixed quote with its own schedule before any work starts.</p></details>
+        <details><summary data-i18n="f6_q">Do you work with clients outside Minnesota?</summary><p data-i18n="f6_a">Yes. Everything happens online: calls, previews and reviews, in English or French.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="band on-navy contact" id="contact">
+    <div class="wrap">
+      <div class="contact-side">
+        <h2 data-i18n="ct_title">Tell us about your project</h2>
+        <p class="lede" data-i18n="ct_sub">Send a few details and we'll reply within 1 to 2 business days with the package that fits and a fixed price. Prefer to talk? Book a free 15-minute call.</p>
+        <a class="btn line" data-book href="#contact" data-i18n="ct_book">Book a free 15-minute call</a>
+        <div class="or"><span class="muted" data-i18n="ct_mail">Or email us directly</span><a data-email href="mailto:contact@delightchoiceservices.com">contact@delightchoiceservices.com</a></div>
+      </div>
+      <form class="inquiry" id="inquiry" novalidate>
+        <div class="field"><label for="f-name" data-i18n="fm_name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-email" data-i18n="fm_email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field full"><label for="f-biz"><span data-i18n="fm_biz">Business name or current website</span> <span class="opt" data-i18n="optional">(optional)</span></label><input id="f-biz" name="business"></div>
+        <div class="field"><label for="f-need" data-i18n="fm_need">What you need</label>
+          <select id="f-need" name="need">
+            <option value="expert" data-i18n="op_expert">Expert Site ($1,800)</option>
+            <option value="launch" data-i18n="op_launch">Launch Page ($750)</option>
+            <option value="custom" data-i18n="op_custom">Custom Build or web app</option>
+            <option value="care" data-i18n="op_care">Care for an existing site</option>
+            <option value="unsure" data-i18n="op_unsure">Not sure yet</option>
+          </select></div>
+        <div class="field"><label for="f-time" data-i18n="fm_time">When you'd like to launch</label>
+          <select id="f-time" name="timeline">
+            <option value="asap" data-i18n="op_asap">As soon as possible</option>
+            <option value="month" data-i18n="op_month">Within a month</option>
+            <option value="quarter" data-i18n="op_quarter">In the next 3 months</option>
+            <option value="exploring" data-i18n="op_exploring">Just exploring</option>
+          </select></div>
+        <div class="field full"><label for="f-msg" data-i18n="fm_msg">Tell us about your business and goals</label><textarea id="f-msg" name="message" required></textarea></div>
+        <div class="hp" aria-hidden="true"><label for="f-hp">Leave empty</label><input id="f-hp" name="company_site" tabindex="-1" autocomplete="off"></div>
+        <div class="full"><button class="btn block" type="submit" data-i18n="fm_send">Send inquiry</button></div>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 </main>
 
-<footer>
-  <span><span data-brand>Delight Choice Services</span> — <span data-i18n="foot_line">Websites for coaches and consultants</span> | <a data-email href="mailto:contact@delightchoiceservices.com">contact@delightchoiceservices.com</a></span>
-  <span class="small">© <span id="year">2026</span> · <a href="privacy.html" data-i18n="foot_privacy">Privacy</a> · <a href="trust.html" data-i18n="nav_trust">Trust</a> · <span data-i18n="foot_legal">Independent web design studio.</span></span>
+<footer class="site-foot on-navy">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <p class="foot-brand" data-brand>Delight Choice Services</p>
+        <p data-i18n="ft_line">Websites and web apps for coaches, consultants and service businesses. Based in the Twin Cities, working with clients everywhere.</p>
+      </div>
+      <div class="foot-col"><h3 data-i18n="ft_studio">Studio</h3><a href="#services" data-i18n="nav_services">Services</a><a href="#work" data-i18n="nav_work">Work</a><a href="#pricing" data-i18n="nav_pricing">Pricing</a><a href="trust.html" data-i18n="nav_trust">Trust</a></div>
+      <div class="foot-col"><h3 data-i18n="ft_contact">Contact</h3><a data-email href="mailto:contact@delightchoiceservices.com">contact@delightchoiceservices.com</a><a data-book href="#contact" data-i18n="nav_book">Book a call</a><a href="privacy.html" data-i18n="ft_privacy">Privacy policy</a></div>
+    </div>
+    <div class="foot-bottom"><span>© <span data-year>2026</span> Delight Choice Services</span><span data-i18n="ft_legal">Independent web design and development studio.</span></div>
+  </div>
 </footer>
 
+<script src="assets/config.js"></script>
 <script>
-/* ===== EDIT THESE BEFORE GOING LIVE ===== */
-const CONFIG = {
-  brand: "Delight Choice Services",          // your business name
-  email: "contact@delightchoiceservices.com",
-  bookingUrl: "",                            // e.g. https://calendly.com/yourname/15min
-  stripe: {
-    starter: "",                             // Stripe Payment Link: Launch Page deposit
-    expert: ""                               // Stripe Payment Link: Expert Site deposit
-  }
+window.I18N_FR = {
+  __title: "Studio de conception et développement web | Delight Choice Services",
+  skip: "Aller au contenu",
+  brand_sub: "Conception et développement web",
+  nav_services: "Services", nav_work: "Réalisations", nav_process: "Méthode", nav_pricing: "Tarifs", nav_trust: "Confiance", nav_book: "Réserver un appel",
+  hero_title: "Des sites web qui font que les clients vous choisissent.",
+  hero_sub: "Nous concevons et développons des sites et des applications web pour les coachs, les consultants et les entreprises de services. Un prix fixe, en ligne en 10 jours ouvrables, et tout vous appartient.",
+  hero_cta: "Réserver un appel gratuit de 15 minutes", hero_cta2: "Voir les forfaits et les prix",
+  hero_note: "Le premier aperçu du design ne vous plaît pas ? Votre acompte vous est remboursé en entier.",
+  hero_caption: "Concept de design pour un cabinet de coaching fictif.", v_wire: "Maquette", v_design: "Design",
+  sv_title: "Ce que nous concevons et développons",
+  sv_sub: "Stratégie, design et ingénierie sous un même toit : le site a la bonne allure, se charge vite et transforme les visiteurs en appels réservés.",
+  sv1_t: "Sites pour experts", sv1_for: "Coachs, consultants, thérapeutes, conseillers",
+  sv1_d: "Un site clair et crédible, construit autour de la façon dont vos clients décident : qui vous aidez, pourquoi vous, et une façon simple de réserver.",
+  sv1_a: "Design sur mesure, avec de l'aide pour peaufiner vos textes", sv1_b: "Réservation, inscription courriel et statistiques connectées", sv1_c: "Français, anglais ou les deux",
+  sv2_t: "Développement sur mesure", sv2_for: "Quand un site vitrine ne suffit pas",
+  sv2_d: "Applications web et fonctionnalités avancées, conçues par un ingénieur DevOps et infonuagique, et hébergées correctement.",
+  sv2_a: "Portails clients, cours et espaces membres", sv2_b: "Boutiques en ligne, paiements et parcours de réservation", sv2_c: "Intégrations avec Stripe, Calendly, Mailchimp et votre CRM",
+  sv3_t: "Suivi et croissance", sv3_for: "Après la mise en ligne",
+  sv3_d: "Votre site reste rapide, sécurisé et à jour pendant que vous vous occupez de vos clients.",
+  sv3_a: "Hébergement, mises à jour de sécurité et sauvegardes", sv3_b: "Jusqu'à une heure de modifications chaque mois", sv3_c: "Nouvelles pages pour vos lancements et campagnes, au prix par page",
+  from: "Dès", per_mo: "79 $/mois",
+  wk_title: "Concepts de design",
+  wk_sub: "Trois sites conçus pour des marques fictives afin de montrer notre éventail, du chaleureux et personnel au précis et corporatif.",
+  wk1: "Cabinet de conseil en opérations, site de 7 pages avec un blogue", wk2: "Site de lancement d'une page avec inscription courriel", wk3: "Coach de dirigeants, Site Expert de 6 pages en français et en anglais",
+  wk_note: "Ce sont des concepts, pas des projets clients. Les réalisations clients apparaîtront ici au fil des lancements, avec l'accord de chaque client.",
+  pc_title: "Du premier appel à la mise en ligne en 10 jours ouvrables",
+  pc_sub: "Une méthode fixe, c'est moins de surprises. Vous savez toujours ce qui vient ensuite et ce dont nous avons besoin.",
+  pc1_w: "Jour 1", pc1_t: "Lancement", pc1_d: "Un court appel ou formulaire : votre entreprise, qui vous aidez, votre offre et des sites que vous aimez.",
+  pc2_w: "Jours 2 à 4", pc2_t: "Aperçu du design", pc2_d: "Vous voyez le design de votre page d'accueil et réagissez avant que nous construisions le reste.",
+  pc3_w: "Jours 5 à 8", pc3_t: "Construction et révision", pc3_d: "Nous construisons chaque page, la testons sur téléphone et ordinateur, et vous avez deux séries de modifications.",
+  pc4_w: "Jours 9 à 10", pc4_t: "Mise en ligne et remise", pc4_d: "Nous connectons votre domaine, mettons le site en ligne et vous remettons chaque fichier, chaque accès et un court guide de mise à jour.",
+  pc_note: "Le délai commence à la réception de votre acompte et de votre contenu (textes, logo, photos). Un Launch Page prend 7 jours ouvrables. Les projets sur mesure ont leur propre calendrier dans le devis.",
+  pr_title: "Des prix fixes, convenus avant de commencer", pr_sub: "Vous payez 50 % pour commencer et les 50 % restants lorsque vous approuvez le site terminé.",
+  pl1_fit: "Pour démarrer", pl1_a: "Une page : offre, à propos et réservation", pl1_b: "Formulaire de contact et référencement de base", pl1_c: "Pensé pour le mobile, sur un hébergement sécurisé", pl1_d: "2 séries de modifications", pl1_e: "En ligne en 7 jours ouvrables", pl1_cta: "Commencer mon Launch Page",
+  pl_badge: "Notre forfait principal", pl2_fit: "Pour coachs et consultants",
+  pl2_a: "6 pages : Accueil, À propos, Services, Résultats, Réservation, Contact", pl2_b: "Design sur mesure, avec de l'aide pour peaufiner vos textes", pl2_c: "Calendrier de réservation et inscription courriel connectés", pl2_d: "Bases du référencement et statistiques configurées", pl2_e: "2 séries de modifications", pl2_f: "En ligne en 10 jours ouvrables", pl2_cta: "Commencer mon Expert Site",
+  pl3_fit: "Cours, espaces membres, boutiques, applications web", pl3_a: "9 pages et plus, ou une boutique ou un espace membre", pl3_b: "Intégrations et fonctionnalités sur mesure", pl3_c: "Défini lors d'un appel, avec un devis fixe", pl3_d: "Calendrier précisé dans votre devis", pl3_cta: "Réserver un appel de cadrage",
+  ad1_t: "Deuxième langue, +400 $", ad1_d: "Versions française et anglaise avec sélecteur de langue, pour le Launch Page ou l'Expert Site.",
+  ad2_t: "Suivi mensuel, dès 79 $/mois", ad2_d: "Hébergement, mises à jour de sécurité, sauvegardes et jusqu'à une heure de modifications par mois.",
+  g_title: "Le premier design ne vous plaît pas ? Votre acompte vous revient.",
+  g_text: "Dites-le-nous dans les 5 jours ouvrables suivant le premier aperçu et nous remboursons votre acompte en entier. Vous payez le solde seulement quand vous approuvez le site final.",
+  o_title: "Un studio dirigé par son fondateur",
+  o_d1: "Je suis Kossi Sikpe, ingénieur DevOps et infrastructure infonuagique dans les Villes jumelles. Je dirige chaque projet, du premier appel à la remise, et je révise chaque page avant que vous ne la voyiez.",
+  o_d2: "C'est grâce à cette formation d'ingénieur que nos sites se chargent vite, restent sécurisés et sont configurés pour que votre domaine, votre hébergement et vos fichiers vous appartiennent. Des spécialistes indépendants peuvent aider sur certaines parties ; ils ne reçoivent que ce dont la tâche a besoin, et jamais vos mots de passe.",
+  o_trust: "Comment nous protégeons vos comptes",
+  faq_title: "Questions avant de réserver", faq_sub: "Autre chose en tête ? Posez la question pendant l'appel ou dans le formulaire ci-dessous.",
+  f1_q: "De quoi avez-vous besoin de ma part ?", f1_a: "Votre logo, votre biographie, vos textes et vos photos si vous en avez, plus quelques sites que vous aimez. L'Expert Site comprend de l'aide pour structurer et peaufiner vos textes. La rédaction complète est proposée à part.",
+  f2_q: "Et si je n'ai pas encore de témoignages ni de logo ?", f2_a: "Aucun problème. La page Résultats fonctionne avec un seul témoignage ou aucun pour l'instant, et nous vous montrons comment en recueillir. Un logo peut être proposé à part.",
+  f3_q: "À qui appartient le site ?", f3_a: "À vous : le design, le contenu, les fichiers et le domaine. Nous vous remettons tout à la mise en ligne.",
+  f4_q: "Avez-vous besoin de mes mots de passe ?", f4_a: "Non. Là où un accès à votre domaine ou hébergement est nécessaire, vous nous ajoutez comme collaborateur et pouvez nous retirer à tout moment.",
+  f5_q: "Pouvez-vous construire quelque chose de plus complexe, comme un portail ou une boutique ?", f5_a: "Oui. C'est le Custom Build. Nous le définissons lors d'un appel et envoyons un devis fixe avec son propre calendrier avant de commencer.",
+  f6_q: "Travaillez-vous avec des clients hors du Minnesota ?", f6_a: "Oui. Tout se passe en ligne : appels, aperçus et révisions, en français ou en anglais.",
+  ct_title: "Parlez-nous de votre projet",
+  ct_sub: "Envoyez quelques détails et nous répondons sous 1 à 2 jours ouvrables avec le forfait qui convient et un prix fixe. Vous préférez parler ? Réservez un appel gratuit de 15 minutes.",
+  ct_book: "Réserver un appel gratuit de 15 minutes", ct_mail: "Ou écrivez-nous directement",
+  fm_name: "Votre nom", fm_email: "Courriel", fm_biz: "Nom de l'entreprise ou site actuel", optional: "(facultatif)",
+  fm_need: "Ce dont vous avez besoin", op_expert: "Expert Site (1 800 $)", op_launch: "Launch Page (750 $)", op_custom: "Custom Build ou application web", op_care: "Suivi d'un site existant", op_unsure: "Je ne sais pas encore",
+  fm_time: "Quand souhaitez-vous être en ligne", op_asap: "Le plus tôt possible", op_month: "D'ici un mois", op_quarter: "Dans les 3 prochains mois", op_exploring: "Je me renseigne",
+  fm_msg: "Parlez-nous de votre entreprise et de vos objectifs", fm_send: "Envoyer la demande",
+  form_sending: "Envoi en cours…", form_sent: "Demande envoyée. Nous répondons sous 1 à 2 jours ouvrables.",
+  form_error: "La demande n'a pas pu être envoyée. Écrivez-nous à contact@delightchoiceservices.com.",
+  form_mailto: "Votre application de courriel s'est ouverte avec votre message. Envoyez-le depuis là.",
+  ft_line: "Sites et applications web pour coachs, consultants et entreprises de services. Établis dans les Villes jumelles, au service de clients partout.",
+  ft_studio: "Studio", ft_contact: "Contact", ft_privacy: "Politique de confidentialité", ft_legal: "Studio indépendant de conception et de développement web."
 };
-/* ======================================== */
-
-const I18N = { fr: {
-  "nav_how": "Fonctionnement",
-  "nav_pages": "Ce que vous obtenez",
-  "nav_pricing": "Tarifs",
-  "nav_trust": "Confiance",
-  "nav_faq": "FAQ",
-  "nav_book": "Réserver un appel",
-  "logo_tag": "Votre entreprise, en ligne.",
-  "hero_kicker": "Sites web pour coachs et consultants",
-  "hero_sub": "Un prix fixe, un forfait clair. Votre site met en valeur votre expertise, permet aux clients de réserver un appel et fonctionne en français et en anglais. Tout vous appartient.",
-  "hero_cta": "Réserver un appel gratuit de 15 min",
-  "hero_cta2": "Voir forfaits et prix",
-  "guarantee_pill": "Garantie",
-  "hero_note": "Le premier aperçu du design ne vous plaît pas ? Votre acompte vous est remboursé.",
-  "incl_title": "Votre Site Expert comprend",
-  "i1": "6 pages : Accueil, À propos, Services, Résultats, Réservation, Contact",
-  "i2": "Bouton de réservation relié à votre calendrier",
-  "i3": "Design pensé d'abord pour le mobile, sur un hébergement rapide et sécurisé",
-  "i4": "Référencement de base pour qu'on vous trouve par votre nom et votre service",
-  "i5": "Versions française et anglaise disponibles",
-  "i6": "Vous possédez votre domaine, votre contenu et vos fichiers",
-  "incl_foot": "1 800 $, prix fixe. Une version d'une page commence à 750 $.",
-  "how_kicker": "Fonctionnement",
-  "how_title": "Du lancement à la mise en ligne en 10 jours ouvrables ou moins",
-  "st1": "Étape 1",
-  "st2": "Étape 2",
-  "st3": "Étape 3",
-  "st4": "Étape 4",
-  "s1_t": "Lancement",
-  "s1_d": "Un appel de 15 minutes ou un court formulaire : votre entreprise, qui vous aidez, ce que vous offrez et des exemples que vous aimez.",
-  "s2_t": "Aperçu du design",
-  "s2_d": "Vous recevez le design de votre page d'accueil pour réagir avant que nous construisions le reste.",
-  "s3_t": "Construction et révision",
-  "s3_d": "Nous construisons chaque page, la testons sur téléphones et ordinateurs, et vous la révisez avec jusqu'à deux séries de modifications.",
-  "s4_t": "Mise en ligne et remise",
-  "s4_d": "Nous connectons votre domaine, mettons le site en ligne et vous remettons tout : fichiers, accès qui vous appartiennent et un court guide pour le mettre à jour.",
-  "how_note": "Le délai commence lorsque votre acompte et votre contenu (textes, logo, photos) sont reçus. Les projets sur mesure ont leur propre calendrier.",
-  "pg_kicker": "Ce que vous obtenez",
-  "pg_title": "Votre Site Expert, page par page",
-  "pg_sub": "La même structure claire à chaque fois, adaptée à votre activité : rapide à construire et facile à suivre pour les visiteurs.",
-  "g1_t": "Accueil",
-  "g1_d": "À qui vous vous adressez, ce que vous offrez et la prochaine étape, clairs en quelques secondes.",
-  "g2_t": "À propos",
-  "g2_d": "Votre parcours, vos références et les raisons de vous faire confiance.",
-  "g3_t": "Services",
-  "g3_d": "Ce que vous offrez, à qui cela s'adresse et comment cela fonctionne.",
-  "g4_t": "Résultats",
-  "g4_d": "Témoignages et résultats, conçus pour fonctionner avec un seul témoignage, ou aucun pour l'instant.",
-  "g5_t": "Réserver un appel",
-  "g5_d": "Un bouton de réservation relié à votre calendrier, pour que les visiteurs intéressés planifient en un clic.",
-  "g6_t": "Contact",
-  "g6_d": "Un formulaire de contact, votre courriel et vos liens sociaux, plus une inscription à l'infolettre si vous le souhaitez.",
-  "chk_kicker": "Pourquoi ça fonctionne",
-  "chk_title": "Conçu autour de la façon dont les experts trouvent des clients",
-  "w1_t": "Une offre claire",
-  "w1_d": "Les visiteurs comprennent ce que vous faites, à qui cela s'adresse et quoi faire ensuite.",
-  "w2_t": "La crédibilité d'emblée",
-  "w2_d": "Vos références, votre parcours et vos résultats se trouvent là où les visiteurs regardent d'abord.",
-  "w3_t": "Réservation en un clic",
-  "w3_d": "Calendly ou Cal.com intégré : le visiteur passe d'intéressé à inscrit en un clic.",
-  "w4_t": "Liste de courriels prête",
-  "w4_d": "Un formulaire d'inscription relié à votre outil de courriel, comme Mailchimp ou MailerLite.",
-  "w5_t": "Option bilingue",
-  "w5_d": "Versions anglaise et française avec sélecteur de langue, intégrées dès le départ.",
-  "w6_t": "Rapide et sécurisé",
-  "w6_d": "Chargement rapide, HTTPS et suivi mensuel optionnel pour les mises à jour et les sauvegardes.",
-  "pr_kicker": "Tarifs",
-  "pr_title": "Un forfait clair, plus deux options",
-  "pr_note": "Vous payez 50 % pour commencer et les 50 % restants lorsque vous approuvez le site final.",
-  "pl1_fit": "Pour démarrer",
-  "pl1_a": "Une page : offre, à propos, bouton de réservation",
-  "pl1_b": "Formulaire de contact et référencement de base",
-  "pl1_c": "Adapté au mobile, sur hébergement sécurisé",
-  "pl1_d": "2 séries de modifications",
-  "pl1_e": "En ligne en 7 jours ouvrables",
-  "pl1_cta": "Choisir le Launch Page",
-  "pl_badge": "Notre forfait principal",
-  "pl2_fit": "Pour coachs et consultants",
-  "pl2_a": "6 pages : Accueil, À propos, Services, Résultats, Réservation, Contact",
-  "pl2_b": "Design sur mesure, avec de l'aide pour peaufiner vos textes",
-  "pl2_c": "Calendrier de réservation et inscription par courriel reliés",
-  "pl2_d": "Bases du référencement et mise en place des statistiques",
-  "pl2_e": "2 séries de modifications",
-  "pl2_f": "En ligne en 10 jours ouvrables",
-  "pl2_cta": "Choisir le Site Expert",
-  "pl3_fit": "Cours, abonnements, boutiques",
-  "from": "Dès",
-  "pl3_a": "9 pages ou plus, boutique en ligne ou espace membres",
-  "pl3_b": "Intégrations et fonctions avancées",
-  "pl3_c": "Cadré lors d'un appel, devis fixe",
-  "pl3_d": "Calendrier fixé dans votre devis",
-  "pl3_cta": "Réserver un appel de cadrage",
-  "add_t": "Options : deuxième langue et suivi mensuel",
-  "add_d": "Une deuxième langue (français et anglais) ajoute 400 $ au Launch Page et au Site Expert. Le suivi mensuel commence à 79 $/mois : hébergement, mises à jour de sécurité, sauvegardes et jusqu'à une heure de modifications par mois.",
-  "add_cta": "En savoir plus",
-  "seal": "acompte remboursé",
-  "g_kicker": "La garantie",
-  "g_title": "Le premier aperçu du design ne vous plaît pas ? Votre acompte vous est remboursé.",
-  "g_text": "Vous payez 50 % pour commencer et le solde seulement lorsque vous approuvez le site final. Si le premier aperçu du design ne vous convient pas, dites-le-nous dans les 5 jours ouvrables et nous vous remboursons votre acompte en entier.",
-  "faq_kicker": "Questions",
-  "faq_title": "Avant de réserver",
-  "f1_q": "De quoi avez-vous besoin de ma part ?",
-  "f1_a": "Votre logo, votre biographie, vos textes et vos photos si vous en avez, plus quelques exemples de sites que vous aimez. Si vos textes demandent du travail, le Site Expert comprend de l'aide pour les structurer et les peaufiner. Rédiger tout de zéro est facturé à part.",
-  "f2_q": "Et si je n'ai pas encore de témoignages ni de logo ?",
-  "f2_a": "Aucun problème. La page Résultats fonctionne avec un seul témoignage, ou aucun pour l'instant, et nous vous montrons comment en recueillir d'autres. Un logo peut être facturé à part.",
-  "f3_q": "À qui appartient le site ?",
-  "f3_a": "À vous : le design, le contenu, les fichiers et votre domaine. Nous remettons tout à la mise en ligne.",
-  "f4_q": "Avez-vous besoin de mes mots de passe ?",
-  "f4_a": "Non. Lorsque nous avons besoin d'accéder à votre domaine ou à votre hébergement, vous nous ajoutez comme collaborateur ou délégué, et vous pouvez nous retirer à tout moment.",
-  "f5_q": "Que se passe-t-il après la mise en ligne ?",
-  "f5_a": "Votre site est à vous dans tous les cas. Le suivi mensuel couvre l'hébergement, les mises à jour, les sauvegardes et les petites modifications ; sans lui, les changements sont facturés séparément.",
-  "f6_q": "Pouvez-vous travailler avec moi si je ne suis pas au Minnesota ?",
-  "f6_a": "Oui. Tout se fait en ligne : appels, aperçus et révisions, en anglais ou en français.",
-  "cta_title": "Parlons de votre site web",
-  "cta_text": "Un appel gratuit de 15 minutes. Nous regardons ce que vous avez et ce dont vous avez besoin, et nous vous disons honnêtement quel forfait convient.",
-  "cta_btn": "Réserver un appel gratuit",
-  "cta_mail": "Ou écrivez à",
-  "foot_line": "Sites web pour coachs et consultants",
-  "foot_privacy": "Confidentialité",
-  "foot_legal": "Studio de conception web indépendant.",
-  "hero_title": "Un site web professionnel pour votre activité de coaching ou de consultation, <span class=\"grad\">en ligne en 10 jours ouvrables ou moins</span>."
-} };
-
-document.querySelectorAll("[data-brand]").forEach(el => el.textContent = CONFIG.brand);
-document.querySelectorAll("[data-email]").forEach(el => { el.textContent = CONFIG.email; el.href = "mailto:" + CONFIG.email; });
-document.getElementById("year").textContent = new Date().getFullYear();
-const ext = (a, url) => { a.href = url; a.target = "_blank"; a.rel = "noopener"; };
-const mailto = subject => "mailto:" + CONFIG.email + "?subject=" + encodeURIComponent(subject);
-document.querySelectorAll("[data-book]").forEach(a => {
-  if (CONFIG.bookingUrl) ext(a, CONFIG.bookingUrl); else a.href = mailto("Free 15-minute website call");
-});
-document.querySelectorAll("[data-pay]").forEach(a => {
-  const link = CONFIG.stripe[a.dataset.pay];
-  if (link) ext(a, link);
-  else if (CONFIG.bookingUrl) ext(a, CONFIG.bookingUrl);
-  else a.href = mailto((a.dataset.pay === "starter" ? "Launch Page" : "Expert Site") + " request");
-});
-
-/* Language switch */
-const EN = {};
-document.querySelectorAll("[data-i18n]").forEach(el => { EN[el.dataset.i18n] = el.hasAttribute("data-html") ? el.innerHTML : el.textContent; });
-let lang = "en";
-function t(k) { return (lang !== "en" && I18N[lang][k]) || EN[k]; }
-function setLang(l) {
-  lang = I18N[l] ? l : "en";
-  document.documentElement.lang = lang;
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const v = t(el.dataset.i18n);
-    if (el.hasAttribute("data-html")) el.innerHTML = v; else el.textContent = v;
-  });
-  document.querySelectorAll(".lang-switch button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
-  try { localStorage.setItem("site-lang", lang); } catch (e) {}
-}
-document.querySelectorAll(".lang-switch button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
-
-let saved = (navigator.language || "en").toLowerCase().startsWith("fr") ? "fr" : "en";
-try { saved = localStorage.getItem("site-lang") || saved; } catch (e) {}
-setLang(saved);
 </script>
-
+<script>
+window.I18N_EN = {
+  form_sending: "Sending…", form_sent: "Inquiry sent. We reply within 1 to 2 business days.",
+  form_error: "The inquiry couldn't be sent. Email us at contact@delightchoiceservices.com instead.",
+  form_mailto: "Your email app opened with your message. Send it from there to finish."
+};
+</script>
+<script src="assets/site.js"></script>
 </body>
 </html>

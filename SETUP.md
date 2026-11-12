@@ -4,13 +4,14 @@ The site is a few static files in `public/`. No build step, no framework.
 
 ## 1. Edit the CONFIG block
 
-Open `public/index.html`, scroll to the bottom, and fill in:
+Every page reads one file: `public/assets/config.js`. Fill in:
 
 ```js
-const CONFIG = {
-  brand: "Delight Choice Services",   // your business name
+window.CONFIG = {
+  brand: "Delight Choice Services",
   email: "contact@delightchoiceservices.com",
   bookingUrl: "https://calendly.com/yourname/15min",
+  formEndpoint: "https://formspree.io/f/xxxxxxx",   // inquiry form (optional)
   stripe: {
     starter: "https://buy.stripe.com/xxxx",   // Launch Page deposit ($375)
     expert:  "https://buy.stripe.com/yyyy"    // Expert Site deposit ($900)
@@ -18,9 +19,12 @@ const CONFIG = {
 };
 ```
 
-Empty links fall back to the booking link, then to the contact section, so the site works at every stage.
+Empty values fall back gracefully, so the site works at every stage:
+- No `bookingUrl`: every "Book a call" button scrolls to the inquiry form.
+- No Stripe link: package buttons use the booking link, then the inquiry form.
+- No `formEndpoint`: the inquiry form opens the visitor's email app with their message pre-filled. To receive inquiries directly instead, create a free form at formspree.io, paste its endpoint here, and inquiries arrive in your inbox.
 
-If you ever rename the business, also change the logo SVG text, the `data-brand` spans and the `<title>` in both `index.html` and `trust.html` so the name shows before JavaScript loads (search engines read that). Until `bookingUrl` and the Stripe links are set, every "Book" and "Get" button opens an email to the address above.
+If you ever rename the business, also change the wordmark text in the header, the footer and the `<title>` of each page so the name shows before JavaScript loads.
 
 ## 2. Payments (Stripe Payment Links)
 
@@ -81,4 +85,4 @@ pages:
 
 ## Languages (EN / FR)
 
-English text lives in the HTML. French lives in the `I18N` object in the script, keyed by each element's `data-i18n` name. To change a sentence, edit it in the HTML (English) and in `fr`. The same applies to `trust.html`. The visitor's choice is remembered in their browser and shared across pages; first-time visitors with a French browser see French.
+English text lives in the HTML. French lives in the `window.I18N_FR` block near the bottom of each page, keyed by each element's `data-i18n` name. To change a sentence, edit it in the HTML (English) and in that block. Header and footer French is shared in `public/assets/site.js`. The visitor's choice is remembered in their browser and shared across pages; first-time visitors with a French browser see French.
